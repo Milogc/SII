@@ -100,3 +100,10 @@ Route::get('pdfcr02/{idpro}','DocumentosController@cr02');
 Route::get('pdfvinc/{idpro}','DocumentosController@vinculacion');
 
 ///////////
+/// crud de convocatoria
+Route::resource('crudareas','Coordinador\CrudAreasController');
+Route::resource('crudusers','Coordinador\CrudUsersController');
+Route::resource('crudentregables','Coordinador\CrudEntregablesController');
+Route::resource('crudgastos','Coordinador\CrudGastosController');
+Route::resource('crudlineas','Coordinador\CrudLineasController');
+Route::resource('crudinvestigacion','Coordinador\CrudInvestigacionsController');
