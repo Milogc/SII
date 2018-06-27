@@ -38,12 +38,18 @@
                   @else
                     class="alert-success"
                   @endif >
-                  {{$proyecto['titulo']}} <br>
+<!--
+financiado
+*/ -->
+                  Titulo: {{$proyecto['titulo']}} <br>
+                  Linea: {{$proyecto['linea']}} <br>
+                  Perido: ( {{$proyecto['fecha_inicio']}} de {{$proyecto['fecha_fin']}} ) <br>
                   Director: {{$proyecto->director->name}}<br>
+                  Financiado: @if($proyecto['financiado']==0) SI @else NO @endif <br>
                   Colaboradores:<ul>
-                  @foreach($proyecto->colaboradores as $colaborador)
-                    <li>{{$colaborador->quien->name}}</li>
-                  @endforeach
+                    @foreach($proyecto->colaboradores as $colaborador)
+                      <li>{{$colaborador->quien->name}}</li>
+                    @endforeach
                   </ul>
                 </td>
                 <td @if($proyecto['sometido'] == "")
