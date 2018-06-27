@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Coordinador;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\Gastos;
+use App\Models\CrudGastos;
 class CrudGastosController extends Controller
 {
     /**
@@ -36,7 +36,7 @@ class CrudGastosController extends Controller
      */
     public function store(Request $request)
     {
-      $gastos = new Gastos();
+      $gastos = new CrudGastos();
       $gastos->descripcion = $request->get('descripcion');
       $gastos->partida = $request->get('partida');
       $gastos->save();
@@ -62,7 +62,7 @@ class CrudGastosController extends Controller
      */
     public function edit($id)
     {
-      $gastos = Gastos::find($id);
+      $gastos =CrudGastos::find($id);
       return view('crudgastos/edit', compact('gastos','id'));
     }
 
@@ -75,7 +75,7 @@ class CrudGastosController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $gastos = Gastos::find($id);
+      $gastos =CrudGastos::find($id);
     $gastos->descripcion = $request->get('descripcion');
     $gastos->partida = $request->get('partida');
     $gastos->save();
@@ -90,6 +90,8 @@ class CrudGastosController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $gastos=CrudGastos::find($id);
+      $gastos->delete();
+      return redirect('crudgastos');
     }
 }

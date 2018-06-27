@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Coordinador;
 
 use Illuminate\Http\Request;
-use App\Models\Entregable;
+use App\Models\CrudEntregable;
 use Illuminate\Support\Facades\DB;
 
 class CrudEntregablesController extends Controller
@@ -37,7 +37,7 @@ class CrudEntregablesController extends Controller
      */
     public function store(Request $request)
     {
-        $entregable = new Entregable();
+        $entregable = new CrudEntregable();
         $entregable->descripcion = $request->get('descripcion');
         $entregable->tipo = $request->get('tipo');
         $entregable->save();
@@ -63,7 +63,7 @@ class CrudEntregablesController extends Controller
      */
     public function edit($id)
     {
-      $entregable = Entregable::find($id);
+      $entregable =CrudEntregable::find($id);
       return view('crudentregables/edit', compact('entregable','id'));
     }
 
@@ -76,7 +76,7 @@ class CrudEntregablesController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $entregable = Entregable::find($id);
+      $entregable =CrudEntregable::find($id);
       $entregable->fill($request->all());
       $entregable->save();
       return redirect('crudentregables');//
@@ -90,7 +90,7 @@ class CrudEntregablesController extends Controller
      */
     public function destroy($id)
     {
-      $entregable=Entregable::find($id);
+      $entregable=CrudEntregable::find($id);
       $entregable->delete();
       return redirect('crudentregables');
     }

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Coordinador;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Tipodeinvestigacion;
+use App\Models\CrudTipodeinvestigacion;
 use Illuminate\Support\Facades\DB;
 
 class CrudInvestigacionsController extends Controller
@@ -37,7 +37,7 @@ class CrudInvestigacionsController extends Controller
      */
     public function store(Request $request)
     {
-        $tipo = new Tipodeinvestigacion();
+        $tipo = new CrudTipodeinvestigacion();
         $tipo->tipo = $request->get('tipo');
         $tipo->save();
         return redirect('crudinvestigacion');
@@ -62,7 +62,7 @@ class CrudInvestigacionsController extends Controller
      */
     public function edit($id)
     {
-      $tipo = Tipodeinvestigacion::find($id);
+      $tipo = CrudTipodeinvestigacion::find($id);
         return view('crudinvestigacion/edit', compact('tipo','id'));
     }
 
@@ -75,7 +75,7 @@ class CrudInvestigacionsController extends Controller
      */
     public function update(Request $request, $id)
     {
-       $tipo = Tipodeinvestigacion::find($id);
+       $tipo = CrudTipodeinvestigacion::find($id);
        $tipo->tipo=$request->get('tipo');
        $tipo->save();
        return redirect('crudinvestigacion');
