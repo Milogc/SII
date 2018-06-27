@@ -1,114 +1,98 @@
 @extends('layouts.app')
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                            on Investigador
-                        </div>
-                    @endif
-
-<div class="row"> {{-- comentario --}}
-    <div class="col-3">
-        <div class="bg-warning text-white">
-          Usuarios registrados: {{$count}}
-          <img src="https://image.flaticon.com/icons/png/512/97/97797.png" usemap="#Map0" style="width:90px; position: relative;  right: -10px;  "alt="">
-            <map name="Map0">
-            <area alt="" title="" href="usuarios" shape="poly" coords="13,11,499,14,498,498,14,500" />
-            <area alt="" title="" href="usuarios" shape="poly" coords="13,11,499,14,498,498,14,500" />
-            </map>
-        </div>
-    </div>
-
-    <div class="col-3">
-        <div class="bg-warning">
-          Usuarios registrados: {{$count}}
-          <img src="https://image.flaticon.com/icons/svg/54/54551.svg" usemap="#Map1" style="width:90px; position: relative;  right: -10px;  "alt="">
-            <map name="Map1">
-            <area alt="" title="" href="convocatoria" shape="poly" coords="13,11,499,14,498,498,14,500" />
-            <area alt="" title="" href="convocatoria" shape="poly" coords="13,11,499,14,498,498,14,500" />
-            </map>
-        </div>
-    </div>
-
-    <div class="col-3">
-        <div class="bg-warning">
-          Usuarios registrados: {{$count}}
-          <img src="https://image.flaticon.com/icons/png/512/97/97797.png" usemap="#Map" style="width:90px; position: relative;  right: -10px;  "alt="">
-            <map name="Map" id="Map">
-            <area alt="" title="" href="usuarios" shape="poly" coords="13,11,499,14,498,498,14,500" />
-            <area alt="" title="" href="usuarios" shape="poly" coords="13,11,499,14,498,498,14,500" />
-            </map>
-        </div>
-    </div>
-
-    <div class="col-3">
-        <div class="bg-warning">
-          Usuarios registrados: {{$count}}
-          <img src="https://image.flaticon.com/icons/png/512/97/97797.png" usemap="#Map" style="width:90px; position: relative;  right: -10px;  "alt="">
-            <map name="Map" id="Map">
-            <area alt="" title="" href="usuarios" shape="poly" coords="13,11,499,14,498,498,14,500" />
-            <area alt="" title="" href="usuarios" shape="poly" coords="13,11,499,14,498,498,14,500" />
-            </map>
-        </div>
-    </div>
-</div>{{-- termina la primer fila --}}
-
-<br>
-<div class="row"> {{-- comienza la fila --}}
-    <div class="col-3">
-        <div class="bg-warning">
-          Usuarios registrados: {{$count}}
-          <img src="https://image.flaticon.com/icons/png/512/97/97797.png" usemap="#Map" style="width:90px; position: relative;  right: -10px;  "alt="">
-            <map name="Map" id="Map">
-            <area alt="" title="" href="usuarios" shape="poly" coords="13,11,499,14,498,498,14,500" />
-            <area alt="" title="" href="usuarios" shape="poly" coords="13,11,499,14,498,498,14,500" />
-            </map>
-        </div>
-    </div>
-
-    <div class="col-3">
-        <div class="bg-warning">
-          Usuarios registrados: {{$count}}
-          <img src="https://image.flaticon.com/icons/png/512/97/97797.png" usemap="#Map" style="width:90px; position: relative;  right: -10px;  "alt="">
-            <map name="Map" id="Map">
-            <area alt="" title="" href="usuarios" shape="poly" coords="13,11,499,14,498,498,14,500" />
-            <area alt="" title="" href="usuarios" shape="poly" coords="13,11,499,14,498,498,14,500" />
-            </map>
-        </div>
-    </div>
-
-    <div class="col-3">
-        <div class="bg-warning">
-          Usuarios registrados: {{$count}}
-          <img src="https://image.flaticon.com/icons/png/512/97/97797.png" usemap="#Map" style="width:90px; position: relative;  right: -10px;  "alt="">
-            <map name="Map" id="Map">
-            <area alt="" title="" href="usuarios" shape="poly" coords="13,11,499,14,498,498,14,500" />
-            <area alt="" title="" href="usuarios" shape="poly" coords="13,11,499,14,498,498,14,500" />
-            </map>
-        </div>
-    </div>
-
-    <div class="col-3">
-    </div>
-</div>{{-- termina la primer fila --}}
+  <div class="container">
+      <div class="row justify-content-center">
 
 
-<br>    
+  {{-- comentario --}}
+  <div class="col-3">
+      <div class="bg-primary text-white">
+        Proyectos registrados:{{$proyecto}}
+        <img src="https://image.flaticon.com/icons/svg/54/54551.svg"  usemap="#registrado" style="width:90px; position:relative; right: -10px; "alt="">
+          <map name="registrado" id="registrado">
+          <area alt="" title="" href="registrados" shape="poly" coords="13,11,499,14,498,498,14,500" />
 
-                    You are logged in on Corrdinador!
-                    <ul>
-                        <li><a href="convocatoria">CRUD Convocatorias</a></li>
-                        <li><a href="registrados">Proyectos Registrados</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+          </map>
+      </div>
+  </div>
+  <div class="col-3">
+      <div class="bg-primary text-white">
+      CRUD Convocatorias:  {{$convocatorias}}
+        <img src="https://image.flaticon.com/icons/svg/54/54551.svg" usemap="#convocatoria" style="width:90px;  "alt="">
+          <map name="convocatoria">
+          <area alt="" title="" href="convocatoria" shape="poly" coords="13,11,499,14,498,498,14,500" />
+
+          </map>
+      </div>
+        <br>
+  </div>
+      <div class="col-3 ">
+          <div class="bg-warning text-white">
+            Usuarios registrados: {{$count}}
+            <img src="https://image.flaticon.com/icons/png/512/97/97797.png" usemap="#Map0" style="width:90px; "alt="">
+              <map name="Map0">
+              <area alt="" title="" href="crudusers" shape="poly" coords="13,11,499,14,498,498,14,500" />
+              <area alt="" title="" href="usuarios" shape="poly" coords="13,11,499,14,498,498,14,500" />
+              </map>
+          </div>
+      </div>
+
+      <div class="col-3">
+          <div class="bg-primary text-white">
+            Areas registradas:{{$catalogo}}
+            <img src="https://image.flaticon.com/icons/svg/54/54551.svg" usemap="#Map1" style="width:90px; position:relative; right: -20px;  "alt="">
+              <map name="Map1">
+              <area alt="" title="" href="crudareas" shape="poly" coords="13,11,499,14,498,498,14,500" />
+
+              </map>
+          </div>
+      </div>
+
+      <div class="col-3">
+          <div class="bg-primary text-white">
+            Entregable registrado:{{$entregable}}
+            <img src="https://image.flaticon.com/icons/svg/54/54551.svg"  usemap="#entregable" style="width:90px;  "alt="">
+              <map name="entregable" id="entregable">
+              <area alt="" title="" href="crudentregable" shape="poly" coords="13,11,499,14,498,498,14,500" />
+
+              </map>
+          </div>
+
+
+
+      </div>
+      <div class="col-3 ">
+          <div class="bg-primary text-white">
+            Gasto de materiales : {{$gastos}}
+            <img src="https://image.flaticon.com/icons/svg/54/54551.svg"   usemap="#map" style="width:90px; position:relative; right: -10px; "alt="">
+              <map name="map">
+              <area alt="" title="" href="crudgastos" shape="poly" coords="13,11,499,14,498,498,14,500" />
+              </map>
+          </div>
+      </div>
+
+      <div class="col-3">
+          <div class="bg-primary text-white">
+            Tipos de investigacion:{{$tipo}}
+            <img src="https://image.flaticon.com/icons/svg/54/54551.svg" usemap="#tipo" style="width:90px; position:relative; right: -10px; "alt="">
+              <map name="tipo">
+              <area alt="" title="" href="crudinvestigacion" shape="poly" coords="13,11,499,14,498,498,14,500" />
+
+              </map>
+          </div>
+      </div>
+
+      <div class="col-3">
+          <div class="bg-primary text-white">
+            Lineas integradas:{{$lineas}}
+            <img src="https://image.flaticon.com/icons/svg/54/54551.svg"  usemap="#linea" style="width:90px; position:relative; right: -30px; "alt="">
+              <map name="linea" id="linea">
+              <area alt="" title="" href="crudlineas" shape="poly" coords="13,11,499,14,498,498,14,500" />
+
+              </map>
+          </div>
+      </div>
+
+
+  </div>
 @endsection
