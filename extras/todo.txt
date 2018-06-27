@@ -1,7 +1,26 @@
 //someter los proyectos, y que los sometidos solo se puedan ver...
 //guardar en session el page del index
 //sesion time out
-que puedas ver la informacion escencial del proyecto
+//que puedas ver la informacion escencial del proyecto
+seguirdad
+
+ruta investigador solo
+http://crud.homestead/colaboradores/13
+
+ruta coordinador solo
+http://crud.homestead/crudusers
+
+
+
+
+
+Route::resource('photos', 'PhotoController')->only([
+    'index', 'show'
+]);
+
+Route::resource('photos', 'PhotoController')->except([
+    'create', 'store', 'update', 'destroy'
+]);
 
 
 //return response()->download(public_path('myimage.jpg')); 

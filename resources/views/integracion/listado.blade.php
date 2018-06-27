@@ -38,9 +38,6 @@
                   @else
                     class="alert-success"
                   @endif >
-<!--
-financiado
-*/ -->
                   Titulo: {{$proyecto['titulo']}} <br>
                   Linea: {{$proyecto['linea']}} <br>
                   Perido: ( {{$proyecto['fecha_inicio']}} de {{$proyecto['fecha_fin']}} ) <br>
