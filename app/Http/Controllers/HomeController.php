@@ -7,6 +7,12 @@ use App\Models\Proyecto;
 
 use App\Models\Convocatoria;
 
+use App\Models\CrudCatalago;
+use App\Models\CrudGastos;
+use App\Models\CrudLineas;
+use App\Models\CruEntregable;
+use App\Models\CrudTipodeinvestigacion;
+
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
@@ -47,17 +53,17 @@ class HomeController extends Controller
         }
         if( $hayg == true  && $hays == false ){
             $page=$request->input('page');
-            \Session::put('page' ,  $request->input('page') ); 
+            \Session::put('page' ,  $request->input('page') );
         }
         if( $hayg == true  && $hays == true  ){
             $page=$request->input('page');
-            \Session::put('page' ,  $request->input('page') ); 
+            \Session::put('page' ,  $request->input('page') );
         }
         $request->merge( array( 'page' => $page ) );
 
         $logeado = Auth::user();
 
-        
+
         switch ($logeado->rol) {
             case 'Investigador':
                 $convocatorias=Convocatoria::paginate(2);
@@ -65,13 +71,21 @@ class HomeController extends Controller
                 return view('sistema.Investigador',compact('convocatorias'));
                 break;
             case 'Coordinador':
-                $count = User::all()->count();
-                // $ci    = User::where('rol','Investigador')->count();
-                //   $cii    = User::where('rol','Coordinador')->count();
+            $count = User::all()->count();
+            $countareas= CruCatalago::all()->count();
+            $entregable= CrudEntregable::all()->count();
+            $proyecto = Proyecto::all()->count();
+            $convocatorias =Convocatoria::all()->count();
+            $catalogo = CrudCatalago::all()->count();
+            $gastos = Gastos::all()->count();
+            $lineas = CrudLineas::all()->count();
+            $tipo = CrudTipodeinvestigacion::all()->count();
+            // $ci    = User::where('rol','Investigador')->count();
+            //   $cii    = User::where('rol','Coordinador')->count();
 //                $countproyect = Proyecto::all()->count();
-//                $catalogo = Catalago::all()->count();
-//                $entregable = Entregable::all()->count();
-                return view('sistema.Coordinador',compact('count'));
+//
+//
+            return view('sistema.Coordinador',compact('count','countareas','entregable','proyecto','convocatorias','catalogo','entregable','gastos','lineas','tipo'));
 
                 break;
 //            default:
