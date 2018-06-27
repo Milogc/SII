@@ -25,7 +25,7 @@
         <tr class="info">
           <td>
             {{$convocatoria['Nombre']}}<br>
-            {{$convocatoria['Fecha_inicio']}} a {{$convocatoria['Fecha_fin']}}
+            ({{$convocatoria['Fecha_inicio']}} a {{$convocatoria['Fecha_fin']}})
           </td>        
         </tr>
             @foreach($convocatoria->proyectos as $proyecto)
@@ -40,6 +40,11 @@
                   @endif >
                   {{$proyecto['titulo']}} <br>
                   Director: {{$proyecto->director->name}}<br>
+                  Colaboradores:<ul>
+                  @foreach($proyecto->colaboradores as $colaborador)
+                    <li>{{$colaborador->quien->name}}</li>
+                  @endforeach
+                  </ul>
                 </td>
                 <td @if($proyecto['sometido'] == "")
                     class="alert-warning"
