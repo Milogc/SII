@@ -7,10 +7,10 @@ use App\Models\Proyecto;
 
 use App\Models\Convocatoria;
 
-use App\Models\CrudCatalago;
+use App\Models\CrudCatalagoArea;
 use App\Models\CrudGastos;
 use App\Models\CrudLineas;
-use App\Models\CruEntregable;
+use App\Models\CrudEntregable;
 use App\Models\CrudTipodeinvestigacion;
 
 use Illuminate\Http\Request;
@@ -72,12 +72,12 @@ class HomeController extends Controller
                 break;
             case 'Coordinador':
             $count = User::all()->count();
-            $countareas= CruCatalago::all()->count();
+            $countareas= CrudCatalagoArea::all()->count();
             $entregable= CrudEntregable::all()->count();
             $proyecto = Proyecto::all()->count();
             $convocatorias =Convocatoria::all()->count();
-            $catalogo = CrudCatalago::all()->count();
-            $gastos = Gastos::all()->count();
+            $catalogo = CrudCatalagoArea::all()->count();
+            $gastos = CrudGastos::all()->count();
             $lineas = CrudLineas::all()->count();
             $tipo = CrudTipodeinvestigacion::all()->count();
             // $ci    = User::where('rol','Investigador')->count();

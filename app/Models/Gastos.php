@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CrudGastos extends Model
+class Gastos extends Model
 {
     protected $table='gastos';
     public $timestamps =false;
@@ -12,6 +12,6 @@ class CrudGastos extends Model
 
 
    protected $fillable = [
-         'descripcion', 'partida'];
+         'descripcion', 'partida', 'monto', 'actividad_id', 'proyecto_id'];
 
 }

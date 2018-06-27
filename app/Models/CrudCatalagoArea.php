@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 
-class Catalago extends Model
+class CrudCatalagoArea extends Model
 {
     protected $table='catalogo_areas';
     protected $fillable = ['area'];
