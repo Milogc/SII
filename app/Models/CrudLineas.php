@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Tipodeinvestigacion extends Model
+class CrudLineas extends Model
 {
-  protected $table='catalogo_tipo_investigacion';
+  protected $table='catalogo_lineas';
   protected $fillable = ['linea'];
   public $timestamps =false;
 }

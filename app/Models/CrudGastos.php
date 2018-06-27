@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Gastos extends Model
+class CrudGastos extends Model
 {
     protected $table='gastos';
     public $timestamps =false;
