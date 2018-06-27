@@ -21,7 +21,7 @@ class DocumentosController extends Controller
       $entregablesh = Entregables::where('tipo',"HUMANO")->where('proyecto_id', $idproy)->get();
       $protocolo= Protocolo::find($idproy);
       $pdf = PDF::loadView('documentos.cr01',compact('protocolo','entregablesa','entregablesh'));
-      return  $pdf->download('Protocolo.pdf');
+      return  $pdf->download($idproy . '_ci-01.pdf');
     }
     public function cr02($idproy)
     {
