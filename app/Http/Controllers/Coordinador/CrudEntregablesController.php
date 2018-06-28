@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Coordinador;
 
+use App\Http\Controllers\Controller;
+
 use Illuminate\Http\Request;
 use App\Models\CrudEntregable;
 use Illuminate\Support\Facades\DB;

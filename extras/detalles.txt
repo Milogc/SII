@@ -1,0 +1,28 @@
+
+   Symfony\Component\Debug\Exception\FatalErrorException  : Class 'App\Http\Controllers\Coordinador\Controller' not found
+
+  at /home/vagrant/code/crud/app/Http/Controllers/Coordinador/CrudEntregablesController.php:9
+     5| use Illuminate\Http\Request;
+     6| use App\Models\CrudEntregable;
+     7| use Illuminate\Support\Facades\DB;
+     8| 
+  >  9| class CrudEntregablesController extends Controller
+    10| {
+    11|     /**
+    12|      * Display a listing of the resource.
+    13|      *
+
+
+   Whoops\Exception\ErrorException  : Class 'App\Http\Controllers\Coordinador\Controller' not found
+
+  at /home/vagrant/code/crud/app/Http/Controllers/Coordinador/CrudEntregablesController.php:9
+     5| use Illuminate\Http\Request;
+     6| use App\Models\CrudEntregable;
+     7| use Illuminate\Support\Facades\DB;
+     8| 
+  >  9| class CrudEntregablesController extends Controller
+    10| {
+    11|     /**
+    12|      * Display a listing of the resource.
+    13|      *
+
