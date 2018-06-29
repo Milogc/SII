@@ -26,7 +26,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Correo electónicoa') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Correo electrónico') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
@@ -40,18 +40,27 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('CVU-TenNM') }}</label>
+                            <label for="cvutecnm" class="col-md-4 col-form-label text-md-right">{{ __('CVU-TenNM') }}</label>
 
                             <div class="col-md-6">
                                 <input id="text" type="cvutecnm" class="form-control{{ $errors->has('cvutecnm') ? ' is-invalid' : '' }}" name="cvutecnm" value="{{ old('cvutecnm') }}" required>
 
-                                @if ($errors->has('cvu'))
+                                @if ($errors->has('cvutecnm'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('cvutecnem') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
+
+                        <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Adscripción') }}</label>
+                            <select name="adscripcion">
+                             @foreach($ies as $ie)
+                               <option > {{ $ie->ies }} </option>
+                             @endforeach
+                            </select>
+                          </div>
 
 
                         <div class="form-group row">
