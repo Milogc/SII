@@ -74,8 +74,5 @@ Route::resource('crudlineas','Coordinador\CrudLineasController');
 Route::resource('crudinvestigacion','Coordinador\CrudInvestigacionsController');
 
 Route::resource('crudlongitudecaracteres','Coordinador\CrudDeLongitudecaracteres')
-->only(['index','edit','update']);
-Route::resource('crudlongitudecaracteres','Coordinador\CrudDeLongitudecaracteres')
-->except(['create','destroy','store','show']);
-=======
+	->only(['index','edit','update']);
 
