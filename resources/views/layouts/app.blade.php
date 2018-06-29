@@ -14,7 +14,7 @@
     @yield('styles')
     <!-- Scripts -->
     <!-- defer -->
-    <!-- script src="{{ asset('js/app.js') }}"></script --> 
+    <!-- script src="{{ asset('js/app.js') }}"></script -->
     <script src="{{ asset('jquery/jquery-3.3.1.min.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="{{ asset('bootstrap/js/bootstrap.js')}}"></script>
@@ -25,12 +25,12 @@
 
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-            <div class="container">
-              <ol class="breadcrumb" style="background-color:transparent; padding: 0; margin: 0;">
-                <li class="breadcrumb-item"><a href="{{url('/') }}">S.I.I.</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('home') }}">INICIO</a></li>
+    <div id="app" >
+        <nav class="navbar navbar-expand-md navbar-laravel" style="background-color:blue;"   >
+            <div class="container" >
+              <ol class="breadcrumb" style="background-color:transparent; ">
+                <li class="breadcrumb-item"><a href="{{url('/') }}" style="color:white;">S.I.I.</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('home') }}" style="color:white;">INICIO</a></li>
                 @yield('breadcrumb')
               </ol>
 
@@ -48,15 +48,15 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
-                            <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
+                            <li><a class="nav-link" href="{{ route('login') }}" style="color:white;">{{ __('INICIAR SESIÓN') }}</a></li>
+                            <li><a class="nav-link" href="{{ route('register') }}" style="color:white;" >{{ __('REGISTRARSE') }}</a></li>
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <li class="nav-item dropdown" >
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="color:white;">
                                     {{ Auth::user()->name }}-{{ Auth::user()->rol }}<span class="caret"></span>
                                 </a>
 
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">                                    
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     @switch(Auth::user()->rol)
 
                                         @case('Coordinador')
@@ -70,7 +70,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Cerrar sesión') }}
                                     </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
