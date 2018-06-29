@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Coordinador;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use App\Models\CruCatalago;
+use App\Models\CrudCatalagoArea;
 
 
 class CrudAreasController extends Controller
@@ -39,7 +39,7 @@ class CrudAreasController extends Controller
      */
     public function store(Request $request)
     {
-      $catalago = new CruCatalago();
+      $catalago = new CrudCatalagoArea();
       $catalago->area = $request->get('area');
       $catalago->save();
       return redirect('crudareas');
@@ -64,7 +64,7 @@ class CrudAreasController extends Controller
      */
     public function edit($id)
     {
-      $catalagos = CruCatalago::find($id);
+      $catalagos = CrudCatalagoArea::find($id);
       return view('crudareas/edit',compact('catalagos','id'));
     }
 
@@ -77,7 +77,7 @@ class CrudAreasController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $catalago = CruCatalago::find($id);
+      $catalago = CrudCatalagoArea::find($id);
       $catalago->fill($request->all());
         $catalago->save();
         return redirect('crudareas');
@@ -92,7 +92,7 @@ class CrudAreasController extends Controller
      */
     public function destroy($id)
     {
-      $catalago= Catalago::find($id);
+      $catalago= CrudCatalagoArea::find($id);
     $catalago->delete();
         return redirect('crudareas');
     }
