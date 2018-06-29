@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
+use App\Models\Proyecto;
 use App\Models\Protocolo;
 use App\Models\Entregables;
 use App\Models\Vinculacion;
@@ -15,21 +16,19 @@ use PDF;
 
 class DocumentosController extends Controller
 {
-    public function cr01($idproy)
+    public function ci01($idproy)
     {
-      $entregablesa = Entregables::where('tipo',"ACADEMICO")->where('proyecto_id', $idproy)->get();
-      $entregablesh = Entregables::where('tipo',"HUMANO")->where('proyecto_id', $idproy)->get();
-      $protocolo= Protocolo::find($idproy);
-      $pdf = PDF::loadView('documentos.cr01',compact('protocolo','entregablesa','entregablesh'));
+      $proyecto= Proyecto::find($idproy);
+      return view('documentos.ci01',compact('proyecto'));  
+
+      $pdf = PDF::loadView('documentos.ci01',compact('proyecto'));
       return  $pdf->download($idproy . '_ci-01.pdf');
     }
-    public function cr02($idproy)
-    {
-      $entregablesa = Entregables::where('tipo',"ACADEMICO")->where('proyecto_id', $idproy)->get();
-      $entregablesh = Entregables::where('tipo',"HUMANO")->where('proyecto_id', $idproy)->get();
-      $protocolo= Protocolo::find($idproy);
-      $pdf = PDF::loadView('documentos.cr01',compact('protocolo','entregablesa','entregablesh'));
-      return  $pdf->download('Protocolo.pdf');
+    public function ci02($idproy)
+    {      
+      $proyecto= Proyecto::find($idproy);
+      $pdf = PDF::loadView('documentos.ci02',compact('proyecto'));
+      return  $pdf->download($idproy . '_ci-02.pdf');
     }
     public function vinculacion($idproy){
         $vinculacion= Vinculacion::find($idproy);

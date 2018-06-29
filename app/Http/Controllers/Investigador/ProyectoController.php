@@ -21,6 +21,8 @@ class ProyectoController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+//        $this->middleware('role:Invesgitador', ['only' => ['fooAction', 'barAction']]);
+//        $this->middleware('role:Coordinador', ['only' => ['fooAction', 'barAction']]);        
     }
 
     /**

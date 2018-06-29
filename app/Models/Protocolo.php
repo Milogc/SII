@@ -35,6 +35,11 @@ class Protocolo extends Model
 	    return $this->hasMany('App\Models\Colaboradores');
 	}        
 
+	public function entregables()
+	{
+	    return $this->hasMany('App\Models\Entregables');
+	}        
+
 	public function programa_educativo(){
 		return 
 		   $this->hasOne('App\Models\Programa_educativo', 'id', 'pe');
