@@ -107,3 +107,7 @@ Route::resource('crudentregables','Coordinador\CrudEntregablesController');
 Route::resource('crudgastos','Coordinador\CrudGastosController');
 Route::resource('crudlineas','Coordinador\CrudLineasController');
 Route::resource('crudinvestigacion','Coordinador\CrudInvestigacionsController');
+///crud de longitud de caraactares
+Route::get('crudlongitudecaracteres','Coordinador\CrudLongitudCaracteresControllers@index');
+Route::get('crudlongitudecaracteres/{idproy}','Coordinador\CrudLongitudCaracteresControllers@edit');
+Route::post('crudlongitudecaracteres/{idproy}','Coordinador\CrudLongitudCaracteresControllers@updet');

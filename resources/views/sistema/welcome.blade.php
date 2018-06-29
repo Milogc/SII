@@ -46,11 +46,12 @@
             }
 
             .title {
-                font-size: 84px;
+                font-size: 94px;
+                color: white;
             }
 
             .links > a {
-                color: #636b6f;
+                color: white;
                 padding: 0 25px;
                 font-size: 12px;
                 font-weight: 600;
@@ -64,19 +65,18 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="flex-center position-ref full-height" style="background-color:blue; "  >
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ url('/home') }}">INICIO</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
+                        <a href="{{ route('login') }}">INICIAR SESIÓN</a>
+                        <a href="{{ route('register') }}">REGISTRARSE</a>
                     @endauth
                 </div>
             <div class="content">
                 <div class="title m-b-md">
-                    SISTEMA:
-                    OTRO
+                  SISTEMA INTERNO
                 </div>
 
             </div>
