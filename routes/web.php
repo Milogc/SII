@@ -10,13 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
-
-
-
-Route::pattern('idpro', '[0-9]+');
 // Rutas para el 'Investigador'
+Route::pattern('idpro', '[0-9]+');
 Route::get('proyecto', 'Investigador\ProyectoController@index')->name('lstproyectos');
 Route::post('proyecto', 'Investigador\ProyectoController@store')->name('addproyecto');
 Route::get('proyecto/create', 'Investigador\ProyectoController@create')->name('crtproyecto');
@@ -59,8 +54,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Rutas que usa todo usuario
-Route::get('pdfcr01/{idpro}','DocumentosController@cr01');
-Route::get('pdfcr02/{idpro}','DocumentosController@cr02');
+Route::get('pdfci01/{idpro}','DocumentosController@ci01');
+Route::get('pdfci02/{idpro}','DocumentosController@ci02');
 Route::get('pdfvinc/{idpro}','DocumentosController@vinculacion');
 
 
