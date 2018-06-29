@@ -12,6 +12,7 @@ use App\Models\CrudGastos;
 use App\Models\CrudLineas;
 use App\Models\CrudEntregable;
 use App\Models\CrudTipodeinvestigacion;
+use App\Models\CrudLongitudCaracteres;
 
 use Illuminate\Http\Request;
 
@@ -80,12 +81,14 @@ class HomeController extends Controller
             $gastos = CrudGastos::all()->count();
             $lineas = CrudLineas::all()->count();
             $tipo = CrudTipodeinvestigacion::all()->count();
+            $longitud = CrudLongitudCaracteres::all()->count();
             // $ci    = User::where('rol','Investigador')->count();
             //   $cii    = User::where('rol','Coordinador')->count();
 //                $countproyect = Proyecto::all()->count();
 //
 //
-            return view('sistema.Coordinador',compact('count','countareas','entregable','proyecto','convocatorias','catalogo','entregable','gastos','lineas','tipo'));
+            return view('sistema.Coordinador',compact('count','countareas','entregable','proyecto','convocatorias',
+            'catalogo','entregable','gastos','lineas','tipo', 'longitud'));
 
                 break;
 //            default:
