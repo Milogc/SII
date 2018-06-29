@@ -42,6 +42,8 @@ class CrudUsersController extends Controller
     {
                 $user = new User();
                 $user->name = $request->input('name');
+                $user->cvutecnm = $request->input('cvutecnm');
+                $user->adscripcion = $request->input('adscripcion');
                 $user->email = $request->input('email');
                 $user->password = $request->input('password');
                 $user->save();
