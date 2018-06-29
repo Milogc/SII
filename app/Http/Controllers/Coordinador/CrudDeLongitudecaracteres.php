@@ -5,10 +5,9 @@ namespace App\Http\Controllers\Coordinador;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use App\Models\CrudCatalagoArea;
+use App\Models\CrudLongitudCaracteres;
 
-
-class CrudAreasController extends Controller
+class CrudDeLongitudecaracteres extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +16,8 @@ class CrudAreasController extends Controller
      */
     public function index()
     {
-      $catalagos=DB::table('catalogo_areas')->get();
-  return view ('crudareas/index', compact('catalagos'));
+      $longitud = DB::table('catalogo_restricciones_longitud')->get();
+     return view('crudlongitudecaracteres/index', compact('longitud'));
     }
 
     /**
@@ -28,7 +27,7 @@ class CrudAreasController extends Controller
      */
     public function create()
     {
-          return view('crudareas/create');
+        //
     }
 
     /**
@@ -39,10 +38,7 @@ class CrudAreasController extends Controller
      */
     public function store(Request $request)
     {
-      $catalago = new CrudCatalagoArea();
-      $catalago->area = $request->get('area');
-      $catalago->save();
-      return redirect('crudareas');
+        //
     }
 
     /**
@@ -64,8 +60,8 @@ class CrudAreasController extends Controller
      */
     public function edit($id)
     {
-      $catalagos = CrudCatalagoArea::find($id);
-      return view('crudareas/edit',compact('catalagos','id'));
+      $longitud = CrudLongitudCaracteres::find($id);
+      return view('crudlongitudecaracteres/edit',compact('longitud','id'));
     }
 
     /**
@@ -77,11 +73,10 @@ class CrudAreasController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $catalago = CrudCatalagoArea::find($id);
-      $catalago->fill($request->all());
-        $catalago->save();
-        return redirect('crudareas');
-
+      $longitud =CrudLongitudCaracteres::find($id);
+      $longitud->valor = $request->get('valor');
+      $longitud->save();
+        return redirect('crudlongitudecaracteres');
     }
 
     /**
@@ -92,8 +87,6 @@ class CrudAreasController extends Controller
      */
     public function destroy($id)
     {
-      $catalago= CrudCatalagoArea::find($id);
-    $catalago->delete();
-        return redirect('crudareas');
+        //
     }
 }

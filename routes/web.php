@@ -73,6 +73,9 @@ Route::resource('crudgastos','Coordinador\CrudGastosController');
 Route::resource('crudlineas','Coordinador\CrudLineasController');
 Route::resource('crudinvestigacion','Coordinador\CrudInvestigacionsController');
 
-Route::get('crudlongitudecaracteres','Coordinador\CrudLongitudCaracteresControllers@index');
-Route::get('crudlongitudecaracteres/{idproy}','Coordinador\CrudLongitudCaracteresControllers@edit');
-Route::post('crudlongitudecaracteres/{idproy}','Coordinador\CrudLongitudCaracteresControllers@updet');
+Route::resource('crudlongitudecaracteres','Coordinador\CrudDeLongitudecaracteres')
+->only(['index','edit','update']);
+Route::resource('crudlongitudecaracteres','Coordinador\CrudDeLongitudecaracteres')
+->except(['create','destroy','store','show']);
+=======
+

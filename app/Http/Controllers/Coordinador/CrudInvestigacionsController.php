@@ -90,7 +90,7 @@ class CrudInvestigacionsController extends Controller
      */
     public function destroy($id)
     {
-      $linea= Tipodeinvestigacion::find($id);
+      $linea=CrudTipodeinvestigacion::find($id);
       $linea->delete();
       return redirect('crudinvestigacion');
     }

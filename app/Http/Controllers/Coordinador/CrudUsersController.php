@@ -29,7 +29,8 @@ class CrudUsersController extends Controller
      */
     public function create()
     {
-        return view('crudusers/create');
+        $ies = DB::table('catalogo_ies')->get();
+        return view('crudusers/create', compact('ies'));
     }
 
     /**
@@ -42,6 +43,8 @@ class CrudUsersController extends Controller
     {
                 $user = new User();
                 $user->name = $request->input('name');
+                $user->cvutecnm = $request->input('cvutecnm');
+                $user->adscripcion = $request->input('adscripcion');
                 $user->email = $request->input('email');
                 $user->password = $request->input('password');
                 $user->save();
@@ -80,6 +83,8 @@ class CrudUsersController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+
       $users = User::find($id);
         $users->fill($request->all());
         $users->save();
