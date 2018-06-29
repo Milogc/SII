@@ -90,18 +90,23 @@
               </map>
           </div>
       </div>
+        </div>
+        <br>
+<div class="row" style=" position:relative; right: -15px; ">
+  <div class="col-s4">
+      <div class="bg-primary text-white">
+        Longitud de caractares:{{$longitud}}
+        <img src="https://image.flaticon.com/icons/svg/54/54551.svg"  usemap="#longitud" style="width:90px; position:relative; right: -5px; "alt="">
+          <map name="longitud" id="longitud">
+          <area alt="" title="" href="crudlongitudecaracteres" shape="poly" coords="13,11,499,14,498,498,14,500" />
 
-      <div class="col-4">
-          <div class="bg-primary text-white">
-            Longitud de caractares:{{$lineas}}
-            <img src="https://image.flaticon.com/icons/svg/54/54551.svg"  usemap="#longitud" style="width:90px; position:relative; right: -30px; "alt="">
-              <map name="longitud" id="longitud">
-              <area alt="" title="" href="crudlongitudecaracteres" shape="poly" coords="13,11,499,14,498,498,14,500" />
-
-              </map>
-          </div>
+          </map>
       </div>
-
-
   </div>
+</div>
+</div>
+
+
+
+
 @endsection

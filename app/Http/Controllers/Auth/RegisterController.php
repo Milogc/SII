@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\DB;
 
 class RegisterController extends Controller
 {
@@ -52,6 +53,7 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'cvutecnm' => 'required|string|max:255',
+            'adscripcion' => 'required|string|max:100',
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
@@ -64,11 +66,19 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'cvutecnm' => $data['cvutecnm'],
+            'adscripcion'=> $data['adscripcion'],
             'password' => Hash::make($data['password']),
+
         ]);
     }
+
+    function showRegistrationForm(){
+      $ies = DB::table('catalogo_ies')->get();
+      return view('auth/register', compact('ies')) ;
+   }
 }

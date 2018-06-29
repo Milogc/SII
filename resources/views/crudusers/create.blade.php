@@ -5,44 +5,100 @@
 
 
       <div class="register-box-body">
-          <p class="login-box-msg"style="color:blue;">Registrar un nuevo usuario.</p>
+
           <form action="{{url('crudusers')}}" method="post" enctype="multipart/form-data">
+              <h3>
+                <center>
+                  Agregar un nuevo investigador
+                </center>          
+              </h3>
               {!! csrf_field() !!}
 
-              <div class="form-group has-feedback {{ $errors->has('name') ? 'has-error' : '' }}">
-                  <input type="text" name="name" class="form-control" value="{{ old('name') }}"
-                         placeholder="Nombre del usuario">
-                  <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                  @if ($errors->has('name'))
-                      <span class="help-block">
-                          <strong>{{ $errors->first('name') }}</strong>
-                      </span>
-                  @endif
-              </div>
-              <div class="form-group has-feedback {{ $errors->has('email') ? 'has-error' : '' }}">
-                  <input type="email" name="email" class="form-control" value="{{ old('email') }}"
-                         placeholder="Correo electronico">
-                  <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                  @if ($errors->has('email'))
-                      <span class="help-block">
-                          <strong>{{ $errors->first('email') }}</strong>
-                      </span>
-                  @endif
-              </div>
-              <div class="form-group has-feedback {{ $errors->has('password') ? 'has-error' : '' }}">
-                  <input type="password" name="password" class="form-control"
-                         placeholder="Contraseña">
-                  <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                  @if ($errors->has('password'))
-                      <span class="help-block">
-                          <strong>{{ $errors->first('password') }}</strong>
-                      </span>
-                  @endif
+              <div class="form-group row">
+                  <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre') }}</label>
+
+                  <div class="col-md-6">
+                      <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+
+                      @if ($errors->has('name'))
+                          <span class="invalid-feedback">
+                              <strong>{{ $errors->first('name') }}</strong>
+                          </span>
+                      @endif
+                  </div>
               </div>
 
-              <button type="submit" class="btn btn-primary btn-block btn-flat">
-                Registar
-              </button>
+              <div class="form-group row">
+                  <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Correo electrónico') }}</label>
+
+                  <div class="col-md-6">
+                      <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
+
+                      @if ($errors->has('email'))
+                          <span class="invalid-feedback">
+                              <strong>{{ $errors->first('email') }}</strong>
+                          </span>
+                      @endif
+                  </div>
+              </div>
+
+              <div class="form-group row">
+                  <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('CVU-TenNM') }}</label>
+
+                  <div class="col-md-6">
+                      <input id="text" type="cvutecnm" class="form-control{{ $errors->has('cvutecnm') ? ' is-invalid' : '' }}" name="cvutecnm" value="{{ old('cvutecnm') }}" required>
+
+                      @if ($errors->has('cvutecnm'))
+                          <span class="invalid-feedback">
+                              <strong>{{ $errors->first('cvutecnem') }}</strong>
+                          </span>
+                      @endif
+                  </div>
+              </div>
+
+              <div class="form-group row">
+                  <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Adscripción') }}</label>
+
+                  <div class="col-md-6">
+                      <input id="text" type="adscripcion" class="form-control{{ $errors->has('adscripcion') ? ' is-invalid' : '' }}" name="adscripcion" value="{{ old('adscripcion') }}" required>
+
+                      @if ($errors->has('adscripcion'))
+                          <span class="invalid-feedback">
+                              <strong>{{ $errors->first('adscripcion') }}</strong>
+                          </span>
+                      @endif
+                  </div>
+              </div>
+
+
+              <div class="form-group row">
+                  <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Contrseña') }}</label>
+
+                  <div class="col-md-6">
+                      <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+
+                      @if ($errors->has('password'))
+                          <span class="invalid-feedback">
+                              <strong>{{ $errors->first('password') }}</strong>
+                          </span>
+                      @endif
+                  </div>
+              </div>
+
+              <div class="form-group row">
+                  <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirmar contraseña') }}</label>
+
+                  <div class="col-md-6">
+                      <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                  </div>
+              </div>
+              <div class="form-group row mb-0">
+                  <div class="col-md-6 offset-md-4">
+                      <button type="submit" class="btn btn-primary">
+                          {{ __('REGISTRARSE') }}
+                      </button>
+                  </div>
+              </div>
           </form>
 
       </div>

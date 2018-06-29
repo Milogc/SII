@@ -18,6 +18,7 @@
   <tr>
 
     <th>Nombre</th>
+    <th>CVU-TecNM</th>
     <th>Correo</th>
     <th>Rol</th>
     <th colspan="2"><center>Acciones</center></th>
@@ -28,6 +29,7 @@
   <tr>
 
     <td>{{$user->name}}</td>
+    <td>{{$user->cvutecnm}}</td>
     <td>{{$user->email}}</td>
     <td>{{$user->rol}}</td>
     <td>
