@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CrudGastos extends Model
 {
-    protected $table='gastos';
+    protected $table='catalogo_gastos';
     public $timestamps =false;
 
 
