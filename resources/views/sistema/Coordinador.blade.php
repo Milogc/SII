@@ -52,15 +52,13 @@
           <div class="bg-primary text-white">
             Entregable registrado:{{$entregable}}
             <img src="https://image.flaticon.com/icons/svg/54/54551.svg"  usemap="#entregable" style="width:90px;  "alt="">
-              <map name="entregable" id="entregable">
-              <area alt="" title="" href="crudentregable" shape="poly" coords="13,11,499,14,498,498,14,500" />
+              <map name="entregable" id="crudentregable">
+              <area alt="" title="" href="crudentregables" shape="poly" coords="13,11,499,14,498,498,14,500" />
 
               </map>
           </div>
-
-
-
       </div>
+
       <div class="col-3 ">
           <div class="bg-primary text-white">
             Gasto de materiales : {{$gastos}}
@@ -88,6 +86,17 @@
             <img src="https://image.flaticon.com/icons/svg/54/54551.svg"  usemap="#linea" style="width:90px; position:relative; right: -30px; "alt="">
               <map name="linea" id="linea">
               <area alt="" title="" href="crudlineas" shape="poly" coords="13,11,499,14,498,498,14,500" />
+
+              </map>
+          </div>
+      </div>
+
+      <div class="col-4">
+          <div class="bg-primary text-white">
+            Longitud de caractares:{{$lineas}}
+            <img src="https://image.flaticon.com/icons/svg/54/54551.svg"  usemap="#longitud" style="width:90px; position:relative; right: -30px; "alt="">
+              <map name="longitud" id="longitud">
+              <area alt="" title="" href="crudlongitudecaracteres" shape="poly" coords="13,11,499,14,498,498,14,500" />
 
               </map>
           </div>
