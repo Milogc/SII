@@ -23,7 +23,7 @@
       </td>
       <td>
         {{-- action="{{action('CrudEntregablesController@destroy', $entregable->id)}}"  --}}
-        <form method="post">
+        <form action="{{action('Coordinador\CrudGastosController@destroy', $gasto->id)}}" method="post">
           @csrf
           <input name="_method" type="hidden" value="DELETE">
           <button class="btn btn-danger" type="submit">Delete</button>
