@@ -8,7 +8,7 @@
       <tr>
         <th>Descripcion</th>
         <th>Valor</th>
-        <th colspan="2"><center>Acciones</center></th>
+        <th >Acciones</th>
       </tr>
     </thead>
     <tbody>
@@ -18,9 +18,8 @@
       <td>  {{$longitu->valor}}</td>
       <td>
         {{-- href="{{action('CrudGastosController@edit', $gastos->id)}}"  --}}
-        <a href={{action('Coordinador\CrudLongitudCaracteresControllers@edit', $longitu->id)}}" class="btn btn-warning">Edit</a>
+        <a href="{{action('Coordinador\CrudDeLongitudecaracteres@edit', $longitu->id)}}" class="btn btn-warning">Edit</a>
       </td>
-
       </tr>
     @endforeach
   </tbody>
