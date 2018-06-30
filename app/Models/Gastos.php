@@ -14,4 +14,10 @@ class Gastos extends Model
    protected $fillable = [
          'descripcion', 'partida', 'monto', 'actividad_id', 'proyecto_id'];
 
+	public function actividad(){
+		return 
+		  $this->belongsTo('App\Models\Cronograma', 'cronograma_id');
+	}
+
+
 }

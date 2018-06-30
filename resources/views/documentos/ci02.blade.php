@@ -4,42 +4,36 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-
     <style media="screen">
       h3{
         text-align: center;
-      }
-      h5{
-        text-align: center;
+        font-weight: bold;
       }
       p{
-
         text-align: justify;
       }
-      table, th, td {
+      table,td,th, .cuadro{
+        table-layout: fixed;
+        width: 100%;
         border: 1px solid black;
         border-collapse: collapse;
       }
-      th{
-        padding: 5px;
-        text-align: center;
-      }
 
-       td {
+      thead,tfoot{
+        text-align: center;        
+      }
+      tbody {
         padding: 5px;
         text-align: left;
-}
-
+      }
     </style>
-
-
   </head>
   <body>
   <h3>PROTOCOLO DEL PROYECTO (CI-02/2017)</h3>
-  <h5>NOMBRE DE LA INSTITUCIÓN: Instituto Tecnológica de Tuxtla Gutierrez  </h5>
+  <h3>NOMBRE DE LA INSTITUCIÓN: <span class="cuadro">{{$proyecto->nombre_ies}}</span></h3>
   <br>
   <p>Titutlo del proyecto:</p>
-  <p>{{$proyecto->titulo}}</p>
+  <div class="cuadro">{{$proyecto->titulo}}</div>
 
   <h3>1. DESCRIPCIÓN DEL PROYECTO</h3>
  <article>
@@ -60,10 +54,11 @@
 </article>
  <article>
   <p><b>1.5 Objetivos</b></p>
-  <p>°{{$proyecto->objetivo_general}}</p>
-  <p>°{{$proyecto->objetivos_especificos}}</p>
+  <p>{{$proyecto->objetivo_general}}</p>
+  <p>{!!$proyecto->objetivos_especificos!!}</p>
 </article>
-
+ <article>
+  <p><b>1.6 Metas</b></p>
 @php
   $entregablesa = $proyecto->entregables->where('tipo',"ACADEMICO");
   $listaa = "<ol>";
@@ -79,41 +74,24 @@
   }
   $listah . "</ol>";
 @endphp
-
-
-<table style="width:100%">
-  <tr>
-  <th colspan="2">PRODUCTOS ESNTREGABLES</sth>
-  </tr>
-  <tr>
-    <th>Cotribucion a la Formacion de Recursos Humanos</th>
-    <th>Productividad Académica</th>
-    </tr>
-  <tr>
-    <td>{!!$listah!!}</td>
-    <td>{!!$listaa!!}</td>
-  </tr>
-</table>
-
-
-{{-- <table border="1">
-  <thead >
+<table>
+  <thead>
     <tr>
-
+      <th colspan="2">PRODUCTOS ENTREGABLES</th>
     </tr>
     <tr>
-    <th>Cotribucion a la Formacion de Recursos Humanos</th>
-    <th>Productividad Académica</th>
-    </tr>
+      <th>Cotribucion a la Formacion de Recursos Humanos</th>
+      <th>Productividad Académica</th>
+    </tr>  
   </thead>
   <tbody>
     <tr>
-    <td>{!!$listaa!!}</td>
-    <td>{!!$listah!!}</td>
+      <td>{!!$listah!!}</td>
+      <td>{!!$listaa!!}</td>
     </tr>
   </tbody>
-</table> --}}
-
+</table>
+</article>
 <article>
  <p><b>1.7 Impacto o beneficio en la solución a un problema relacionado con el sector productivo o la generación  del conocimiento científico o tecnológico. </b></p>
  <p>{{$proyecto->impacto_beneficio}}</p>
@@ -122,12 +100,67 @@
  <p><b>1.8 Metodologia</b></p>
  <p>{{$proyecto->metodologia}}</p>
 </article>
+<article>
+ <p><b>1.9 Programa de actividades, calendarización y presupuesto solicitado</b></p>
+<table>
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>Actividad</th>
+      <th>Entregables</th>
+      <th>Periodo de realizacion</th>
+      <th>Monto</th>
+    </tr>
+  </thead>
+  <tbody>
+    @php
+      $actividades = $proyecto->actividades;
+    @endphp
+    @foreach ($actividades as $actividad)
+      <tr>
+         <td>{{$loop->iteration}}</td>
+        <td>{{$actividad['actividad']}}</td>
+        <td>{{$actividad->entregable->descripcion}}</td>
+         <td>{{$actividad->fecha_inicio}} a {{$actividad->fecha_fin}}</td>
+         @php
+            $suma = 0;
+            $gastos=$actividad->gastos;
+            foreach ($gastos as $gasto) {
+              $suma += $gasto->monto;
+            }
+         @endphp
+        <td style="text-align: right">
+          $ {{$suma}}
+        </td>
+     </tr>
+    @endforeach
+  </tbody>
+</table>
+</article>
 <p><b>1.10 Vinculación</b></p> 
 <p> @if($proyecto->vinculacion=="") {{"NO "}} @else {{"Si "}} @endif presenta carta de vinculación</p>
 </article>
 <p><b>1.11 Referencias</b></p>
 <p>{{$proyecto->referencias}}</p>
 </article>
+
+<center>
+    <table style="width:50%">
+      <tr>
+        <td>
+          Profesor Investigador Responsable:
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          Nombre y firma
+        </td>
+      </tr>
+    </table>
+</center>
+
 
 
   </body>

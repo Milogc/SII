@@ -19,7 +19,7 @@ class DocumentosController extends Controller
     public function ci01($idproy)
     {
       $proyecto= Proyecto::find($idproy);
-      return view('documentos.ci01',compact('proyecto'));  
+      //return view('documentos.ci01',compact('proyecto'));  
 
       $pdf = PDF::loadView('documentos.ci01',compact('proyecto'));
       return  $pdf->download($idproy . '_ci-01.pdf');

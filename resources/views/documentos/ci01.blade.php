@@ -6,76 +6,62 @@
     <style media="screen">
       h3{
         text-align: center;
-      }
-      h5{
-        text-align: center;
+        font-weight: bold;
       }
       p{
-
         text-align: justify;
       }
-      table, th, td {
+      table,td,th{
+        table-layout: fixed;
         width: 100%;
         border: 1px solid black;
         border-collapse: collapse;
       }
 
-      thead{
+      thead,tfoot{
         background-color: gray;
         text-align: center;        
       }
-
-
-      th{
+      tbody {
         padding: 5px;
         text-align: left;
       }
-
-       td {
-        padding: 5px;
-        text-align: left;
-}
-
     </style>
   </head>
   <body>
-    <h3><b>FORMATO CONCENTRADOR DE SOLCITUD DE APOYO ECONÓMICO</b></h3>
-    <h3><b>(CI-01/{{$proyecto->fecha_inicio}})</b></h3>
-
-
-<table>
-  <tr>
-    <th colspan="2"><b>NOMBRE DE LA INSTITUTCION: </b> {{$proyecto->nombre_ies}}</th>
-  </tr>
-  <tr>
-    <td>
-      Responsable del Proyecto:
-      <br>
-      <b>{{$proyecto->director->name}}</b>
-      <br>
-      CVU-TecNM:
-      <br>
-      <b>IT16A058</b>
-    </td>
-    <td>
-      Titulo del proyecto:
-      <br>
-      <b>{{$proyecto->titulo}}</b>
-      </td>
+    <h3>FORMATO CONCENTRADOR DE SOLCITUD DE APOYO ECONÓMICO</h3>
+    <h3>(CI-01/{{$proyecto->fecha_inicio}})</h3>
+    <table>
+      <tr>
+        <th colspan="2"><b>NOMBRE DE LA INSTITUTCION: </b> {{$proyecto->nombre_ies}}</th>
       </tr>
-        <tr>
-      <td colspan="2">
-        Tipo de investigación: <b>{{$proyecto->tipo_investigacion}}</b>
-        <br>
-        Area del conocimiento: <b>{{$proyecto->area}}</b>
-        <br>
-        Durcion del proyecto: <b>{{$proyecto->fecha_inicio}} al {{$proyecto->fecha_fin}}</b>
-      </td>
-
-  </tr>
-</table>
-<br>
-
+      <tr>
+        <td>
+          Responsable del Proyecto:
+          <br>
+          <b>{{$proyecto->director->name}}</b>
+          <br>
+          CVU-TecNM:
+          <br>
+          <b>{{$proyecto->director->cvutecnm}}</b>
+        </td>
+        <td>
+          Titulo del proyecto:
+          <br>
+          <b>{{$proyecto->titulo}}</b>
+          </td>
+          </tr>
+            <tr>
+          <td colspan="2">
+            Tipo de investigación: <b>{{$proyecto->tipo_investigacion}}</b>
+            <br>
+            Area del conocimiento: <b>{{$proyecto->area}}</b>
+            <br>
+            Durcion del proyecto: <b>{{$proyecto->fecha_inicio}} al {{$proyecto->fecha_fin}}</b>
+          </td>
+      </tr>
+    </table>
+    <br>
 <table>
   <thead>
     <tr>
@@ -95,7 +81,7 @@
         <br>
         Adscripción: {{$proyecto->director->adscripcion}}
       </td>
-      <td><center> Resposnable </center></td>
+      <td style="text-align: center">Responsable</td>
       <td></td>
     </tr>
       @foreach($proyecto->colaboradores as $colaborador)
@@ -105,7 +91,7 @@
               <br>
               Adscripción: {{$colaborador->quien->adscripcion}}
               </td>
-              <td> <center> Colaborador</center></td>
+              <td style="text-align: center">Colaborador</td>
               <td></td>
         </tr>
     @endforeach
@@ -125,17 +111,13 @@
         <br>
         {{$proyecto->objetivo_general }}
       </td>
-
     </tr>
-
      <tr>
       <td>2. ESPECIFICO
         <br>
           {{$proyecto->objetivos_especificos}}
       </td>
-
     </tr>
-    
   </tbody>
 </table>
 <br>
@@ -159,63 +141,191 @@
 
 
 <table>
-  <tr>
-  <th colspan="2" id="tabla2">PRODUCTOS ESNTREGABLES</sth>
-  </tr>
-  <tr>
-    <th id="tabla2">Cotribucion a la Formacion de Recursos Humanos</th>
-    <th id="tabla2">Productividad Académica</th>
-    </tr>
-  <tr>
-    <td>{!!$listah!!}</td>
-    <td>{!!$listaa!!}</td>
-  </tr>
-</table>
-
-<h3>
-  <center>
-  <b>Cronogrma de Actividades</b>
-</center>
-</h3>
-<table>
-<thead>
-  <tr>
-    <th>No.</th>
-    <th>Actividad</th>
-    <th>Entregables</th>
-    <th>Periodo de realizacion</th>
-    <th>Monto</th>
-  </tr>
-</thead>
-<tbody>
-  @php
-    $actividades = $proyecto->actividades;
-  @endphp
-  @foreach ($actividades as $actividad)
+  <thead>
     <tr>
-       <td>{{$loop->iteration}}</td>
-      <td>{{$actividad['actividad']}}</td>
-      <td>{{$actividad->entregable->descripcion}}</td>
-       <td>{{$actividad->fecha_inicio}} a {{$actividad->fecha_fin}}</td>
-       @php
-          $suma = 0;
-          $gastos=$actividad->gastos;
-          foreach ($gastos as $gasto) {
-            $suma += $gasto->monto;
-          }
-       @endphp
-      <td>
-        {{$suma}}
-      </td>
-   </tr>
-  @endforeach
-</tbody>
-
-
-
+      <th colspan="2">PRODUCTOS ENTREGABLES</th>
+    </tr>
+    <tr>
+      <th>Cotribucion a la Formacion de Recursos Humanos</th>
+      <th>Productividad Académica</th>
+    </tr>  
+  </thead>
+  <tbody>
+    <tr>
+      <td>{!!$listah!!}</td>
+      <td>{!!$listaa!!}</td>
+    </tr>
+  </tbody>
+</table>
+<h3>Cronograma de Actividades</h3>
+<table>
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>Actividad</th>
+      <th>Entregables</th>
+      <th>Periodo de realizacion</th>
+      <th>Monto</th>
+    </tr>
+  </thead>
+  <tbody>
+    @php
+      $actividades = $proyecto->actividades;
+    @endphp
+    @foreach ($actividades as $actividad)
+      <tr>
+         <td>{{$loop->iteration}}</td>
+        <td>{{$actividad['actividad']}}</td>
+        <td>{{$actividad->entregable->descripcion}}</td>
+         <td>{{$actividad->fecha_inicio}} a {{$actividad->fecha_fin}}</td>
+         @php
+            $suma = 0;
+            $gastos=$actividad->gastos;
+            foreach ($gastos as $gasto) {
+              $suma += $gasto->monto;
+            }
+         @endphp
+        <td style="text-align: right">
+          $ {{$suma}}
+        </td>
+     </tr>
+    @endforeach
+  </tbody>
 </table>
 
 
+<h3>Materiales y Servicios</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Material o Servicio</th>
+      <th>Periodos</th>
+      <th>Monto solicitado</th>
+    </tr>
+  </thead>
+  <tbody>
+    @php
+      $gastos = $proyecto->gastos;
+    @endphp
+    @foreach ($gastos as $gasto)
+      <tr>
+         <td>
+          Partida: {{$gasto->partida}}<br>
+          Descripción: {{$gasto->descripcion}}<br>
+         </td>
+         <td>{{$gasto->actividad->fecha_inicio}} al {{$gasto->actividad->fecha_fin}}</td>
+         <td style="text-align: right">$ {{$gasto->monto}}</td>
+     </tr>
+    @endforeach
+  </tbody>
+</table>
+
+<h3>Concentrado del Presupuesto</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Concepto</th>
+      <th>Monto</th>
+    </tr>
+  </thead>
+  <tbody>
+    @php
+      $s2000 = $proyecto->gastos->where('partida', '>=' , 20000)->where('partida', '<=' , 29999);
+            $suma2=0;
+            foreach ($s2000 as $gasto) {
+              $suma2 += $gasto->monto;
+            }
+
+      $s3000 = $proyecto->gastos->where('partida', '>=' , 30000)->where('partida', '<=' , 39999);
+            $suma3=0;
+            foreach ($s3000 as $gasto) {
+              $suma3 += $gasto->monto;
+            }      
+    @endphp
+      <tr>
+         <td>Capitulo 2000</td>
+        <td style="text-align: right">${{$suma2}}</td>
+      </tr>
+      <tr>
+         <td>Capitulo 3000</td>
+        <td style="text-align: right">${{$suma3}}</td>
+     </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td>Suma</td>
+      <td style="text-align: right">${{$suma2 + $suma3}}</td>
+    </tr>
+  </tfoot>
+</table>
+
+<!-- 
+<h3>periodos para ejercer el recurso</h3>  
+<table>
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>Actividad</th>
+      <th>Entregables</th>
+      <th>Periodo de realizacion</th>
+      <th>Monto</th>
+    </tr>
+  </thead>
+  <tbody>
+    @php
+      $actividades = $proyecto->actividades;
+    @endphp
+    @foreach ($actividades as $actividad)
+      <tr>
+         <td>{{$loop->iteration}}</td>
+        <td>{{$actividad['actividad']}}</td>
+        <td>{{$actividad->entregable->descripcion}}</td>
+         <td>{{$actividad->fecha_inicio}} a {{$actividad->fecha_fin}}</td>
+         @php
+            $suma = 0;
+            $gastos=$actividad->gastos;
+            foreach ($gastos as $gasto) {
+              $suma += $gasto->monto;
+            }
+         @endphp
+        <td>
+          $ {{$suma}}
+        </td>
+     </tr>
+    @endforeach
+  </tbody>
+</table>
+ -->          <br>
+          <br>
+          <br>
+
+
+<center>
+    <table style="width:50%">
+      <tr>
+        <td>
+          Profesor Investigador Responsable:
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          Nombre y firma
+        </td>
+        <td>
+          Director del plantel:
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          Nombre y firma
+        </td>
+      </tr>
+    </table>
+</center>
 
 
   </body>
