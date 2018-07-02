@@ -47,11 +47,11 @@
 
             .title {
                 font-size: 94px;
-                color: white;
+                color: gray;
             }
 
             .links > a {
-                color: white;
+                color: #636b6f;
                 padding: 0 25px;
                 font-size: 12px;
                 font-weight: 600;
@@ -65,7 +65,7 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height" style="background-color:blue; "  >
+        <div class="flex-center position-ref full-height"   >
                 <div class="top-right links">
                     @auth
                         <a href="{{ url('/home') }}">INICIO</a>

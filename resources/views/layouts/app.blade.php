@@ -26,11 +26,11 @@
 </head>
 <body>
     <div id="app" >
-        <nav class="navbar navbar-expand-md navbar-laravel" style="background-color:blue;"   >
+        <nav class="navbar navbar-expand-md navbar-light navbar-laravel"   >
             <div class="container" >
-              <ol class="breadcrumb" style="background-color:transparent; ">
-                <li class="breadcrumb-item"><a href="{{url('/') }}" style="color:white;">S.I.I.</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('home') }}" style="color:white;">INICIO</a></li>
+              <ol class="breadcrumb" style="background-color:transparent; padding: 0; margin: 0;">
+                <li class="breadcrumb-item"><a href="{{url('/') }}">S.I.I.</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('home') }}">INICIO</a></li>
                 @yield('breadcrumb')
               </ol>
 
@@ -47,11 +47,11 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            <li><a class="nav-link" href="{{ route('login') }}" style="color:white;">{{ __('INICIAR SESIÓN') }}</a></li>
-                            <li><a class="nav-link" href="{{ route('register') }}" style="color:white;" >{{ __('REGISTRARSE') }}</a></li>
+                            <li><a class="nav-link" href="{{ route('login') }}">{{ __('INICIAR SESIÓN') }}</a></li>
+                            <li><a class="nav-link" href="{{ route('register') }}">{{ __('REGISTRARSE') }}</a></li>
                         @else
                             <li class="nav-item dropdown" >
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="color:white;">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}-{{ Auth::user()->rol }}<span class="caret"></span>
                                 </a>
 

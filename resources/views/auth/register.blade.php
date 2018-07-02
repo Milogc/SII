@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header" style="background-color:blue;  color:white" >{{ __('REGISTRARSE') }}</div>
+                <div class="card-header" >{{ __('REGISTRARSE') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -55,7 +55,7 @@
 
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Adscripción') }}</label>
-                            <select name="adscripcion">
+                            <select  name="adscripcion">
                              @foreach($ies as $ie)
                                <option > {{ $ie->ies }} </option>
                              @endforeach
@@ -64,7 +64,7 @@
 
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Contrseña') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Contraseña') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
