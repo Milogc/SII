@@ -55,12 +55,14 @@
 
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Adscripción') }}</label>
-                            <select  name="adscripcion">
-                             @foreach($ies as $ie)
-                               <option > {{ $ie->ies }} </option>
-                             @endforeach
-                            </select>
-                          </div>
+                            <div class="col-md-6">
+                                <select  class="form-control" name="adscripcion">
+                                 @foreach($ies as $ie)
+                                   <option > {{ $ie->ies }} </option>
+                                 @endforeach
+                                </select>
+                            </div>
+                        </div>
 
 
                         <div class="form-group row">
