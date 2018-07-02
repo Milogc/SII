@@ -21,7 +21,8 @@ class GastosController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        
+        $this->middleware('role:Invesgitador');
     }
 
     /**
@@ -79,7 +80,7 @@ class GastosController extends Controller
         $Cronograma = Gastos::find( $request->input('gasto_id') );
         $Cronograma->delete();
         $arrayName = array('id' =>  $request->input('gasto_id'),  'actividad_id' =>  $request->input('actividad_id') );
-        return response()->json( $arrayName );                         
+        return response()->json( $arrayName );
     }
 
 }

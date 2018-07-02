@@ -18,7 +18,8 @@ class EntregablesController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+      
+        $this->middleware('role:Invesgitador');
     }
 
     /**
@@ -75,7 +76,7 @@ class EntregablesController extends Controller
         $Entregables = Entregables::find( $request->input('entregable_id') );
         $Entregables->delete();
         $arrayName = array('id' =>  $request->input('entregable_id') );
-        return response()->json( $arrayName );                         
+        return response()->json( $arrayName );
     }
 
 }
