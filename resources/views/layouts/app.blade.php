@@ -41,7 +41,6 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -82,10 +81,20 @@
                 </div>
             </div>
         </nav>
-
         <main class="py-4">
             @yield('content')
         </main>
+
+        @guest
+        @else
+        <footer class="panel-footer">
+          <div class="container">
+            Sistema desarrollado bajo el proyecto 6607.18-P
+          </div>
+        </footer>
+        @endguest
+
+
     </div>
 </body>
 </html>
