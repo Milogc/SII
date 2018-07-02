@@ -11,7 +11,7 @@
       <input id="proyecto_id" type="hidden" value="{{$proyecto->id}}">
       <div class="row">
         <div class="form-group col-9">
-            <input  class="form-control"  name="namearchivo" id="archivo" type="file"  accept=".pdf"  required >
+            <input  class="form-control"  name="namearchivo" id="archivo" type="file"  accept=".pdf" @if($proyecto->tvinculacion!= "" ) required @endif >
         </div>
         <div class="form-group col-3">
             <button class="btn btn-danger btndel" value="{{$proyecto->id}}">Eliminar</button>

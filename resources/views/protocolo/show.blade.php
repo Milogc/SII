@@ -18,16 +18,17 @@
       <div class="col-md-2">
         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
           @foreach($partes as $parte)
-            <a class="nav-link @if($loop->index==0)show activie @endif "  data-toggle="pill" href="#t{{$parte->elemento}}" role="tab" aria-controls="{{$parte->elemento}}" aria-selected="true">{{$parte->descripcion}}</a>
+            <a class="nav-link @if($loop->first) active show @endif "  data-toggle="pill" href="#t{{$parte->campo}}" role="tab" aria-controls="{{$parte->campo}}" aria-selected="true">{{$parte->descripcion}}</a>
           @endforeach
         </div>
       </div> <!-- .col-md-2 -->
       <div class="col-md-10">
         <div class="tab-content" id="v-pills-tabContent">
           @foreach($partes as $parte)
-            <div class="tab-pane fade " id="t{{$parte->elemento}}" role="tabpanel" aria-labelledby="v-pills-home-tab">
-              <textarea class="form-control" name="{{$parte->elemento}}" id="{{$parte->elemento}}" rows="8" cols="30" maxlength="{{$parte->valor}}">{{ $protocolo["$parte->elemento"] }}</textarea>
-              <div class="alert alert-info col-4" id="l{{$parte->elemento}}" role="alert"></div>
+
+            <div class="tab-pane fade @if($loop->first) active show @endif" id="t{{$parte->campo}}" role="tabpanel" aria-labelledby="v-pills-home-tab">
+              <textarea class="form-control" name="{{$parte->campo}}" id="{{$parte->campo}}" rows="8" cols="30" maxlength="{{$parte->valor}}">{{ $protocolo["$parte->campo"] }}</textarea>
+              <div class="alert alert-info col-4" id="l{{$parte->campo}}" role="alert"></div>
             </div>
           @endforeach
         </div>

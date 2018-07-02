@@ -304,37 +304,36 @@
     @endforeach
   </tbody>
 </table>
- -->          <br>
-          <br>
-          <br>
+ -->      
+<br>
+<br>
+<br>
 
 
 <center>
-    <table style="width:50%">
-      <tr>
-        <td>
-          Profesor Investigador Responsable:
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          Nombre y firma
-        </td>
-        <td>
-          Director del plantel:
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          Nombre y firma
-        </td>
-      </tr>
-    </table>
+    <span style="border: 1px solid black; whidth:10%; display:inline-block; margin:0px; padding:0px; float: inherit">
+      Profesor Investigador Responsable:
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      Nombre y firma
+    </span>
+    <span style="border: 1px solid black; whidth:10%; display: inline-block; margin:0px; padding:0px; float: inherit">
+      Director del plantel:
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      Nombre y firma
+    </span>
 </center>
+
+
 
 
   </body>

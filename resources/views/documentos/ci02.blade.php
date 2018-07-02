@@ -138,16 +138,14 @@
 </table>
 </article>
 <p><b>1.10 Vinculación</b></p> 
+<p>{{$proyecto->tvinculacion}}</p>
 <p> @if($proyecto->vinculacion=="") {{"NO "}} @else {{"Si "}} @endif presenta carta de vinculación</p>
 </article>
 <p><b>1.11 Referencias</b></p>
 <p>{{$proyecto->referencias}}</p>
 </article>
 
-<center>
-    <table style="width:50%">
-      <tr>
-        <td>
+    <div style=" border: 1px solid black; float: right ; width:50%">
           Profesor Investigador Responsable:
           <br>
           <br>
@@ -156,10 +154,7 @@
           <br>
           <br>
           Nombre y firma
-        </td>
-      </tr>
-    </table>
-</center>
+    </div>
 
 
 
