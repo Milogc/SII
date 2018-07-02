@@ -77,7 +77,7 @@ return [
     | to any of the locales which will be supported by the application.
     |
     */
-
+    //por eso le estoy diciendo que en español (/resources/lang/es/)
     'locale' => 'es',
 
     /*
@@ -90,7 +90,7 @@ return [
     | the language folders that are provided through your application.
     |
     */
-
+    //por eso le estoy diciendo que en español (/resources/lang/es/)
     'fallback_locale' => 'es',
 
     /*
