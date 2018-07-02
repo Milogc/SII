@@ -1,112 +1,91 @@
 @extends('layouts.app')
 @section('content')
   <div class="container">
-      <div class="row justify-content-center">
-
-
-  {{-- comentario --}}
-  <div class="col-3">
-      <div class="bg-primary text-white">
-        Proyectos registrados:{{$proyecto}}
-        <img src="https://image.flaticon.com/icons/svg/54/54551.svg"  usemap="#registrado" style="width:90px; position:relative; right: -10px; "alt="">
+    <div class="row justify-content-left">  {{-- primer fila --}}
+      <div class="col-3 bg-primary text-white">
+        <img src="https://image.flaticon.com/icons/svg/54/54551.svg"  usemap="#registrado" alt="">
           <map name="registrado" id="registrado">
-          <area alt="" title="" href="registrados" shape="poly" coords="13,11,499,14,498,498,14,500" />
-
+            <area alt="" title="" href="registrados" shape="poly" coords="13,11,499,14,498,498,14,500" />
           </map>
+        Proyectos registrados:{{$proyecto}}
       </div>
-  </div>
-  <div class="col-3">
-      <div class="bg-primary text-white">
-      CRUD Convocatorias:  {{$convocatorias}}
-        <img src="https://image.flaticon.com/icons/svg/54/54551.svg" usemap="#convocatoria" style="width:90px;  "alt="">
+      <div class="col-3 bg-primary text-white">
+        <img src="https://image.flaticon.com/icons/svg/54/54551.svg" usemap="#convocatoria" alt="">
           <map name="convocatoria">
-          <area alt="" title="" href="convocatoria" shape="poly" coords="13,11,499,14,498,498,14,500" />
-
+            <area alt="" title="" href="convocatoria" shape="poly" coords="13,11,499,14,498,498,14,500" />
           </map>
-      </div>
-        <br>
-  </div>
-      <div class="col-3 ">
-          <div class="bg-warning text-white">
-            Usuarios registrados: {{$count}}
-            <img src="https://image.flaticon.com/icons/png/512/97/97797.png" usemap="#Map0" style="width:90px; "alt="">
-              <map name="Map0">
-              <area alt="" title="" href="crudusers" shape="poly" coords="13,11,499,14,498,498,14,500" />
-              <area alt="" title="" href="usuarios" shape="poly" coords="13,11,499,14,498,498,14,500" />
-              </map>
-          </div>
+        Convocatorias:  {{$convocatorias}}
       </div>
 
-      <div class="col-3">
-          <div class="bg-primary text-white">
-            Areas registradas:{{$catalogo}}
-            <img src="https://image.flaticon.com/icons/svg/54/54551.svg" usemap="#Map1" style="width:90px; position:relative; right: -20px;  "alt="">
-              <map name="Map1">
-              <area alt="" title="" href="crudareas" shape="poly" coords="13,11,499,14,498,498,14,500" />
-
-              </map>
-          </div>
+      <div class="col-3 bg-primary text-white">
+        <img src="https://image.flaticon.com/icons/svg/54/54551.svg"   usemap="#map" alt="">
+          <map name="map">
+            <area alt="" title="" href="crudgastos" shape="poly" coords="13,11,499,14,498,498,14,500" />
+          </map>
+        Catalogo de gastos: {{$gastos}}
       </div>
-
-      <div class="col-3">
-          <div class="bg-primary text-white">
-            Entregable registrado:{{$entregable}}
-            <img src="https://image.flaticon.com/icons/svg/54/54551.svg"  usemap="#entregable" style="width:90px;  "alt="">
-              <map name="entregable" id="crudentregable">
-              <area alt="" title="" href="crudentregables" shape="poly" coords="13,11,499,14,498,498,14,500" />
-
-              </map>
-          </div>
-      </div>
-
-      <div class="col-3 ">
-          <div class="bg-primary text-white">
-            Gasto de materiales : {{$gastos}}
-            <img src="https://image.flaticon.com/icons/svg/54/54551.svg"   usemap="#map" style="width:90px; position:relative; right: -10px; "alt="">
-              <map name="map">
-              <area alt="" title="" href="crudgastos" shape="poly" coords="13,11,499,14,498,498,14,500" />
-              </map>
-          </div>
-      </div>
-
-      <div class="col-3">
-          <div class="bg-primary text-white">
-            Tipos de investigacion:{{$tipo}}
-            <img src="https://image.flaticon.com/icons/svg/54/54551.svg" usemap="#tipo" style="width:90px; position:relative; right: -10px; "alt="">
-              <map name="tipo">
-              <area alt="" title="" href="crudinvestigacion" shape="poly" coords="13,11,499,14,498,498,14,500" />
-
-              </map>
-          </div>
-      </div>
-
-      <div class="col-3">
-          <div class="bg-primary text-white">
-            Lineas integradas:{{$lineas}}
-            <img src="https://image.flaticon.com/icons/svg/54/54551.svg"  usemap="#linea" style="width:90px; position:relative; right: -30px; "alt="">
-              <map name="linea" id="linea">
-              <area alt="" title="" href="crudlineas" shape="poly" coords="13,11,499,14,498,498,14,500" />
-
-              </map>
-          </div>
-      </div>
-        </div>
-        <br>
-<div class="row" style=" position:relative; right: -15px; ">
-  <div class="col-s4">
-      <div class="bg-primary text-white">
-        Longitud de caractares:{{$longitud}}
-        <img src="https://image.flaticon.com/icons/svg/54/54551.svg"  usemap="#longitud" style="width:90px; position:relative; right: -5px; "alt="">
+      <div class="col-3 bg-primary text-white">
+        <img src="https://image.flaticon.com/icons/svg/54/54551.svg"  usemap="#longitud" alt="">
           <map name="longitud" id="longitud">
-          <area alt="" title="" href="crudlongitudecaracteres" shape="poly" coords="13,11,499,14,498,498,14,500" />
-
+            <area alt="" title="" href="crudlongitudecaracteres" shape="poly" coords="13,11,499,14,498,498,14,500" />
           </map>
+        Partes y longitudes del protocolo:{{--$longitud--}}
       </div>
-  </div>
-</div>
-</div>
+    </div> {{-- primer fila --}}
+    <div class="row justify-content-left"> {{-- segunda fila --}}
+      <div class="col-3 bg-primary text-white">
+        <img src="https://image.flaticon.com/icons/svg/54/54551.svg"  usemap="#entregable" alt="">
+          <map name="entregable" id="crudentregable">
+            <area alt="" title="" href="crudentregables" shape="poly" coords="13,11,499,14,498,498,14,500" />
+          </map>
+        Entregables:{{$entregable}}
+      </div>
+      <div class="col-3 bg-primary text-white">
+        <img src="https://image.flaticon.com/icons/svg/54/54551.svg" usemap="#Map1" alt="">
+          <map name="Map1">
+            <area alt="" title="" href="crudareas" shape="poly" coords="13,11,499,14,498,498,14,500" />
+          </map>
+        Areas registradas:{{$catalogo}}
+      </div>
+      <div class="col-3 bg-primary text-white">
+        <img src="https://image.flaticon.com/icons/svg/54/54551.svg" usemap="#tipo" alt="">
+          <map name="tipo">
+            <area alt="" title="" href="crudinvestigacion" shape="poly" coords="13,11,499,14,498,498,14,500" />
+          </map>
+        Tipos de investigacion:{{$tipo}}
+      </div>
+      <div class="col-3 bg-primary text-white">
+        <img src="https://image.flaticon.com/icons/svg/54/54551.svg"  usemap="#linea" alt="">
+          <map name="linea" id="linea">
+            <area alt="" title="" href="crudlineas" shape="poly" coords="13,11,499,14,498,498,14,500" />
+          </map>
+        Lineas de investigacion:{{$lineas}}
+      </div>
+    </div> {{-- segunda fila --}}
+    <div class="row justify-content-left"> {{-- tercer fila --}}
+      <div class="col-3 bg-primary text-white">
+        <img src="https://image.flaticon.com/icons/png/512/97/97797.png" usemap="#Map0" style=" " alt="">
+          <map name="Map0">
+            <area alt="" title="Listar" href="crudusers" shape="poly" coords="13,11,499,14,498,498,14,500" />
+            <area alt="" title="Agregar" href="usuarios" shape="poly" coords="13,11,499,14,498,498,14,500" />
+          </map>
+        Usuarios registrados: {{$count}}
+      </div>
 
-
-
-
+    </div>{{-- tercer fila --}}
 @endsection
+@section('styles')
+<style>
+div[class^='col-']{
+  border: 1px solid white;
+
+}
+img{
+  width:40%; 
+  display: block;
+}
+</style>
+@endsection
+
+
+
