@@ -9,6 +9,11 @@ use App\Models\Convocatoria;
 
 class IntegracionController extends Controller
 {
+        public function __construct()
+        {
+            $this->middleware('role:Coordinador');
+        }
+
     public function registrados(){
 //        $convocatorias=Convocatoria::all()->sortByDesc("Fecha_inicio");
         $convocatorias=Convocatoria::paginate(1);

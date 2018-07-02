@@ -10,11 +10,16 @@ use App\Models\CrudCatalagoArea;
 
 class CrudAreasController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+     public function __construct()
+     {
+         $this->middleware('role:Coordinador');
+     }
     public function index()
     {
       $catalagos=DB::table('catalogo_areas')->get();
