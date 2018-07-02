@@ -7,7 +7,7 @@
         <div class="col-md-6">
             <div class="text-center">Nomenclatura</div>
             <div class="alert-success border border-dark">Proyecto ya sometido</div>
-            <div class="alert-warning border border-dark">Proyecto no sometido aun</div>
+            <div class="alert-warning border border-dark">Proyecto no sometido</div>
          </div>
       </div>
     
