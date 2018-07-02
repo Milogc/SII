@@ -45,8 +45,13 @@
                   Financiado: @if($proyecto['financiado']==0) SI @else NO @endif <br>
                   Colaboradores:<ul>
                     @foreach($proyecto->colaboradores as $colaborador)
-                      <li>{{$colaborador->quien->name}}</li>
-                    @endforeach
+                      <li>{{$colaborador->quien->name}}
+                        @if($colaborador->participacion == 1 ) 
+                          - ya acepto  
+                        @else 
+                          - pendiente de aceptar 
+                        @endif </li>
+                    @endforeach  
                   </ul>
                 </td>
                 <td @if($proyecto['sometido'] == "")
