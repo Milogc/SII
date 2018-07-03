@@ -17,8 +17,8 @@ class CheckRole
     public function handle($request, Closure $next, $role)
     {
 
-        var_dump($request->user()->rol);
-        if ( $request->user()->rol != 'Investigador' ) {
+
+        if ( $request->user()->rol != $role ) {
             // Redirect...
             return redirect('home');
         }
