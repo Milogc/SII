@@ -30,7 +30,7 @@
     @endforeach
   </tbody>
   </table>
-  <a href="/crudinvestigacion/create" class="btn btn-primary">Agregar</a>
+  
   </section>
 
   </div>
