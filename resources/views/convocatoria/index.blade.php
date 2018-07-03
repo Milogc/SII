@@ -25,9 +25,9 @@
     <tbody>
       @foreach($convocatorias as $convocatoria)
       <tr>
-        <td>{{$convocatoria['Nombre']}}</td>        
-        <td>{{$convocatoria['Fecha_inicio']}}</td>        
-        <td>{{$convocatoria['Fecha_fin']}}</td>        
+        <td>{{$convocatoria['Nombre']}}</td>
+        <td>{{$convocatoria['Fecha_inicio']}}</td>
+        <td>{{$convocatoria['Fecha_fin']}}</td>
         <td>
           <a href="{{action('Coordinador\ConvocatoriaController@edit', $convocatoria['id'])}}" class="btn btn-warning">Edit</a>
         <td>
@@ -41,7 +41,6 @@
       @endforeach
     </tbody>
   </table>
-  <a href="/convocatoria/create" class="btn btn-primary">Agregar</a>
+  
   </div>
 @endsection
- 

@@ -27,6 +27,6 @@
     @endforeach
   </tbody>
 </table>
-<a href="/crudareas/create" class="btn btn-primary">Agregar</a>
+
 </div>
 @endsection

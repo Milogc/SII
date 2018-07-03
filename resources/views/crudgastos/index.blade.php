@@ -33,7 +33,7 @@
     @endforeach
   </tbody>
   </table>
-  <a href="/crudgastos/create" class="btn btn-primary">Agregar</a>
+
   </section>
 
   </div>

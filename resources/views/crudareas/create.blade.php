@@ -2,7 +2,7 @@
 @section('content')
 
   <div class="container">
-    <h2>Area a ingresar </h2><br/>
+  
     <form method="post" action="{{url('crudareas')}}" enctype="multipart/form-data">
 
       @csrf
