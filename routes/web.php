@@ -16,8 +16,7 @@ Route::get('proyecto', 'Investigador\ProyectoController@index')->name('lstproyec
 Route::post('proyecto', 'Investigador\ProyectoController@store')->name('addproyecto');
 Route::get('proyecto/create', 'Investigador\ProyectoController@create')->name('crtproyecto');
 Route::delete('proyecto/{idpro}', 'Investigador\ProyectoController@destroy')->name('delproyecto');
-Route::get('proyecto/especial', 'Investigador\ProyectoController@especial')->name('pryecto.especial');
-Route::post('proyectoespecial', 'Investigador\ProyectoController@sespecial')->name('pryectoespecial');
+
 Route::get('colaboradores/{idpro}','Investigador\ColaboradoresController@index');
 Route::post('colaboradores','Investigador\ColaboradoresController@invitar');
 Route::post('colaboradores/desinvitar','Investigador\ColaboradoresController@desinvitar');
@@ -60,6 +59,10 @@ Route::get('pdfvinc/{idpro}','DocumentosController@vinculacion');
 
 
 //Rutas del 'Coordinador'
+
+Route::get('proyecto/especial', 'Investigador\ProyectoController@especial')->name('pryecto.especial');
+Route::post('proyectoespecial', 'Investigador\ProyectoController@sespecial')->name('pryectoespecial');
+
 Route::pattern('comvocatorium', '[0-9]+');
 Route::resource('convocatoria','Coordinador\ConvocatoriaController');
 
@@ -72,7 +75,7 @@ Route::resource('crudentregables','Coordinador\CrudEntregablesController');
 Route::resource('crudgastos','Coordinador\CrudGastosController');
 Route::resource('crudlineas','Coordinador\CrudLineasController');
 Route::resource('crudinvestigacion','Coordinador\CrudInvestigacionsController');
+Route::resource('crudadscripcion','Coordinador\CrudAdscripcionController');
 
 Route::resource('crudlongitudecaracteres','Coordinador\CrudDeLongitudecaracteres')
 	->only(['index','edit','update']);
-
