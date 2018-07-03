@@ -169,7 +169,20 @@ metodologia, referencias, lugar, infraestrucutura
         $validacion["Vinculacion"]["resultado"] = "alert-success";
         $validacion["Vinculacion"]["mensaje"] = "Este proyecto presenta carta de vinculacion";
     }
+//7. Existe Aval de academia
+    $validacion["Aval"]["categoria"] = "Aval:";
+    if($proyecto->aval=="") {
+        $puede = false;
+        $validacion["Aval"]["resultado"] = "alert-danger";
+        $validacion["Aval"]["mensaje"] = "Este proyecto no presenta aval de academia";
+
+    }else{
+        $validacion["Aval"]["resultado"] = "alert-success";
+        $validacion["Aval"]["mensaje"] = "Este proyecto presenta aval de academia";
+    }
+/////////////////    
 /////////////////
+
         return view('someter/someter',compact('proyecto','validacion','puede'));
     }
 
