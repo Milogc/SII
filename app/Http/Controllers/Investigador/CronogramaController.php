@@ -20,7 +20,7 @@ class CronogramaController extends Controller
     public function __construct()
     {
         
-        $this->middleware('role:Invesgitador');
+        $this->middleware('role:Investigador');
     }
 
     /**
