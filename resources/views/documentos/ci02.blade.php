@@ -5,6 +5,11 @@
     <meta charset="utf-8">
     <title></title>
     <style media="screen">
+    header { position: fixed; top: 0px; left: 0px;}
+    footer { position: fixed; bottom: 0px; left: 0px;}
+    footer .pagenum:before {
+      content: counter(page);
+    }
       h3{
         text-align: center;
         font-weight: bold;
@@ -20,7 +25,7 @@
       }
 
       thead,tfoot{
-        text-align: center;        
+        text-align: center;
       }
       tbody {
         padding: 5px;
@@ -29,6 +34,11 @@
     </style>
   </head>
   <body>
+    <header>M00-PR-03-R02</header>
+    <footer>
+        <span><?php echo date('d/m/Y h:i:s a');?></span>
+        <div style="float: right ; text-align: right" class="pagenum-container">Pagina: <span class="pagenum"></span></div>
+    </footer>
   <h3>PROTOCOLO DEL PROYECTO (CI-02/2017)</h3>
   <h3>NOMBRE DE LA INSTITUCIÓN: <span class="cuadro">{{$proyecto->nombre_ies}}</span></h3>
   <br>
@@ -82,7 +92,7 @@
     <tr>
       <th>Cotribucion a la Formacion de Recursos Humanos</th>
       <th>Productividad Académica</th>
-    </tr>  
+    </tr>
   </thead>
   <tbody>
     <tr>
@@ -137,7 +147,7 @@
   </tbody>
 </table>
 </article>
-<p><b>1.10 Vinculación</b></p> 
+<p><b>1.10 Vinculación</b></p>
 <p>{{$proyecto->tvinculacion}}</p>
 <p> @if($proyecto->vinculacion=="") {{"NO "}} @else {{"Si "}} @endif presenta carta de vinculación</p>
 </article>
