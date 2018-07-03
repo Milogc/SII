@@ -45,6 +45,5 @@
   @endforeach
 </tbody>
 </table>
-<a href="/crudusers/create" class="btn btn-primary">Agregar</a>
 </div>
 @endsection
