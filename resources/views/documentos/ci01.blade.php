@@ -24,12 +24,22 @@
       }
       thead,tfoot{
         background-color: gray;
-        text-align: center;        
+        text-align: center;
       }
       tbody {
         padding: 5px;
         text-align: left;
       }
+      .caja { float:left;
+        margin-left:5px;
+        border-top: 1px solid;
+        border-right: 1px solid ;
+        border-bottom: 1px solid ;
+        border-left: 1px solid ;
+        text-align: center;
+      }
+
+
     </style>
   </head>
   <body>
@@ -81,7 +91,7 @@
       <td>Integrante</td>
       <td>Rol</td>
       <td>Fimra autógrafa</td>
-    </tr>  
+    </tr>
   </thead>
   <tbody>
     <tr>
@@ -157,7 +167,7 @@
     <tr>
       <th>Cotribucion a la Formacion de Recursos Humanos</th>
       <th>Productividad Académica</th>
-    </tr>  
+    </tr>
   </thead>
   <tbody>
     <tr>
@@ -249,7 +259,7 @@
             $suma3=0;
             foreach ($s3000 as $gasto) {
               $suma3 += $gasto->monto;
-            }      
+            }
     @endphp
       <tr>
          <td>Capitulo 2000</td>
@@ -268,8 +278,8 @@
   </tfoot>
 </table>
 
-<!-- 
-<h3>periodos para ejercer el recurso</h3>  
+<!--
+<h3>periodos para ejercer el recurso</h3>
 <table>
   <thead>
     <tr>
@@ -304,37 +314,37 @@
     @endforeach
   </tbody>
 </table>
- -->      
+ -->
 <br>
 <br>
 <br>
 
 
-<center>
-    <span style="border: 1px solid black; whidth:10%; display:inline-block; margin:0px; padding:0px; float: inherit">
-      Profesor Investigador Responsable:
+  <div style="position:relative; left:2%;">
+    <div class="caja" style=" width:45%;">
+
+            Profesor Investigador Responsable:
+
       <br>
       <br>
       <br>
       <br>
-      <br>
-      <br>
+
       Nombre y firma
-    </span>
-    <span style="border: 1px solid black; whidth:10%; display: inline-block; margin:0px; padding:0px; float: inherit">
-      Director del plantel:
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      Nombre y firma
-    </span>
-</center>
+    </div>
+  <div class="caja" style=" width:45%;">
 
+    Diector del plantel
 
+    <br>
+    <br>
+    <br>
+    <br>
 
+    Nombre y firma
 
+</div>
+
+</div>
   </body>
 </html>
