@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\DB;
 
 class CrudInvestigacionsController extends Controller
 {
+      public function __construct()
+      {
+          $this->middleware('role:Coordinador');
+      }
+
     /**
      * Display a listing of the resource.
      *

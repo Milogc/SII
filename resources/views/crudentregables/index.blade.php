@@ -31,7 +31,7 @@
   @endforeach
 </tbody>
 </table>
-<a href="/crudentregables/create" class="btn btn-primary">Agregar</a>
+
 </section>
 
 </div>

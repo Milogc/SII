@@ -19,7 +19,8 @@ class CronogramaController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        
+        $this->middleware('role:Invesgitador');
     }
 
     /**
@@ -61,7 +62,7 @@ class CronogramaController extends Controller
         $Cronograma->actividad=$request->input('actividad');
         $Cronograma->fecha_inicio=$request->input('fecha_inicio');
         $Cronograma->fecha_fin=$request->input('fecha_fin');
-         
+
         $Cronograma->proyecto_id=$request->input('proyecto_id');
         if($request->input('entregables_id')!="")
             $Cronograma->entregables_id=$request->input('entregables_id');
@@ -77,7 +78,7 @@ class CronogramaController extends Controller
         $Cronograma = Cronograma::find( $request->input('actividad_id') );
         $Cronograma->delete();
         $arrayName = array('id' =>  $request->input('actividad_id') );
-        return response()->json( $arrayName );                         
+        return response()->json( $arrayName );
     }
 
 }

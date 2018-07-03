@@ -9,11 +9,16 @@ use App\Models\CrudLongitudCaracteres;
 
 class CrudDeLongitudecaracteres extends Controller
 {
-    /**
+      public function __construct()
+      {
+          $this->middleware('role:Coordinador');
+      }
+      /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
       $longitud = DB::table('catalogo_restricciones_longitud')->get();

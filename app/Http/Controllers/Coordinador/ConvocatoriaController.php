@@ -9,11 +9,16 @@ use App\Models\Convocatoria;
 
 class ConvocatoriaController extends Controller
 {
+      public function __construct()
+      {
+          $this->middleware('role:Coordinador');
+      }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         $convocatorias=Convocatoria::orderBy('Fecha_inicio','desc')->get();
@@ -81,7 +86,7 @@ class ConvocatoriaController extends Controller
 
         $convocatoria= Convocatoria::find($id);
         $convocatoria->Nombre = $request->get('Nombre');
-        $convocatoria->Fecha_inicio  = $request->get('Fecha_inicio');        
+        $convocatoria->Fecha_inicio  = $request->get('Fecha_inicio');
         $convocatoria->Fecha_fin  = $request->get('Fecha_fin');
         $convocatoria->save();
         return redirect('convocatoria')->with('success', 'Information ha sido actualizada');;
@@ -96,7 +101,7 @@ class ConvocatoriaController extends Controller
     public function destroy($id)
     {
         try {
-            $convocatoria= Convocatoria::find($id);             
+            $convocatoria= Convocatoria::find($id);
             $convocatoria->delete();
             return redirect('convocatoria')->with('success','Informacion ha sido borrada');
         }catch (\Illuminate\Database\QueryException $e){

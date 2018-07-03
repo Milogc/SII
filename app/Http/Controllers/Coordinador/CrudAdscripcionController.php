@@ -1,27 +1,28 @@
 <?php
 
 namespace App\Http\Controllers\Coordinador;
+
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\CrudGastos;
-class CrudGastosController extends Controller
+use Illuminate\Http\Request;
+use App\Models\CrudAdscripcion;
+
+class CrudAdscripcionController extends Controller
 {
-        public function __construct()
-        {
-            $this->middleware('role:Coordinador');
-        }
-
-
-    /**
+      public function __construct()
+      {
+          $this->middleware('role:Coordinador');
+      }
+    /*  *
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        $gastos=DB::table('catalogo_gastos')->get();
-        return view('crudgastos/index', compact('gastos'));
+      $ie=DB::table('catalogo_ies')->get();
+      return view ('crudadscripcion/index', compact('ie'));
     }
 
     /**
@@ -31,7 +32,7 @@ class CrudGastosController extends Controller
      */
     public function create()
     {
-        return view('crudgastos/create');
+          return view('crudadscripcion/create');
     }
 
     /**
@@ -42,11 +43,10 @@ class CrudGastosController extends Controller
      */
     public function store(Request $request)
     {
-      $gastos = new CrudGastos();
-      $gastos->descripcion = $request->get('descripcion');
-      $gastos->partida = $request->get('partida');
-      $gastos->save();
-      return redirect('crudgastos');
+      $tipo = new CrudAdscripcion();
+      $tipo->ies = $request->get('ies');
+      $tipo->save();
+      return redirect('crudadscripcion');
     }
 
     /**
@@ -68,8 +68,8 @@ class CrudGastosController extends Controller
      */
     public function edit($id)
     {
-      $gastos =CrudGastos::find($id);
-      return view('crudgastos/edit', compact('gastos','id'));
+      $ies =  CrudAdscripcion::find($id);
+      return view('crudadscripcion/edit',compact('ies','id'));
     }
 
     /**
@@ -81,11 +81,10 @@ class CrudGastosController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $gastos =CrudGastos::find($id);
-    $gastos->descripcion = $request->get('descripcion');
-    $gastos->partida = $request->get('partida');
-    $gastos->save();
-    return redirect('crudgastos');
+      $ies = CrudAdscripcion::find($id);
+      $ies->fill($request->all());
+        $ies->save();
+        return redirect('crudadscripcion');
     }
 
     /**
@@ -96,8 +95,8 @@ class CrudGastosController extends Controller
      */
     public function destroy($id)
     {
-      $gastos=CrudGastos::find($id);
-      $gastos->delete();
-      return redirect('crudgastos');
+      $ies= CrudAdscripcion::find($id);
+      $ies->delete();
+      return redirect('crudadscripcion');
     }
 }

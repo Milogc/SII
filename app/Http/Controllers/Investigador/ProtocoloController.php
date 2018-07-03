@@ -20,7 +20,8 @@ class ProtocoloController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+      
+        $this->middleware('role:Invesgitador');
     }
 
     public function mostar($idproy)

@@ -23,7 +23,7 @@ class VinculacionController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('role:Invesgitador');
     }
 
     public function mostrar($idproy)
@@ -66,7 +66,7 @@ class VinculacionController extends Controller
         $Retornar = array(
             'fileName' => $fileName,
             'proyecto_id' => $idproy,
-            
+
         );
        // $path = public_path('images/users/'.$fileName);
         return response()->json($Retornar);
@@ -79,7 +79,7 @@ class VinculacionController extends Controller
         $fileName = $Vinculacion->vinculacion;
         $archivo = public_path() .'/evidencias/'.$fileName;
         $ret = "--";
- 
+
         if (Storage::disk('local')->exists($fileName) ) {
             //return response()->download($url);
             $ret = Storage::disk('local')->delete($fileName) ;
@@ -90,7 +90,7 @@ class VinculacionController extends Controller
         }else $realizado = "no";
 
         $arrayName = array('id' =>  $request->input('proyecto_id'),'realizado' => $ret , 'archivo'=> $archivo);
-        return response()->json( $arrayName );                         
+        return response()->json( $arrayName );
     }
 
 

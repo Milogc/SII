@@ -44,6 +44,20 @@
             .content {
                 text-align: center;
             }
+            #tecmx{
+          position: absolute;
+            width: 8%;
+            align-items: left;
+            left:18%;
+            top: 4%;
+                      }
+          #conacyt{
+          position: absolute;
+            width: 15%;
+            align-items: left;
+            left:2%;
+            top: 27px;
+                      }
 
             .title {
                 font-size: 94px;
@@ -65,6 +79,13 @@
         </style>
     </head>
     <body>
+      <div class="container">
+        <div class="" >
+          <img id="conacyt" src="/logos/tecmx.png" alt="">
+          <img id="tecmx"  src="/logos/ittg.jpg"  alt="">
+
+      </div>
+
         <div class="flex-center position-ref full-height"   >
                 <div class="top-right links">
                     @auth
@@ -80,6 +101,7 @@
                 </div>
 
             </div>
+        </div>
         </div>
     </body>
 </html>

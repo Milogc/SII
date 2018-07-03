@@ -30,15 +30,16 @@ class SometerController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+      
+        $this->middleware('role:Invesgitador');
     }
 
     public function someter($idproy)
     {
 /*
         $validacion = array(
-            'convocatoria' => array('rubro' => "rubro" ,'resultado' => "resultado", 'mensaje' => "mensaje", ) , 
-            'rubro' => array('rubro' => "rubro" ,'resultado' => "resultado", 'mensaje' => "mensaje", ) , 
+            'convocatoria' => array('rubro' => "rubro" ,'resultado' => "resultado", 'mensaje' => "mensaje", ) ,
+            'rubro' => array('rubro' => "rubro" ,'resultado' => "resultado", 'mensaje' => "mensaje", ) ,
 
             );
 */
@@ -51,11 +52,11 @@ class SometerController extends Controller
         $ConvocatoriaFechaInicio = new \DateTime($convocatoria->Fecha_inicio);
         $ConvocatoriaFechaFin  = new \DateTime($convocatoria->Fecha_fin);
         $fechaSometido = new \DateTime(); // Today
-        $fechaSometido->format('d/m/Y'); // echos today! 
+        $fechaSometido->format('d/m/Y'); // echos today!
 
         $validacion["convocatoria"]["categoria"] = "Convocatoria";
         if(
-          $fechaSometido->getTimestamp() > $ConvocatoriaFechaInicio->getTimestamp() && 
+          $fechaSometido->getTimestamp() > $ConvocatoriaFechaInicio->getTimestamp() &&
           $fechaSometido->getTimestamp() <= $ConvocatoriaFechaFin->getTimestamp() ) {
             $validacion["convocatoria"]["resultado"] = "alert-success";
             $validacion["convocatoria"]["mensaje"] = "En tiempo (sometido antes de $convocatoria->Fecha_fin)";
@@ -68,8 +69,8 @@ class SometerController extends Controller
 //1. Protocolo
 /*
 ////protocolo
-resumen, introduccion, antecedentes, hipotesis, marco_teorico, 
-metas, objetivo_general, objetivos_especificos, impacto_beneficio, 
+resumen, introduccion, antecedentes, hipotesis, marco_teorico,
+metas, objetivo_general, objetivos_especificos, impacto_beneficio,
 metodologia, referencias, lugar, infraestrucutura
 */
 //2. Colaboradores
@@ -94,7 +95,7 @@ metodologia, referencias, lugar, infraestrucutura
         $validacion["Colaboradores"]["resultado"] = "alert-danger";
         $validacion["Colaboradores"]["mensaje"] = $acep;
         $puede = false;
-    }    
+    }
 //3. Entregables
     $Entregables = $proyecto->entregables;
     $validacion["Entregables"]["categoria"] = "Entregables:";
@@ -114,7 +115,7 @@ metodologia, referencias, lugar, infraestrucutura
         $validacion["Entregables"]["resultado"] = "alert-danger";
         $validacion["Entregables"]["mensaje"] = "Este proyecto no tiene entregables";
         $puede = false;
-    }    
+    }
 //4. Cronograma
     $Actividades = $proyecto->actividades;
     $validacion["Actividades"]["categoria"] = "Actividades:";
@@ -133,7 +134,7 @@ metodologia, referencias, lugar, infraestrucutura
         $validacion["Actividades"]["resultado"] = "alert-danger";
         $validacion["Actividades"]["mensaje"] = "Este proyecto no tiene actividades";
         $puede = false;
-    }    
+    }
 //5. Presupuesto (financiado)
     $Gastos = $proyecto->gastos;
     $validacion["Financiamiento"]["categoria"] = "Financiamiento:";
@@ -157,17 +158,17 @@ metodologia, referencias, lugar, infraestrucutura
             $validacion["Financiamiento"]["resultado"] = "alert-danger";
             $validacion["Financiamiento"]["mensaje"] = "Este proyecto es financiado y no tiene gastos";
             $puede = false;
-        }    
+        }
     }
 //6. Vinculacion
     $validacion["Vinculacion"]["categoria"] = "Vinculacion:";
-    $validacion["Vinculacion"]["resultado"] = "alert-warning";    
+    $validacion["Vinculacion"]["resultado"] = "alert-warning";
     if($proyecto->vinculacion=="") {
         $validacion["Vinculacion"]["mensaje"] = "Este proyecto no presenta carta de vinculacion";
     }else{
-        $validacion["Vinculacion"]["resultado"] = "alert-success";    
+        $validacion["Vinculacion"]["resultado"] = "alert-success";
         $validacion["Vinculacion"]["mensaje"] = "Este proyecto presenta carta de vinculacion";
-    }    
+    }
 /////////////////
         return view('someter/someter',compact('proyecto','validacion','puede'));
     }
@@ -181,7 +182,7 @@ metodologia, referencias, lugar, infraestrucutura
        return redirect('home')->with('success', "El proyecto \"$proyecto->titulo\" ha sido sometido en fecha \"$proyecto->sometido\".");
     }
 
-    
+
 
 
 }

@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\DB;
 
 class CrudUsersController extends Controller
 {
+      public function __construct()
+      {
+          $this->middleware('role:Coordinador');
+      }
+
     /**
      * Display a listing of the resource.
      *
