@@ -43,7 +43,6 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                     </ul>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
@@ -55,18 +54,7 @@
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}-{{ Auth::user()->rol }}<span class="caret"></span>
                                 </a>
-
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    @switch(Auth::user()->rol)
-
-                                        @case('Coordinador')
-                                            <a class="dropdown-item" href="/convocatoria">Convocatorias</a>
-                                            <a class="dropdown-item" href="/proyecto/especial">Agregar</a>
-                                            <a class="dropdown-item" href="/registrados">Registrados</a>
-                                        @break
-                                    @endswitch
-
-
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
