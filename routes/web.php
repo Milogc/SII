@@ -65,6 +65,7 @@ Route::get('pdfaval/{idpro}','DocumentosController@aval');
 
 //Rutas del 'Coordinador'
 
+
 Route::get('proyecto/especial', 'Investigador\ProyectoController@especial')->name('pryecto.especial');
 Route::post('proyectoespecial', 'Investigador\ProyectoController@sespecial')->name('pryectoespecial');
 
@@ -83,4 +84,8 @@ Route::resource('crudinvestigacion','Coordinador\CrudInvestigacionsController');
 Route::resource('crudadscripcion','Coordinador\CrudAdscripcionController');
 
 Route::resource('crudlongitudecaracteres','Coordinador\CrudDeLongitudecaracteres')
+	->only(['index','edit','update']);
+
+
+Route::resource('rregistro','Coordinador\RestriccionesRegistroController')
 	->only(['index','edit','update']);

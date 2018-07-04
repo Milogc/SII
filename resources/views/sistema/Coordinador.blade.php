@@ -67,13 +67,7 @@
     </div> {{-- primer fila --}}
 
     <div class="row justify-content-left"> {{-- segunda fila --}}
-      <div class="col-3 bg-primary text-white">
-        <img src="https://image.flaticon.com/icons/svg/54/54551.svg"  usemap="#longitud" alt="">
-          <map name="longitud" id="longitud">
-            <area alt="" title="" href="crudlongitudecaracteres" shape="poly" coords="13,11,499,14,498,498,14,500" />
-          </map>
-        Partes y longitudes del protocolo{{--$longitud--}}
-      </div>
+
 
       <div class="col-3 bg-primary text-white">
         <img src="https://image.flaticon.com/icons/svg/54/54551.svg"  usemap="#adscri" alt="">
@@ -86,6 +80,25 @@
             </map>
         Adscripción{{--$longitud--}}
       </div>
+
+
+      <div class="col-3 bg-primary text-white">
+        <img src="https://image.flaticon.com/icons/svg/54/54551.svg"  usemap="#longitud" alt="">
+          <map name="longitud" id="longitud">
+            <area alt="" title="" href="crudlongitudecaracteres" shape="poly" coords="13,11,499,14,498,498,14,500" />
+          </map>
+        Partes y longitudes del protocolo{{--$longitud--}}
+      </div>
+
+      <div class="col-3 bg-primary text-white">
+        <img src="https://image.flaticon.com/icons/svg/54/54551.svg"  usemap="#registro" alt="">
+          <map name="registro" id="registro">
+            <area alt="" title="" href="rregistro" shape="poly" coords="13,11,499,14,498,498,14,500" />
+          </map>
+        Restricciones de registro{{--$registro--}}
+      </div>
+
+
 
     </div> {{-- segunda fila --}}
 
