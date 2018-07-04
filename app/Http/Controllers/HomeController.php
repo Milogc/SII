@@ -67,7 +67,8 @@ class HomeController extends Controller
 
         switch ($logeado->rol) {
             case 'Investigador':
-                $convocatorias=Convocatoria::paginate(2);
+                $convocatorias=Convocatoria::orderByDesc("Fecha_inicio")->paginate(2);
+
                 $convocatorias->currentPage($page);
                 return view('sistema.Investigador',compact('convocatorias'));
                 break;

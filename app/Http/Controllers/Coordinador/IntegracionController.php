@@ -16,7 +16,7 @@ class IntegracionController extends Controller
 
     public function registrados(){
 //        $convocatorias=Convocatoria::all()->sortByDesc("Fecha_inicio");
-        $convocatorias=Convocatoria::paginate(1);
+        $convocatorias=Convocatoria::orderByDesc("Fecha_inicio")->paginate(1);
         return view('integracion/listado',compact('convocatorias'));
     }
 }

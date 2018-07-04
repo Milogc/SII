@@ -77,7 +77,7 @@ id, actividad, fecha_inicio, fecha_fin, monto, proyecto_id, entregables_id
       </tr>
           @foreach($convocatoria->proyectos as $proyecto)
              <!-- Titulo: {{$proyecto['titulo']}} -  Director: {{$proyecto->director->name}}   -->
-            @if($proyecto->responsable==Auth::user()->id)
+            @if($proyecto->responsable==Auth::user()->id  && $convocatoria->vigente())
                <!-- Sometidomio"{{$proyecto->sometido}}"-->
               @if($proyecto->sometido == "")
               <tr>
@@ -99,14 +99,6 @@ id, actividad, fecha_inicio, fecha_fin, monto, proyecto_id, entregables_id
                         <li><a class="dropdown-item" href="{{action('Investigador\AvalController@mostrar', $proyecto['id'])}}">Aval de académia</a></li>
                         <li class="bg-warning"><a class="dropdown-item" href="{{action('Investigador\SometerController@someter', $proyecto['id'])}}">Someter</a></li>
                       </ol>
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
                     </div>
                   </div>
 <!--
@@ -161,34 +153,34 @@ id, actividad, fecha_inicio, fecha_fin, monto, proyecto_id, entregables_id
               @endif 
             @else <!-- entonces no es mio -->
                 @foreach($proyecto->colaboradores as $colaborador)
-                    @if($colaborador->users_id==Auth::user()->id)
+                    @if($colaborador->users_id==Auth::user()->id && $proyecto->sometido != "")
                       <tr>
                         <td></td>
                         <td>{{$proyecto['titulo']}} <br> Director: {{$proyecto->director->name}}</td>
                         <td colspan="2" > 
                           <div class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton_deotro_sometido" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Documentos<span class="caret"></span>
-                    </button>
-                    <div class="dropdown-menu">
-                      <ol>
-                        <li><a class="drowpdown-item" href="{{action('DocumentosController@ci01', $proyecto['id'])}}">CI-01</a></li>
-                        <li><a class="drowpdown-item" href="{{action('DocumentosController@ci02', $proyecto['id'])}}">CI-02</a></li>
-                        @if($proyecto['vinculacion'] != "")
-                        <li><a href="{{action('DocumentosController@vinculacion', $proyecto['id'])}}">Vinculacion</a></li>
-                        @endif
-                        @if($proyecto['aval'] != "")
-                        <li><a href="{{action('DocumentosController@aval', $proyecto['id'])}}">Aval de academia</a></li>
-                        @else
-                        <li class="bg-danger text-white">Sin Aval de academia</li>
-                        @endif
-                      </ol>
-                    </div>
-                    @if($colaborador->participacion==0 && $proyecto->sometido == "")
-                      <button class="btn btn-success btnaceptar" value="{{$colaborador->id}}">Aceptar</button>
-                      <button class="btn btn-danger btnrechaza" value="{{$colaborador->id}}">Rechazar</button>
-                    @endif
-                  </div>
+                            <button class="btn btn-default dropdown-toggle @if($proyecto->sometido == "") disabled @endif " type="button" id="dropdownMenuButton_deotro_sometido" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Documentos<span class="caret"></span>
+                            </button>
+                            <div class="dropdown-menu">
+                              <ol>
+                                <li><a class="drowpdown-item" href="{{action('DocumentosController@ci01', $proyecto['id'])}}">CI-01</a></li>
+                                <li><a class="drowpdown-item" href="{{action('DocumentosController@ci02', $proyecto['id'])}}">CI-02</a></li>
+                                @if($proyecto['vinculacion'] != "")
+                                <li><a href="{{action('DocumentosController@vinculacion', $proyecto['id'])}}">Vinculacion</a></li>
+                                @endif
+                                @if($proyecto['aval'] != "")
+                                <li><a href="{{action('DocumentosController@aval', $proyecto['id'])}}">Aval de academia</a></li>
+                                @else
+                                <li class="bg-danger text-white">Sin Aval de academia</li>
+                                @endif
+                              </ol>
+                            </div>
+                            @if($colaborador->participacion==0 && $proyecto->sometido == "" && $convocatoria->vigente() )
+                              <button class="btn btn-success btnaceptar" value="{{$colaborador->id}}">Aceptar</button>
+                              <button class="btn btn-danger btnrechaza" value="{{$colaborador->id}}">Rechazar</button>
+                            @endif
+                          </div>
                         </td>
                       </tr>
                     @endif
