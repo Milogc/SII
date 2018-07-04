@@ -78,6 +78,7 @@
         @else
         <footer class="panel-footer">
           <div class="container">
+            <hr>
             Sistema desarrollado bajo el proyecto 6607.18-P
           </div>
         </footer>
