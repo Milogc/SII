@@ -56,7 +56,7 @@ class SometerController extends Controller
 
         $validacion["convocatoria"]["categoria"] = "Convocatoria";
         if(
-          $fechaSometido->getTimestamp() > $ConvocatoriaFechaInicio->getTimestamp() &&
+          $fechaSometido->getTimestamp() >= $ConvocatoriaFechaInicio->getTimestamp() &&
           $fechaSometido->getTimestamp() <= $ConvocatoriaFechaFin->getTimestamp() ) {
             $validacion["convocatoria"]["resultado"] = "alert-success";
             $validacion["convocatoria"]["mensaje"] = "En tiempo (sometido antes de $convocatoria->Fecha_fin)";
