@@ -63,14 +63,21 @@
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Documentos<span class="caret"></span>
                     </button>
-                    <ol class="dropdown-menu text-left">
-                      <li><a class="drowpdown-item" href="{{action('DocumentosController@ci01', $proyecto['id'])}}">CI-01</a></li>
-                      <li><a class="drowpdown-item" href="{{action('DocumentosController@ci02', $proyecto['id'])}}">CI-02</a></li>
-                      @if($proyecto['vinculacion'] != "")
-                      <li><a href="{{action('DocumentosController@vinculacion', $proyecto['id'])}}">Vinculacion</a></li>
-                      @endif
-                      <!-- <li><a href="{{action('Investigador\SometerController@someter', $proyecto['id'])}}">7. Someter</a></li> -->
-                    </ol>
+                    <div class="dropdown-menu">
+                      <ol>
+                        <li><a class="drowpdown-item" href="{{action('DocumentosController@ci01', $proyecto['id'])}}">CI-01</a></li>
+                        <li><a class="drowpdown-item" href="{{action('DocumentosController@ci02', $proyecto['id'])}}">CI-02</a></li>
+                        @if($proyecto['vinculacion'] != "")
+                        <li><a href="{{action('DocumentosController@vinculacion', $proyecto['id'])}}">Vinculacion</a></li>
+                        @endif
+                        @if($proyecto['aval'] != "")
+                        <li><a href="{{action('DocumentosController@aval', $proyecto['id'])}}">Aval de academia</a></li>
+                        @else
+                        <li class="bg-danger text-white">Sin Aval de academia</li>
+                        @endif
+                        <!-- <li><a href="{{action('Investigador\SometerController@someter', $proyecto['id'])}}">7. Someter</a></li> -->
+                      </ol>
+                    </div>
                   </div>
                 </td>
               </tr>

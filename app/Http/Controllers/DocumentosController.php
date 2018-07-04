@@ -10,6 +10,7 @@ use App\Models\Proyecto;
 use App\Models\Protocolo;
 use App\Models\Entregables;
 use App\Models\Vinculacion;
+use App\Models\Aval;
 
 
 use PDF;
@@ -34,6 +35,13 @@ class DocumentosController extends Controller
         $vinculacion= Vinculacion::find($idproy);
         if(  $vinculacion->vinculacion == "") return;
         $path = public_path() . '/evidencias/' . $vinculacion->vinculacion;
+        //return Storage::download($path);
+        return response()->download($path);
+    }
+    public function aval($idproy){
+        $aval= Aval::find($idproy);
+        if(  $aval->aval == "") return;
+        $path = public_path() . '/evidencias/' . $aval->aval;
         //return Storage::download($path);
         return response()->download($path);
     }

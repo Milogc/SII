@@ -96,7 +96,7 @@ id, actividad, fecha_inicio, fecha_fin, monto, proyecto_id, entregables_id
                         <li><a class="dropdown-item" href="{{action('Investigador\CronogramaController@index', $proyecto['id'])}}">Actividades</a></li>
                         <li><a class="dropdown-item" href="{{action('Investigador\GastosController@index', $proyecto['id'])}}">Presupuesto</a></li>
                         <li><a class="dropdown-item" href="{{action('Investigador\VinculacionController@mostrar', $proyecto['id'])}}">Vinculación</a></li>
-                        <li><a class="dropdown-item" href="{{action('Investigador\VinculacionController@mostrar', $proyecto['id'])}}">Aval de académia</a></li>
+                        <li><a class="dropdown-item" href="{{action('Investigador\AvalController@mostrar', $proyecto['id'])}}">Aval de académia</a></li>
                         <li class="bg-warning"><a class="dropdown-item" href="{{action('Investigador\SometerController@someter', $proyecto['id'])}}">Someter</a></li>
                       </ol>
                       
