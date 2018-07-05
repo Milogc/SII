@@ -159,7 +159,7 @@ id, actividad, fecha_inicio, fecha_fin, monto, proyecto_id, entregables_id
                         <td>{{$proyecto['titulo']}} <br> Director: {{$proyecto->director->name}}</td>
                         <td colspan="2" > 
                           <div class="dropdown">
-                            <button class="btn btn-default dropdown-toggle @if($proyecto->sometido == "") disabled @endif " type="button" id="dropdownMenuButton_deotro_sometido" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton_deotro_sometido" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               Documentos<span class="caret"></span>
                             </button>
                             <div class="dropdown-menu">
