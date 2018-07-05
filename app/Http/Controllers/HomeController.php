@@ -82,7 +82,6 @@ class HomeController extends Controller
             $gastos = CrudGastos::all()->count();
             $lineas = CrudLineas::all()->count();
             $tipo = CrudTipodeinvestigacion::all()->count();
-            $longitud = CrudLongitudCaracteres::all()->count();
             // $ci    = User::where('rol','Investigador')->count();
             //   $cii    = User::where('rol','Coordinador')->count();
 //                $countproyect = Proyecto::all()->count();
