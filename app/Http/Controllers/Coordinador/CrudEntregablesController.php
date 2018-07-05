@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\CrudEntregable;
 use Illuminate\Support\Facades\DB;
 
+
 class CrudEntregablesController extends Controller
 {
       public function __construct()

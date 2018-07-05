@@ -71,10 +71,13 @@ class ProyectoController extends Controller
         $proyecto->responsable=$logeado->id;
         $proyecto->convocatoria_id = $request->get('id_conv');
         $proyecto->save();        
+
 */
         $puede = true;
         $parametros=$request->all();
         $parametros['responsable']=$logeado->id;
+        $fechaHoy = new \DateTime(); // Today
+        $hoy = $fechaHoy->format('d/m/Y h:s'); // echos today!
 
         //////RESTRICCIONES
 // 1 Proyectos financiados por línea de investigación
@@ -110,17 +113,20 @@ class ProyectoController extends Controller
             $puede = false;
         }
         
-//*4 Máximo de participaciones = 2
-        $colabora = DB::table('proyecto')
-                      ->where('convocatoria_id',$request->input('convocatoria_id'))
-                      ->join('colaboradores', 'proyecto.id', '=', 'colaboradores.proyecto_id')
-                      ->select('titulo')
+        //*4 Máximo de participaciones = 2
+        $colabora = DB::table('colaboradores')
+                      ->select('users_id')
+                      ->join('proyecto', 'proyecto.id', '=', 'colaboradores.proyecto_id')
+                      ->where('proyecto.convocatoria_id',$request->input('convocatoria_id'))
+                      ->where('users_id',$logeado->id )
                       ->count();
 
+        
         $Restricciones = RestriccionesR::find(4);
         $parti=   $Restricciones->valor;
         if( ($colabora + $tiene) >= $parti ) {
-            $Retornar = array('status' => 'alert alert-danger', 'mensaje' => 'Se excede el numero de particiapcinoes.');
+            $Retornar = array('status' => 'alert alert-danger',
+                              'mensaje' => "Eexcede el numero de particiapcinoes, tiene: $tiene y colabora: $colabora. ($hoy)" . $request->input('convocatoria_id'));
             $puede = false;
         }
 

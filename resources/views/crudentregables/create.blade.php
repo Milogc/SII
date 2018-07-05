@@ -14,8 +14,14 @@
       </div>
       <div class="row">
         <div class="form-group col-lg-12">
-          <label for="name">Tipo:</label>
-          <input type="text" class="form-control" name="tipo" required>
+                            <label for="tipo">Tipo</label>
+                            <div class="col-md-6">
+                                <select  class="form-control" name="tipo">
+                                   <option>ACADEMICO</option>                                  
+                                   <option>HUMANO</option>
+                                </select>
+                            </div>
+                        </div>
         </div>
       </div>
       <div class="row">

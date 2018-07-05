@@ -54,7 +54,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Adscripción') }}</label>
+                            <label for="adscripcion" class="col-md-4 col-form-label text-md-right">{{ __('Adscripción') }}</label>
                             <div class="col-md-6">
                                 <select  class="form-control" name="adscripcion">
                                  @foreach($ies as $ie)
