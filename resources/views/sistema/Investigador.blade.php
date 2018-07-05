@@ -77,7 +77,7 @@ id, actividad, fecha_inicio, fecha_fin, monto, proyecto_id, entregables_id
       </tr>
           @foreach($convocatoria->proyectos as $proyecto)
              <!-- Titulo: {{$proyecto['titulo']}} -  Director: {{$proyecto->director->name}}   -->
-            @if($proyecto->responsable==Auth::user()->id  && $convocatoria->vigente())
+            @if($proyecto->responsable==Auth::user()->id )
                <!-- Sometidomio"{{$proyecto->sometido}}"-->
               @if($proyecto->sometido == "")
               <tr>
@@ -97,7 +97,9 @@ id, actividad, fecha_inicio, fecha_fin, monto, proyecto_id, entregables_id
                         <li><a class="dropdown-item" href="{{action('Investigador\GastosController@index', $proyecto['id'])}}">Presupuesto</a></li>
                         <li><a class="dropdown-item" href="{{action('Investigador\VinculacionController@mostrar', $proyecto['id'])}}">Vinculación</a></li>
                         <li><a class="dropdown-item" href="{{action('Investigador\AvalController@mostrar', $proyecto['id'])}}">Aval de académia</a></li>
-                        <li class="bg-warning"><a class="dropdown-item" href="{{action('Investigador\SometerController@someter', $proyecto['id'])}}">Someter</a></li>
+                        @if($convocatoria->vigente())
+                          <li class="bg-warning"><a class="dropdown-item" href="{{action('Investigador\SometerController@someter', $proyecto['id'])}}">Someter</a></li>
+                        @endif
                       </ol>
                     </div>
                   </div>
@@ -122,7 +124,7 @@ id, actividad, fecha_inicio, fecha_fin, monto, proyecto_id, entregables_id
                   </form>
                 </td>
               </tr>
-              @else<!--  esta sometido mio -->
+              @else<!--  no sometido , sigue siendo mio-->
               <tr>
                 <td></td>
                 <td>{{$proyecto['titulo']}} <br> Director: {{$proyecto->director->name}}</td>
@@ -145,15 +147,13 @@ id, actividad, fecha_inicio, fecha_fin, monto, proyecto_id, entregables_id
                         @endif
                       </ol>
                     </div>
-                  </div>
-                                 <!-- Sometido2"{{$proyecto->sometido}}"-->
-                  
+                  </div>                  
                 </td>
               </tr>
               @endif 
             @else <!-- entonces no es mio -->
                 @foreach($proyecto->colaboradores as $colaborador)
-                    @if($colaborador->users_id==Auth::user()->id && $proyecto->sometido != "")
+                    @if($colaborador->users_id==Auth::user()->id)
                       <tr>
                         <td></td>
                         <td>{{$proyecto['titulo']}} <br> Director: {{$proyecto->director->name}}</td>
