@@ -7,7 +7,7 @@
         <p>{{\Session::get('success')}}</p>
       </div><br/>
     @endif
-    <form class="form-horizontal" id="frmaval"  enctype="multipart/form-data" > 
+    <form class="form-horizontal" enctype="multipart/form-data"  id="frmaval"> 
       <input id="proyecto_id" type="hidden" value="{{$proyecto->id}}">
       <div class="row">
         <div class="form-group col-9">
@@ -19,8 +19,10 @@
       </div> <!-- row -->
     </form>
 
-      <embed id="pdf" type="application/pdf" src="@if ($aval->aval === null){{asset('evidencias/blanco.pdf' )}}
-      @else{{asset('evidencias/'. $aval->aval)}}@endif" width="100%" height="1100px">
+      <embed id="pdf" type="application/pdf" src="
+      @if ($aval->aval === null){{asset('evidencias/blanco.pdf' )}}
+      @else{{asset('evidencias/'. $aval->aval)}}@endif
+      " width="100%" height="1100px">
   </div><!-- container 
 <script src="{{asset('js/pdfobject.js')}}"></script>
 -->

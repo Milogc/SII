@@ -2,8 +2,6 @@
 var url = "/aval";
  
 function agregar(){
-             
-//id, descripcion, partida, monto, cronograma_id, proyecto_id
     var archivo = $('#archivo');
     var noproy = $('#proyecto_id').val();
 
