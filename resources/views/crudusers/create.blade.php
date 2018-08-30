@@ -10,7 +10,7 @@
               <h3>
                 <center>
                   Agregar un nuevo investigador
-                </center>          
+                </center>
               </h3>
               {!! csrf_field() !!}
 
@@ -69,10 +69,18 @@
                       @endif
                   </div>
               </div>
-
+              <div class="form-group row">
+               <label for="adscripcion" class="col-md-4 col-form-label text-md-right">{{ __('Rol') }}</label>
+                <div class="col-md-6">
+                   <select  class="form-control" name="rol">
+                      <option>Coordinador</option>
+                      <option>Investigador</option>
+                   </select>
+               </div>
+             </div>
 
               <div class="form-group row">
-                  <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Contrseña') }}</label>
+                  <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Contraseña') }}</label>
 
                   <div class="col-md-6">
                       <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
