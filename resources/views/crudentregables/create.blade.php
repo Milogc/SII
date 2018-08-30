@@ -2,7 +2,7 @@
 @section('content')
 
   <div class="container">
-    <h2>Area a ingresar </h2><br/>
+    
     <form method="post" action="{{url('crudentregables')}}" enctype="multipart/form-data">
 
       @csrf
@@ -17,7 +17,7 @@
                             <label for="tipo">Tipo</label>
                             <div class="col-md-6">
                                 <select  class="form-control" name="tipo">
-                                   <option>ACADEMICO</option>                                  
+                                   <option>ACADEMICO</option>
                                    <option>HUMANO</option>
                                 </select>
                             </div>

@@ -82,6 +82,7 @@ Route::resource('crudgastos','Coordinador\CrudGastosController');
 Route::resource('crudlineas','Coordinador\CrudLineasController');
 Route::resource('crudinvestigacion','Coordinador\CrudInvestigacionsController');
 Route::resource('crudadscripcion','Coordinador\CrudAdscripcionController');
+Route::resource('crudpe','Coordinador\CrudProgramaEducativo');
 
 Route::resource('crudlongitudecaracteres','Coordinador\CrudDeLongitudecaracteres')
 	->only(['index','edit','update']);
