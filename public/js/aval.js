@@ -8,9 +8,6 @@ function agregar(){
     var formData = new FormData();
     formData.append('evidencia', archivo[0].files[0]);
     formData.append('proyecto_id', noproy);
-    
-
-//    var formData = new FormData(document.getElementById("frmvinculacion"));
     console.log('formData:', formData);
     $.ajax({
 

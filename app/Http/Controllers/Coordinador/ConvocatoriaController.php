@@ -9,10 +9,15 @@ use App\Models\Convocatoria;
 
 class ConvocatoriaController extends Controller
 {
+
+    /**
+     * Aquí se inicializa y se dice que solo el Coordinador puede accesar a este controlador
+     */
       public function __construct()
       {
           $this->middleware('role:Coordinador');
       }
+
     /**
      * Display a listing of the resource.
      *

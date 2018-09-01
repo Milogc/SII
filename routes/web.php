@@ -33,13 +33,15 @@ Route::post('protocolo/{idpro}','Investigador\ProtocoloController@update');
 Route::get('gastos/{idpro}','Investigador\GastosController@index');
 Route::post('gastos','Investigador\GastosController@agregar');
 Route::post('gastos/eliminar','Investigador\GastosController@eliminar');
+
 Route::get('vinculacion/{idpro}','Investigador\VinculacionController@mostrar');
 Route::post('vinculacion','Investigador\VinculacionController@agregar');
 Route::post('vinculacion/eliminar','Investigador\VinculacionController@eliminar');
+
 Route::get('aval/{idpro}','Investigador\AvalController@mostrar');
 Route::post('aval','Investigador\AvalController@agregar');
-
 Route::post('aval/eliminar','Investigador\AvalController@eliminar');
+
 Route::get('someter/{idpro}','Investigador\SometerController@someter');
 Route::post('someter/{idpro}','Investigador\SometerController@update');
 

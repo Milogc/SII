@@ -3,21 +3,12 @@
 namespace App\Http\Controllers\Investigador;
 
 use App\Http\Controllers\Controller;
-
 use Illuminate\Http\Request;
-
-
 use Illuminate\Http\UploadedFile;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
-
-//use Illuminate\Support\Facades\DB;
-//use Illuminate\Support\Facades\Auth;
-
-
 use App\Models\Proyecto;
 use App\Models\Vinculacion;
-//use App\Models\User;
 
 class VinculacionController extends Controller
 {
@@ -39,36 +30,18 @@ class VinculacionController extends Controller
         $extension = "";
         $extension = $file->getClientOriginalExtension();
         $fileName = $idproy . '_vinculacion' . '.' . $extension;
-//        $path = $request->evidencia->storeAs('', $fileName);
         $path = Storage::putFileAs(
             '', $request->file('evidencia'), $fileName
         );
-
-
         $Vinculacion= Vinculacion::find($idproy);
         $Vinculacion->vinculacion = $path;
         $Vinculacion->save();
-
-
         $path = public_path() . '/evidencias' . $path;
-      //  var_dump($path);
-
-//        Storage::disk('public')->put($fileName,  File::get('evidencia'));
-
-//        Storage::disk('local')->put($fileName,  $file);
-//        Storage::disk('local')->put('file.txt', 'Contents');
-
-
-
-
-//        Storage::putFileAs('public', $file, $fileName);
-
         $Retornar = array(
             'fileName' => $fileName,
             'proyecto_id' => $idproy,
 
         );
-       // $path = public_path('images/users/'.$fileName);
         return response()->json($Retornar);
     }
 

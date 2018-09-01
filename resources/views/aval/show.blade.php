@@ -2,16 +2,11 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
-    @if(\Session::has('success'))
-      <div class="alert alert-success">
-        <p>{{\Session::get('success')}}</p>
-      </div><br/>
-    @endif
     <form class="form-horizontal" enctype="multipart/form-data"  id="frmaval"> 
       <input id="proyecto_id" type="hidden" value="{{$proyecto->id}}">
       <div class="row">
         <div class="form-group col-9">
-            <input  class="form-control"  name="namearchivo" id="archivo" type="file"  accept=".pdf" @if($proyecto->taval!= "" ) required @endif >
+            <input  class="form-control" id="archivo" type="file"  accept=".pdf" @if($proyecto->taval!= "" ) required @endif >
         </div>
         <div class="form-group col-3">
             <button class="btn btn-danger btndel" value="{{$proyecto->id}}">Eliminar</button>
@@ -23,9 +18,7 @@
       @if ($aval->aval === null){{asset('evidencias/blanco.pdf' )}}
       @else{{asset('evidencias/'. $aval->aval)}}@endif
       " width="100%" height="1100px">
-  </div><!-- container 
-<script src="{{asset('js/pdfobject.js')}}"></script>
--->
+  </div>
 @endsection
 
 @section('sctipts')
