@@ -36,11 +36,31 @@
   </div>
 
  @if($puede==true)
+    Descarga los archivos (CI-01 y CI-02), consigue las firmas, digitalizalos y subelos al sistema en formato pdf.
+    <ul>
+      <li><a href="{{action('DocumentosController@ci01', $proyecto['id'])}}">CI-01</a></li>
+      <li><a href="{{action('DocumentosController@ci02', $proyecto['id'])}}">CI-02</a></li>
+    </ul>
+
+
     <form method="post" action="{{action('Investigador\SometerController@update', $proyecto->id)}}">  
       {{ csrf_field() }}
+      <div class="row">
+        <div class="form-group col-12">
+            <lable>CI-01 firmado:</label>
+            <input  class="form-control" id="archivo_01" type="file"  accept=".pdf" >
+        </div>
+      </div> <!-- row -->
+      <div class="row">
+        <div class="form-group col-12">
+            <lable>CI-02 firmado:</label>
+            <input  class="form-control" id="archivo_02" type="file"  accept=".pdf" >
+        </div>
+      </div> <!-- row -->
+
         <button type="submit" class="btn btn-success" value="Submit">Someter</button>
     </form>
-    @endif
+  @endif
 </div>
 
 

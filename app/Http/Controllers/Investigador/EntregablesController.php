@@ -55,6 +55,11 @@ class EntregablesController extends Controller
      */
     public function agregar(Request $request)
     {
+        if ($request->input('cuantos') == 0 ){
+            $Retornar  = array('error' => "Debe especificar una cantidad" );
+            return response()->json($Retornar);
+
+        }
         $Entregables  = new Entregables();
         $Entregables->tipo=$request->input('tipo');
         $Entregables->cuantos=$request->input('cuantos');

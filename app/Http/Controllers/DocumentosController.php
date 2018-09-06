@@ -31,6 +31,24 @@ class DocumentosController extends Controller
       $pdf = PDF::loadView('documentos.ci02',compact('proyecto'));
       return  $pdf->download($idproy . '_ci-02.pdf');
     }
+
+    public function dci01($idproy){
+      $proyecto= Proyecto::find($idproy);
+      if(  $proyecto->ci01 == "") return;
+      $path = public_path() . '/evidencias/' . $proyecto->ci01;
+      //return Storage::download($path);
+      return response()->download($path);
+    }
+
+    public function dci02($idproy){
+      $proyecto= Proyecto::find($idproy);
+      if(  $proyecto->ci01 == "") return;
+      $path = public_path() . '/evidencias/' . $proyecto->ci01;
+      //return Storage::download($path);
+      return response()->download($path);
+    }
+
+
     public function vinculacion($idproy){
         $vinculacion= Vinculacion::find($idproy);
         if(  $vinculacion->vinculacion == "") return;
@@ -45,6 +63,7 @@ class DocumentosController extends Controller
         //return Storage::download($path);
         return response()->download($path);
     }
+
 
 
 }

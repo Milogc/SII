@@ -149,7 +149,7 @@
 </article>
 <p><b>1.10 Vinculación</b></p>
 <p>{{$proyecto->tvinculacion}}</p>
-<p> @if($proyecto->vinculacion=="") {{"NO "}} @else {{"Si "}} @endif presenta carta de vinculación</p>
+<p> NOTA: @if($proyecto->vinculacion=="") {{"NO "}} @else {{"Si "}} @endif presenta carta de vinculación</p>
 </article>
 <p><b>1.11 Referencias</b></p>
 <p>{{$proyecto->referencias}}</p>

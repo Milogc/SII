@@ -33,16 +33,29 @@ class ColaboradoresController extends Controller
 
         $proyecto= Proyecto::find($idproy);
 
+/*
+
         $investigadores = DB::table('users')
                     ->where('rol', 'Investigador')
                     ->where('id', '<>', $logeado->id)
+                    //not in
                     ->get();
 
-        $colaboradores = DB::table('colaboradores')
+*/
+
+
+        $investigadores = DB::table('users')
+                    ->where('rol', 'Investigador')
+                    ->where('id', '<>', $logeado->id)
+                    ->whereRaw('id not in (select users_id from colaboradores where proyecto_id = ?)', [$idproy])
+                    ->get();
+
+       $colaboradores = DB::table('colaboradores')
             ->where('proyecto_id',$idproy)
             ->join('users', 'users.id', '=', 'colaboradores.users_id')
             ->select('users.id', 'users.cvutecnm', 'users.name', 'colaboradores.participacion')
             ->get();
+
         return view('colaboradores/index',compact('colaboradores','proyecto','investigadores'));
     }
 

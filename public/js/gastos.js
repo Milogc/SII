@@ -25,8 +25,9 @@ function agregar(){
             // linea: partida, descripcion, monto, eliminar
              var linea = '<tr id="gasto_' + data.id + '"><td>' + data.partida + '</td><td>' + data.descripcion + '</td><td>' + data.monto + '</td>';
              linea += '<td><button class="btn btn-danger btndel" value="' + data.id  + '">Eliminar</button></td></tr>';
-             $('#gastos-list_actividad_' + data.cronograma_id).append(linea);
+             $('#gastos-list_actividad_' + data.cronograma_id + " > tbody").append(linea);
 //            $('#gastosModal').trigger("reset");
+                alert("Tu presupuesto es de : " + data.total[0].monto);
             $('#gastosModal').modal('hide');
         },
         error: function (data) {
@@ -60,6 +61,8 @@ function eliminar(){
 quitar = "#gasto_" + data.id;
 console.log ("QUITAR: ", quitar);
             $("#gasto_" + data.id ).remove();
+            alert("Tu presupuesto es de : " + data.total[0].monto);
+
         },
         error: function (data) {
             console.log('Error:', data);

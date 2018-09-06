@@ -24,9 +24,16 @@ function agregar(){
                 data[0].participacion = "Aún no acepta";
             else 
                 data[0].participacion = "Acepto";
+
+            if (data[0].cvutecnm == null) data[0].cvutecnm="";
+
+
             var colaborador = '<tr id="cobaborador_' + data[0].id + '"><td>' + data[0].cvutecnm + '</td><td>' + data[0].name + '</td><td>' + data[0].participacion + '</td>';
             colaborador += '<td><button class="btn btn-danger btndel" value="' + data[0].id + '">Eliminar</button></td></tr>';
-            $('#colaboradores-list').append(colaborador);
+            $('#colaboradores-list > tbody').append(colaborador);
+             
+            $('#investigador option[value=\"' + data[0].id  +  '\"]' ).remove();
+
         //    $('#frmcolaboradores').trigger("reset");
         //    $('#colaboradoresModal').modal('hide');
         },

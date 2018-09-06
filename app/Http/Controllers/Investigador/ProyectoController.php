@@ -63,6 +63,8 @@ class ProyectoController extends Controller
      */
     public function store(Request $request)
     {
+
+        $errores="";
         $logeado = Auth::user();
 /*
         $proyecto= new Proyecto();
@@ -78,6 +80,10 @@ class ProyectoController extends Controller
         $parametros['responsable']=$logeado->id;
         $fechaHoy = new \DateTime(); // Today
         $hoy = $fechaHoy->format('d/m/Y h:s'); // echos today!
+        ob_start();
+        print_r($request->all());
+        $result = ob_get_clean();
+        $errores .=  $result;
 
         //////RESTRICCIONES
 // 1 Proyectos financiados por línea de investigación
@@ -87,7 +93,7 @@ class ProyectoController extends Controller
 
         $Restricciones = RestriccionesR::find(1);                
         if($cuantos >=  $Restricciones->valor  &&  $request->get('financiado') == 1 ) {
-            $Retornar = array('status' => 'alert alert-danger', 'mensaje' => 'Ya hay un proyecto financiado en esta convocatoria con esta misma linea.');
+            $errores .= ' Ya hay un proyecto financiado en esta convocatoria con esta misma linea.';
             $puede = false;
         }
 
@@ -95,9 +101,10 @@ class ProyectoController extends Controller
         $cuantos = Proyecto::where( 'convocatoria_id' , $request->get('convocatoria_id') )
                         ->count();
 
+
         $Restricciones = RestriccionesR::find(2);    
         if($cuantos >= $Restricciones->valor) {
-            $Retornar = array('status' => 'alert alert-danger', 'mensaje' => 'Ya se registró en esta convocatoria con esta misma linea el numero màximo de proyectos.');
+            $errores .= ' Ya se registró en esta convocatoria con esta misma linea el numero màximo de proyectos.';
             $puede = false;
         }
 
@@ -109,7 +116,7 @@ class ProyectoController extends Controller
 
         $Restricciones = RestriccionesR::find(3);    
         if($tiene >= $Restricciones->valor) {
-            $Retornar = array('status' => 'alert alert-danger', 'mensaje' => 'Este investigador ya figura como director de otro proyecto.');
+            $errores .= ' Este investigador ya figura como director de otro proyecto.';
             $puede = false;
         }
         
@@ -125,15 +132,18 @@ class ProyectoController extends Controller
         $Restricciones = RestriccionesR::find(4);
         $parti=   $Restricciones->valor;
         if( ($colabora + $tiene) >= $parti ) {
-            $Retornar = array('status' => 'alert alert-danger',
-                              'mensaje' => "Eexcede el numero de particiapcinoes, tiene: $tiene y colabora: $colabora. ($hoy)" . $request->input('convocatoria_id'));
+            $errores .= " Eexcede el numero de particiapcinoes, tiene: $tiene y colabora: $colabora. ($hoy)" . $request->input('convocatoria_id');
             $puede = false;
         }
 
         if($puede) {
             Proyecto::create($parametros);
             $Retornar = array('status' => 'alert alert-success', 'mensaje' => 'El proyecto ha sido registrado.');
+        }else{
+            $Retornar = array('status' => 'alert alert-danger', 'mensaje' => $errores );
+
         }
+
         return response()->json($Retornar);
     }
 

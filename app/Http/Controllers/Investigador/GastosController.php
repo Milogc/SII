@@ -70,17 +70,36 @@ class GastosController extends Controller
         $Gastos->cronograma_id=$request->input('cronograma_id');
         $Gastos->proyecto_id=$request->input('proyecto_id');
         $Gastos->save();
-        $Retornar=$Gastos;
-        return response()->json($Retornar);
+
+        $totales = DB::table('gastos')
+                ->select( DB::raw('SUM(monto) as monto'))
+                ->where('proyecto_id',$request->input('proyecto_id'))
+                ->get();
+
+
+        $arr=$Gastos->toArray();
+        $arr['total'] = $totales;
+
+        return json_encode($arr);
+
     }
 
 
     public function eliminar(Request $request)
     {
-        $Cronograma = Gastos::find( $request->input('gasto_id') );
-        $Cronograma->delete();
-        $arrayName = array('id' =>  $request->input('gasto_id'),  'actividad_id' =>  $request->input('actividad_id') );
-        return response()->json( $arrayName );
+        $Gastos = Gastos::find( $request->input('gasto_id') );
+        $Gastos->delete();
+
+        $totales = DB::table('gastos')
+        ->select( DB::raw('SUM(monto) as monto'))
+        ->where('proyecto_id', $Gastos->proyecto_id )
+        ->get();
+
+        $arr=$Gastos->toArray();
+        $arr['total'] = $totales;
+
+
+        return response()->json( $arr );
     }
 
 }

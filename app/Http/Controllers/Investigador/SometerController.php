@@ -11,7 +11,7 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 
-//use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\DB;
 //use Illuminate\Support\Facades\Auth;
 
 
@@ -24,6 +24,9 @@ use App\Models\Cronograma;
 use App\Models\User;
 
 use App\Models\Vinculacion;
+
+use App\Models\RestriccionesR;
+
 //use App\Models\User;
 
 class SometerController extends Controller
@@ -78,8 +81,10 @@ metodologia, referencias, lugar, infraestrucutura
     $validacion["Colaboradores"]["categoria"] = "Colaboradores:";
     $todos=true;
     $acep="<ul>";
+    $cuantos=0;
     foreach($Colaboradores as $colaborador){
         $quien = $colaborador->quien;
+        $cuantos++;
         if ( $colaborador->participacion == null){
             $acep .= "<li>$quien->name aún no acepta</li>";
             $todos=false;
@@ -88,14 +93,33 @@ metodologia, referencias, lugar, infraestrucutura
         }
     }
     $acep .= "</ul>";
+
     if($todos) {
-        $validacion["Colaboradores"]["resultado"] = "alert-success";
-        $validacion["Colaboradores"]["mensaje"] = $acep;
+            //////RESTRICCION DE MAXIMO Y MINIMO DE COLABORADORES
+            $Maximo = RestriccionesR::find(7);
+            $Minimo = RestriccionesR::find(8);
+
+            if($cuantos <  $Minimo->valor ) {
+                $validacion["Colaboradores"]["resultado"] = "alert-danger";
+                $validacion["Colaboradores"]["mensaje"] = "Este proyecto no cuenta con los colaboradores suficientes";
+                $puede = false;
+            }elseif($cuantos >  $Maximo->valor ) {
+                $validacion["Colaboradores"]["resultado"] = "alert-danger";
+                $validacion["Colaboradores"]["mensaje"] = "Este proyecto exede en numero de colaboradores";
+                $puede = false;
+            }else{
+                $validacion["Colaboradores"]["resultado"] = "alert-success";
+                $validacion["Colaboradores"]["mensaje"] = $acep;
+            }
     }else{
         $validacion["Colaboradores"]["resultado"] = "alert-danger";
         $validacion["Colaboradores"]["mensaje"] = $acep;
         $puede = false;
     }
+
+
+
+
 //3. Entregables
     $Entregables = $proyecto->entregables;
     $validacion["Entregables"]["categoria"] = "Entregables:";
@@ -117,6 +141,7 @@ metodologia, referencias, lugar, infraestrucutura
         $puede = false;
     }
 //4. Cronograma
+
     $Actividades = $proyecto->actividades;
     $validacion["Actividades"]["categoria"] = "Actividades:";
     $cuantos=0;
@@ -127,22 +152,48 @@ metodologia, referencias, lugar, infraestrucutura
         $cuantos++;
     }
     $acep .= "</tbody></table>";
+
+
+
+
+    $entregables_sin_activiad = 0;
+    $entregables_sin_activiad = DB::table('entregables')
+                ->where('proyecto_id', '=' , $idproy )
+                ->whereRaw('id not in (SELECT DISTINCT IFNULL(entregables_id,0) FROM cronograma where proyecto_id = ?)', [$idproy])
+                ->count();
+
     if($cuantos!=0) {
         $validacion["Actividades"]["resultado"] = "alert-success";
         $validacion["Actividades"]["mensaje"] = $acep;
+        if($entregables_sin_activiad>0) {
+            $validacion["Actividades"]["resultado"] = "alert-danger";
+            $validacion["Actividades"]["mensaje"] = "Este proyecto tiene $entregables_sin_activiad entregables sin que se les asigne actividades";
+            $puede = false;
+            
+        }else{
+            $validacion["Actividades"]["resultado"] = "alert-success";
+            $validacion["Actividades"]["mensaje"] = $acep . " " . $entregables_sin_activiad ;
+
+        }
+
+
     }else{
         $validacion["Actividades"]["resultado"] = "alert-danger";
         $validacion["Actividades"]["mensaje"] = "Este proyecto no tiene actividades";
         $puede = false;
     }
+
+
 //5. Presupuesto (financiado)
     $Gastos = $proyecto->gastos;
     $validacion["Financiamiento"]["categoria"] = "Financiamiento:";
     $cuantos=0;
+    $total=0;
     $acep="<table border='1'><thead><th>DESCRIPCION</th><th>MONTO</th></thead><tbody>";
     foreach($Gastos as $gasto){
         $acep .= "<tr><td>$gasto->descripcion</td><td>$gasto->monto</td><tr>";
         $cuantos++;
+        $total+=$gasto->monto;
     }
     $acep .= "</tbody></table>";
     if( $proyecto->financiado == 0 ){
@@ -151,20 +202,42 @@ metodologia, referencias, lugar, infraestrucutura
         $validacion["Financiamiento"]["mensaje"] = "Este proyecto no es financiado por lo que no importa si tiene o no gastos";
 
     }else{
+
         if($cuantos!=0) {
-            $validacion["Financiamiento"]["resultado"] = "alert-success";
-            $validacion["Financiamiento"]["mensaje"] = $acep;
+            //////RESTRICCION DE MONTO MAXIMO
+            $Restricciones = RestriccionesR::find(6);
+            if($total >  $Restricciones->valor ) {
+                $validacion["Financiamiento"]["resultado"] = "alert-danger";
+                $validacion["Financiamiento"]["mensaje"] = "Este proyecto exede del monto a financiar";
+                $puede = false;
+            }else{
+                $validacion["Financiamiento"]["resultado"] = "alert-success";
+                $validacion["Financiamiento"]["mensaje"] = $acep;                
+            }
         }else{
             $validacion["Financiamiento"]["resultado"] = "alert-danger";
             $validacion["Financiamiento"]["mensaje"] = "Este proyecto es financiado y no tiene gastos";
             $puede = false;
         }
     }
+
+
+
+
+
 //6. Vinculacion
     $validacion["Vinculacion"]["categoria"] = "Vinculacion:";
     $validacion["Vinculacion"]["resultado"] = "alert-warning";
+
     if($proyecto->vinculacion=="") {
-        $validacion["Vinculacion"]["mensaje"] = "Este proyecto no presenta carta de vinculacion";
+        if($proyecto->tvinculacion!=""){
+            $validacion["Vinculacion"]["resultado"] = "alert-danger";
+            $validacion["Vinculacion"]["mensaje"] = "Este proyecto no presenta carta de vinculacion pero dice tener vinculacion";
+            $puede = false;
+        }else{
+            $validacion["Vinculacion"]["resultado"] = "alert-success";
+            $validacion["Vinculacion"]["mensaje"] = "Este proyecto no presenta carta de vinculacion pero no dice tener vinculacion";
+        }
     }else{
         $validacion["Vinculacion"]["resultado"] = "alert-success";
         $validacion["Vinculacion"]["mensaje"] = "Este proyecto presenta carta de vinculacion";
@@ -189,8 +262,25 @@ metodologia, referencias, lugar, infraestrucutura
     public function update(Request $request, $idproy)
     {
         $fechaSometido = new \DateTime(); // Today
+        $archivo_01 = $request->file('archivo_01');
+        $archivo_02 = $request->file('archivo_01');
+        $extension01 = "";
+        $extension02 = "";
+        $extension01 = $archivo_01->getClientOriginalExtension();
+        $extension02 = $archivo_02->getClientOriginalExtension();
+        $fileName01 = $idproy . '_ci01' . '.' . $extension01;
+        $fileName02 = $idproy . '_ci02' . '.' . $extension02;
+        $path01 = Storage::putFileAs(
+            '', $request->file('archivo_01'), $fileName01
+        );
+        $path02 = Storage::putFileAs(
+            '', $request->file('archivo_02'), $fileName02
+        );
+
         $proyecto= Proyecto::find($idproy);
         $proyecto->sometido = $fechaSometido->format('Y-m-d');
+        $proyecto->c101 = $path01;
+        $proyecto->ci02 = $path02;
         $proyecto->save();
        return redirect('home')->with('success', "El proyecto \"$proyecto->titulo\" ha sido sometido en fecha \"$proyecto->sometido\".");
     }

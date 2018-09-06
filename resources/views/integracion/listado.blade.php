@@ -65,8 +65,19 @@
                     </button>
                     <div class="dropdown-menu">
                       <ol>
-                        <li><a class="drowpdown-item" href="{{action('DocumentosController@ci01', $proyecto['id'])}}">CI-01</a></li>
-                        <li><a class="drowpdown-item" href="{{action('DocumentosController@ci02', $proyecto['id'])}}">CI-02</a></li>
+                        @if($proyecto['ci01'] != "")
+                        <li><a class="drowpdown-item" href="{{action('DocumentosController@dci01', $proyecto['id'])}}">CI-01</a></li>
+                        @else
+                        <li><a class="drowpdown-item bg-danger text-white" href="{{action('DocumentosController@ci01', $proyecto['id'])}}">CI-01</a></li>
+                        @endif
+
+                        @if($proyecto['ci02'] != "")
+                        <li><a class="drowpdown-item" href="{{action('DocumentosController@dci02', $proyecto['id'])}}">CI-02</a></li>
+                        @else
+                        <li><a class="drowpdown-item bg-danger text-white" href="{{action('DocumentosController@ci02', $proyecto['id'])}}">CI-02</a></li>
+                        @endif
+
+
                         @if($proyecto['vinculacion'] != "")
                         <li><a href="{{action('DocumentosController@vinculacion', $proyecto['id'])}}">Vinculacion</a></li>
                         @endif

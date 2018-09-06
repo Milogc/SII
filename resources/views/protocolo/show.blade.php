@@ -27,7 +27,7 @@
           @foreach($partes as $parte)
 
             <div class="tab-pane fade @if($loop->first) active show @endif" id="t{{$parte->campo}}" role="tabpanel" aria-labelledby="v-pills-home-tab">
-              <textarea class="form-control" name="{{$parte->campo}}" id="{{$parte->campo}}" rows="8" cols="30" maxlength="{{$parte->valor}}">{{ $protocolo["$parte->campo"] }}</textarea>
+              <textarea class="form-control" name="{{$parte->campo}}" id="{{$parte->campo}}" rows="20" cols="30" maxlength="{{$parte->valor}}">{{ $protocolo["$parte->campo"] }}</textarea>
               <div class="alert alert-info col-4" id="l{{$parte->campo}}" role="alert"></div>
             </div>
           @endforeach

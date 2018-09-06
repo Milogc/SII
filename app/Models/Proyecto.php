@@ -15,9 +15,6 @@ class Proyecto extends Model
     protected $table='proyecto';
 //    public $timestamps =false;
 
-
-
-
    protected $fillable = [
     'titulo', 'financiado', 'nombre_ies', 'pe', 'area', 
     'linea', 'fecha_inicio', 'fecha_fin', 

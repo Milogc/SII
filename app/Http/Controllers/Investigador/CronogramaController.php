@@ -15,6 +15,7 @@ use App\Models\Cronograma;
 
 
 
+
 class CronogramaController extends Controller
 {
     public function __construct()
@@ -59,17 +60,14 @@ class CronogramaController extends Controller
 //    <!--   id, actividad, fecha_inicio, fecha_fin, monto, proyecto_id, entregables_id  -->
 
         $Cronograma  = new Cronograma();
-        $Cronograma->actividad=$request->input('actividad');
-        $Cronograma->fecha_inicio=$request->input('fecha_inicio');
-        $Cronograma->fecha_fin=$request->input('fecha_fin');
-
-        $Cronograma->proyecto_id=$request->input('proyecto_id');
-        if($request->input('entregables_id')!="")
-            $Cronograma->entregables_id=$request->input('entregables_id');
+        $Cronograma->fill($request->all());
         $Cronograma->save();
 
-        $Retornar=$Cronograma;
-        return response()->json($Retornar);
+
+        $arr=$Cronograma->toArray();
+        $arr['entregable'] = $Cronograma->entregable->descripcion;
+        return json_encode($arr);
+
     }
 
 

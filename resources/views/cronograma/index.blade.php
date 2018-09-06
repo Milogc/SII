@@ -36,7 +36,7 @@
   </table>
   <!-- Button trigger modal -->
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#activiadesModal">
-    Agregar un entregable
+    Agregar una actividad
   </button>
   </div>
 <!-- Modal -->

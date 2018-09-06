@@ -68,16 +68,25 @@
           Titulo del proyecto:
           <br>
           <b>{{$proyecto->titulo}}</b>
-          </td>
-          </tr>
-            <tr>
-          <td colspan="2">
-            Tipo de investigación: <b>{{$proyecto->tipo_investigacion}}</b>
-            <br>
-            Area del conocimiento: <b>{{$proyecto->area}}</b>
-            <br>
-            Durcion del proyecto: <b>{{$proyecto->fecha_inicio}} al {{$proyecto->fecha_fin}}</b>
-          </td>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          Tipo de investigación: <b>{{$proyecto->tipo_investigacion}}</b>
+          <br>
+          Area del conocimiento: <b>{{$proyecto->area}}</b>
+          <br>
+          Durcion del proyecto: <b>{{$proyecto->fecha_inicio}} al {{$proyecto->fecha_fin}}</b>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          Programa eductativo: <b>{{$proyecto->programa_educativo->programa}}</b>
+          <br>
+          Nivel: <b>{{$proyecto->programa_educativo->nivel}}</b>
+          <br>
+          Linea de investigacion: <b>{{$proyecto->linea}}</b>
+        </td>
       </tr>
     </table>
     <br>

@@ -63,6 +63,8 @@ Route::get('pdfci01/{idpro}','DocumentosController@ci01');
 Route::get('pdfci02/{idpro}','DocumentosController@ci02');
 Route::get('pdfvinc/{idpro}','DocumentosController@vinculacion');
 Route::get('pdfaval/{idpro}','DocumentosController@aval');
+Route::get('pdfdci01/{idpro}','DocumentosController@dci01');
+Route::get('pdfdci02/{idpro}','DocumentosController@dci02');
 
 
 //Rutas del 'Coordinador'

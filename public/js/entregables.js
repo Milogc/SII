@@ -35,13 +35,14 @@ function agregar(){
         success: function (data) {
                         $('#frmentregables').trigger("reset");
                         console.log("regreso en agregar:",data);
+                        if(data.error ) {alert(data.error); return;}
             // if (data.participacion == null ) 
             //     data.participacion = "Aún no acepta";
             // else 
             //     data.participacion = "Acepto";
              var linea = '<tr id="entregable_' + data.id + '"><td>' + data.tipo + '</td><td>' + data.cuantos + '</td><td>' + data.descripcion + '</td>';
              linea += '<td><button class="btn btn-danger btndel" value="' + data.id + '">Eliminar</button></td></tr>';
-             $('#entregables-list').append(linea);
+             $('#entregables-list > tbody').append(linea);
         //    $('#frmcolaboradores').trigger("reset");
         //    $('#colaboradoresModal').modal('hide');
         },

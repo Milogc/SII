@@ -12,10 +12,11 @@ class RestriccionesR extends Model
    protected $fillable = [ 'descripcion'];
 
 
+/*
 	public function restricciones()
 	{
 	    return $this->hasMany('App\Models\RestriccionesDesgloce');
 	}        
-
+*/
 
 }
