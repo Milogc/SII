@@ -84,7 +84,7 @@
           <br>
           Area del conocimiento: <b>{{$proyecto->area}}</b>
           <br>
-          Durcion del proyecto: <b>{{$proyecto->fecha_inicio}} al {{$proyecto->fecha_fin}}</b>
+          Ejercicio del proyecto: <b>{{ $proyecto->ejercicio()}} </b>
         </td>
       </tr>
       <tr>

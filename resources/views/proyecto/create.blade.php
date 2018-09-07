@@ -72,11 +72,11 @@
         <div class="row">
           <div class="form-group col-md-6">
             <label for="fecha_inicio">Fecha de inicio:</label>
-            <input type="date" class="form-control" name="fecha_inicio" required>
+            <input type="month" class="form-control" name="fecha_inicio" id="fecha_inicio" required>
           </div>
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-6" id="fecha_fin">
             <label for="fecha_fin">Fecha de fin:</label>
-            <input type="date" class="form-control" name="fecha_fin" required>
+            <input type="date" class="form-control" name="fecha_fin" >
           </div>
         </div>
         <div class="row">
@@ -115,6 +115,9 @@
 
 @section('styles')
 <style>
+#fecha_fin {
+   display: none;
+}
 input:invalid{
   border-color:red;
   border-width: 10px;

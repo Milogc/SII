@@ -57,4 +57,10 @@ class Proyecto extends Model
 		return 
 		   $this->hasOne('App\Models\Programa_educativo', 'id', 'pe');
 	}
+
+	public function Ejercicio(){
+
+		return substr($this->fecha_inicio, 0,4);
+	}
+
 }

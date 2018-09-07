@@ -83,7 +83,7 @@ class ProyectoController extends Controller
         ob_start();
         print_r($request->all());
         $result = ob_get_clean();
-        $errores .=  $result;
+//        $errores .=  $result;
 
         //////RESTRICCIONES
 // 1 Proyectos financiados por línea de investigación
@@ -163,8 +163,9 @@ class ProyectoController extends Controller
         // $proyecto->responsable=$request->get('director');
         // $proyecto->convocatoria_id = $request->get('id_conv');
         // $proyecto->save();
-        Proyecto::create($request->all());
-        return redirect('home')->with('success', 'Information ha sido agregada');
+        $proyecto = Proyecto::create($request->all());
+        return response()->json($proyecto);
+//        return redirect('home')->with('success', 'Information ha sido agregada');
     }
 
 

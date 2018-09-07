@@ -42,7 +42,10 @@ function especial(){
         headers: { 'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')  },
         success: function (data) {
             console.log("regreso al agregar:",data);
-            alert("Regreso");
+            $('#sucedio').removeClass()
+            $('#sucedio').text("Proyeto con título: '" + data.titulo + "' fue agregado.");
+            $('#sucedio').addClass("alert-warning");
+//            alert("Regreso");
         },
         error: function (data) {
             console.log('Error:', data);

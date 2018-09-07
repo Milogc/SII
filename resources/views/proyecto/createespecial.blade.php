@@ -1,8 +1,9 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
-      <h2>Información básica del proyecto</h2><br/>
-      <form method="post" action="{{url('proyectoespecial')}}" enctype="multipart/form-data">
+      <div id="sucedio">
+      </div>      
+      <form method="post" action="{{url('proyectoespecial')}}" enctype="multipart/form-data" id="frmproyecto">
         @csrf
         <div class="row">
           <div class="form-group col-md-12">
@@ -71,9 +72,9 @@
         <div class="row">
           <div class="form-group col-md-6">
             <label for="fecha_inicio">Fecha de inicio:</label>
-            <input type="date" class="form-control" name="fecha_inicio">
+            <input type="month" class="form-control" name="fecha_inicio">
           </div>
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-6" id="fecha_fin">
             <label for="fecha_fin">Fecha de fin:</label>
             <input type="date" class="form-control" name="fecha_fin">
           </div>
@@ -103,4 +104,32 @@
         </div>
       </form>
     </div>
+@endsection
+@section('sctipts')
+<script language="javascript">
+  $(document).ready(function(){
+    $("#btnadd").click(especial);    
+  });       
+</script>
+<script src="{{asset('js/proyectos.js')}}"></script>
+@endsection
+
+@section('breadcrumb')
+  <li class="breadcrumb-item active" aria-current="page">AGREGAR UN PROYECTO ESPECIAL</li>
+@endsection
+
+
+@section('styles')
+<style>
+#fecha_fin {
+   display: none;
+}
+input:invalid{
+  border-color:red;
+  border-width: 10px;
+}
+input:valid{
+ border-color:blue; 
+}
+</style>
 @endsection
