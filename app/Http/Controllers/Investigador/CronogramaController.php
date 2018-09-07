@@ -36,8 +36,8 @@ class CronogramaController extends Controller
             ->where('proyecto_id',$idproy)
             ->get();
 
-        $actividades =Cronograma::orderBy('fecha_inicio','ASC')
-                        ->orderBy('fecha_fin','ASC')
+        $actividades =Cronograma::orderBy('fecha_inicio','DESC')
+//                        ->orderBy('fecha_fin','DESC')
                         ->where('proyecto_id',$idproy)
                         ->get();
 //       $actividades = Cronograma::all()

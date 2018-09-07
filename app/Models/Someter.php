@@ -10,15 +10,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Proyecto extends Model
+class Someter extends Model
 {
     protected $table='proyecto';
 //    public $timestamps =false;
 
    protected $fillable = [
-    'titulo', 'financiado', 'nombre_ies', 'pe', 'area', 
-    'linea', 'fecha_inicio', 'fecha_fin', 
-    'convocatoria_id', 'responsable', 'tipo_investigacion'];
+    'ci01', 'ci02', 'sometido'];
 
 	public function convocatoria(){
 		return 
@@ -49,8 +47,7 @@ class Proyecto extends Model
 
 	public function actividades()
 	{
-	    return $this->hasMany('App\Models\Cronograma')->orderBy('fecha_inicio', 'asc');
-
+	    return $this->hasMany('App\Models\Cronograma');
 	}        
 
 	public function programa_educativo(){

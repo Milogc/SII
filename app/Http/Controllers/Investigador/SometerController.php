@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\DB;
 
 
 use App\Models\Proyecto;
+use App\Models\Someter;
 use App\Models\Convocatoria;
 use App\Models\Colaboradores;
 use App\Models\Entregables;
@@ -261,28 +262,38 @@ metodologia, referencias, lugar, infraestrucutura
 
     public function update(Request $request, $idproy)
     {
+
+        $request->validate([
+            'ci_01' => 'required|file|max:1024',
+            'ci_02' => 'required|file|max:1024',
+
+        ]);
+
+
         $fechaSometido = new \DateTime(); // Today
-        $archivo_01 = $request->file('archivo_01');
-        $archivo_02 = $request->file('archivo_01');
+       // ob_start();
+//        var_dump( $request->all());
+        //$result = ob_get_clean();
         $extension01 = "";
         $extension02 = "";
-        $extension01 = $archivo_01->getClientOriginalExtension();
-        $extension02 = $archivo_02->getClientOriginalExtension();
+        $extension01 = $request->file('ci_01')->getClientOriginalExtension();
+        $extension02 = $request->file('ci_02')->getClientOriginalExtension();
         $fileName01 = $idproy . '_ci01' . '.' . $extension01;
         $fileName02 = $idproy . '_ci02' . '.' . $extension02;
         $path01 = Storage::putFileAs(
-            '', $request->file('archivo_01'), $fileName01
+            '', $request->file('ci_01'), $fileName01
         );
         $path02 = Storage::putFileAs(
-            '', $request->file('archivo_02'), $fileName02
+            '', $request->file('ci_02'), $fileName02
         );
 
-        $proyecto= Proyecto::find($idproy);
+        $proyecto= Someter::find($idproy);
         $proyecto->sometido = $fechaSometido->format('Y-m-d');
-        $proyecto->c101 = $path01;
+        $proyecto->ci01 = $path01;
         $proyecto->ci02 = $path02;
         $proyecto->save();
-       return redirect('home')->with('success', "El proyecto \"$proyecto->titulo\" ha sido sometido en fecha \"$proyecto->sometido\".");
+        return redirect('home')->with('success', "El proyecto \"$proyecto->titulo\" ha sido sometido en fecha \"$proyecto->sometido\".");
+          //   return redirect('home')->with('success', "$result");
     }
 
 

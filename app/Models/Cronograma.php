@@ -26,7 +26,15 @@ class Cronograma extends Model
 	public function gastos()
 	{
 	    return $this->hasMany('App\Models\Gastos');
-	}        
+	}
 
-
+	public function total()
+	{
+			$suma=0;
+	    $gastos = $this->gastos;
+      foreach ($gastos as $gasto) {
+        $suma += $gasto->monto;
+      }
+      return $suma;
+	}
 }

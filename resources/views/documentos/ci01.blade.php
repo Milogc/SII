@@ -4,8 +4,17 @@
     <meta charset="utf-8">
     <title></title>
     <style media="screen">
-      header { position: fixed; top: 0px; left: 0px;}
-      footer { position: fixed; bottom: 0px; left: 0px;}
+          html {
+        margin: 0;
+      }
+      body {
+      font-family: "Times New Roman", serif;
+      margin: 15mm 8mm 2mm 8mm;
+      }
+    header { position: fixed; top: 5mm; left: 5mm;}
+    footer { position: fixed; bottom: 05mm; left: 0mm;}
+
+
       footer .pagenum:before {
         content: counter(page);
       }
@@ -38,8 +47,6 @@
         border-left: 1px solid ;
         text-align: center;
       }
-
-
     </style>
   </head>
   <body>
@@ -48,6 +55,7 @@
         <span><?php echo date('d/m/Y h:i:s a');?></span>
         <div style="float: right ; text-align: right" class="pagenum-container">Pagina: <span class="pagenum"></span></div>
     </footer>
+
     <h3>FORMATO CONCENTRADOR DE SOLCITUD DE APOYO ECONÓMICO</h3>
     <h3>(CI-01/{{$proyecto->fecha_inicio}})</h3>
     <table>
@@ -232,10 +240,7 @@
     </tr>
   </thead>
   <tbody>
-    @php
-      $gastos = $proyecto->gastos;
-    @endphp
-    @foreach ($gastos as $gasto)
+    @foreach ($proyecto->gastos as $gasto)
       <tr>
          <td>
           Partida: {{$gasto->partida}}<br>
@@ -327,18 +332,13 @@
 <br>
 <br>
 <br>
-
-
   <div style="position:relative; left:2%;">
     <div class="caja" style=" width:45%;">
-
             Profesor Investigador Responsable:
-
       <br>
       <br>
       <br>
       <br>
-
       Nombre y firma
     </div>
   <div class="caja" style=" width:45%;">
@@ -356,4 +356,5 @@
 
 </div>
   </body>
+
 </html>

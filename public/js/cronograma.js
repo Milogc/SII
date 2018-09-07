@@ -37,18 +37,19 @@ function agregar(){
                         $('#frmactiviades').trigger("reset");
                         console.log("regreso en agregar:",data);
 //# ACTIVIDAD   PERIODO MONTO   ENTREGABLE  ELIMINAR
-            // if (data.participacion == null ) 
-            //     data.participacion = "Aún no acepta";
-            // else 
-            //     data.participacion = "Acepto";
-             var linea = '<tr id="actividad_' + data.id + '"><td>' + data.actividad + '</td><td>' + data.fecha_inicio + ' a '   + data.fecha_inicio + '</td>';
+                        // if (data.participacion == null ) 
+                        //     data.participacion = "Aún no acepta";
+                        // else 
+                        //     data.participacion = "Acepto";
+                        var linea = '<tr id="actividad_' + data.id + '"><td>' + data.actividad + '</td><td>' + data.fecha_inicio + ' a '   + data.fecha_inicio + '</td>';
+                        linea += '<td>' + data.entregable +'</td>';
+                        linea += '<td><button class="btn btn-danger btndel" value="' + data.id + '">Eliminar</button></td></tr>';
 
-                 linea += '<td>' + data.entregable +'</td>';
-
-             linea += '<td><button class="btn btn-danger btndel" value="' + data.id + '">Eliminar</button></td></tr>';
-             $('#actividades-list > tbody').append(linea);
-        //    $('#frmcolaboradores').trigger("reset");
-        //    $('#colaboradoresModal').modal('hide');
+                        var columnas = $('#actividades-list > tbody > tr > td').prop( "colspan");
+                        if (columnas==4){
+                        $('#actividades-list > tbody').empty();
+                        }
+                        $('#actividades-list > tbody').append(linea);
         },
         error: function (data) {
             console.log('Error:', data);

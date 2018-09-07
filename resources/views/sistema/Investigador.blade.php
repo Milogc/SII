@@ -135,9 +135,18 @@ id, actividad, fecha_inicio, fecha_fin, monto, proyecto_id, entregables_id
                     </button>
                     <div class="dropdown-menu">
                       <ol>
-
+                        @if($proyecto['ci01'] != "")
                         <li><a class="drowpdown-item" href="{{action('DocumentosController@dci01', $proyecto['id'])}}">CI-01</a></li>
+                        @else
+                        <li><a class="drowpdown-item" href="{{action('DocumentosController@ci01', $proyecto['id'])}}">CI-01</a></li>
+                        @endif
+                        @if($proyecto['di02'] != "")
                         <li><a class="drowpdown-item" href="{{action('DocumentosController@dci02', $proyecto['id'])}}">CI-02</a></li>
+                        @else
+                        <li><a class="drowpdown-item" href="{{action('DocumentosController@ci02', $proyecto['id'])}}">CI-02</a></li>
+                        @endif
+
+
                         @if($proyecto['vinculacion'] != "")
                         <li><a href="{{action('DocumentosController@vinculacion', $proyecto['id'])}}">Vinculacion</a></li>
                         @endif
@@ -166,8 +175,16 @@ id, actividad, fecha_inicio, fecha_fin, monto, proyecto_id, entregables_id
                             </button>
                             <div class="dropdown-menu">
                               <ol>
+                                @if($proyecto['ci01'] != "")
+                                <li><a class="drowpdown-item" href="{{action('DocumentosController@dci01', $proyecto['id'])}}">CI-01</a></li>
+                                @else
                                 <li><a class="drowpdown-item" href="{{action('DocumentosController@ci01', $proyecto['id'])}}">CI-01</a></li>
+                                @endif
+                                @if($proyecto['di02'] != "")
+                                <li><a class="drowpdown-item" href="{{action('DocumentosController@dci02', $proyecto['id'])}}">CI-02</a></li>
+                                @else
                                 <li><a class="drowpdown-item" href="{{action('DocumentosController@ci02', $proyecto['id'])}}">CI-02</a></li>
+                                @endif
                                 @if($proyecto['vinculacion'] != "")
                                 <li><a href="{{action('DocumentosController@vinculacion', $proyecto['id'])}}">Vinculacion</a></li>
                                 @endif

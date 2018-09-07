@@ -42,26 +42,44 @@
       <li><a href="{{action('DocumentosController@ci02', $proyecto['id'])}}">CI-02</a></li>
     </ul>
 
-
+            <div class="card">
+                <div class="card-header">Someter</div>
+                <div class="card-body">
+                    @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            Revisa:<br><br>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
     <form method="post" action="{{action('Investigador\SometerController@update', $proyecto->id)}}" enctype="multipart/form-data" >  
       {{ csrf_field() }}
+      <input type="hidden" name="fgh" id="asd" value = "otro">
       <div class="row">
         <div class="form-group col-12">
             <lable>CI-01 firmado:</label>
-            <input  class="form-control" id="archivo_01" type="file"  accept=".pdf" >
+            <input  class="form-control" id="ci_01" name="ci_01" type="file"  accept=".pdf" required >
+            <small id="fileHelp" class="form-text text-muted">Por favor use un archivo con formato pdf, no debe ser mayor a  2MB.</small>
         </div>
       </div> <!-- row -->
       <div class="row">
         <div class="form-group col-12">
             <lable>CI-02 firmado:</label>
-            <input  class="form-control" id="archivo_02" type="file"  accept=".pdf" >
+            <input  class="form-control" id="ci_02" name="ci_02" type="file"  accept=".pdf" required >
+            <small id="fileHelp" class="form-text text-muted">Por favor use un archivo con formato pdf, no debe ser mayor a  2MB.</small>
         </div>
       </div> <!-- row -->
-
         <button type="submit" class="btn btn-success" value="Submit">Someter</button>
     </form>
-  @endif
+    </div>
 </div>
+</div>
+</div>
+
+  @endif
 
 
 
@@ -99,3 +117,4 @@ input:valid{
 }
 </style>
 @endsection
+

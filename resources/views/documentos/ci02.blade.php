@@ -5,11 +5,23 @@
     <meta charset="utf-8">
     <title></title>
     <style media="screen">
-    header { position: fixed; top: 0px; left: 0px;}
-    footer { position: fixed; bottom: 0px; left: 0px;}
+      html {
+        margin: 0;
+      }
+      body {
+      font-family: "Times New Roman", serif;
+      margin: 15mm 8mm 2mm 8mm;
+      }
+
+    header { position: fixed; top: 5mm; left: 5mm;}
+    footer { position: fixed; bottom: 05mm; left: 0mm;}
     footer .pagenum:before {
       content: counter(page);
     }
+    footer .pagenums:before {
+      content: counters(page_count);
+    }
+
       h3{
         text-align: center;
         font-weight: bold;
@@ -28,9 +40,10 @@
         text-align: center;
       }
       tbody {
-        padding: 5px;
         text-align: left;
       }
+
+
     </style>
   </head>
   <body>
@@ -113,7 +126,6 @@
 <article>
  <p><b>1.9 Programa de actividades, calendarización y presupuesto solicitado</b></p>
 <table>
-  <thead>
     <tr>
       <th>No.</th>
       <th>Actividad</th>
@@ -121,30 +133,15 @@
       <th>Periodo de realizacion</th>
       <th>Monto</th>
     </tr>
-  </thead>
-  <tbody>
-    @php
-      $actividades = $proyecto->actividades;
-    @endphp
-    @foreach ($actividades as $actividad)
+@foreach ($proyecto->actividades as $actividad)
       <tr>
-         <td>{{$loop->iteration}}</td>
+        <td>{{$loop->iteration}}</td>
         <td>{{$actividad['actividad']}}</td>
         <td>{{$actividad->entregable->descripcion}}</td>
-         <td>{{$actividad->fecha_inicio}} a {{$actividad->fecha_fin}}</td>
-         @php
-            $suma = 0;
-            $gastos=$actividad->gastos;
-            foreach ($gastos as $gasto) {
-              $suma += $gasto->monto;
-            }
-         @endphp
-        <td style="text-align: right">
-          $ {{$suma}}
-        </td>
-     </tr>
-    @endforeach
-  </tbody>
+        <td>{{$actividad->fecha_inicio}} a {{$actividad->fecha_fin}}</td>
+        <td style="text-align: right">$ {{ $actividad->total() }}</td>
+      </tr>
+@endforeach
 </table>
 </article>
 <article>
