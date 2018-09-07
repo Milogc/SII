@@ -147,12 +147,22 @@
   </tbody>
 </table>
 </article>
+<article>
 <p><b>1.10 Vinculación</b></p>
 <p>{{$proyecto->tvinculacion}}</p>
 <p> NOTA: @if($proyecto->vinculacion=="") {{"NO "}} @else {{"Si "}} @endif presenta carta de vinculación</p>
 </article>
+<article>
 <p><b>1.11 Referencias</b></p>
 <p>{{$proyecto->referencias}}</p>
+</article>
+<article>
+<p><b>1.12 Lugar donde se realizará</b></p>
+<p>{{$proyecto->lugar}}</p>
+</article>
+<article>
+<p><b>1.13 Infraestructura</b></p>
+<p>{{$proyecto->infraestructura}}</p>
 </article>
 
     <div style=" border: 1px solid black; float: right ; width:50%">
