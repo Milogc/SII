@@ -29,3 +29,6 @@
 
   </div>
 @endsection
+@section('breadcrumb')
+  <li class="breadcrumb-item active" aria-current="page">SECCIONES Y LOGINTUDES DEL PROTOCOLO</li>
+@endsection

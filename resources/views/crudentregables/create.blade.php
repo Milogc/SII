@@ -8,20 +8,17 @@
       @csrf
       <div class="row">
         <div class="form-group col-lg-12">
-          <label for="name">Entregables:</label>
+          <label for="name">Descripcion:</label>
           <input type="text" class="form-control" name="descripcion" required>
         </div>
       </div>
       <div class="row">
         <div class="form-group col-lg-12">
-                            <label for="tipo">Tipo</label>
-                            <div class="col-md-6">
-                                <select  class="form-control" name="tipo">
-                                   <option>ACADEMICO</option>
-                                   <option>HUMANO</option>
-                                </select>
-                            </div>
-                        </div>
+          <label for="name">Tipo:</label>
+          <select class="form-control" name="tipo">
+            <option value="ACADEMICO">ACADEMICO</option>
+            <option value="HUMANO" selected="selected">HUMANO</option>
+          </select>
         </div>
       </div>
       <div class="row">
@@ -32,3 +29,6 @@
 
     </form>
   @endsection
+@section('breadcrumb')
+  <li class="breadcrumb-item active" aria-current="page">PRODUCTOS QUE PUEDEN ENTREGAR LOS INVESTIGADORES</li>
+@endsection

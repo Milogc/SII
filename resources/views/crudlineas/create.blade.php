@@ -2,13 +2,11 @@
 @section('content')
 
   <div class="container">
-    <h2>Lineas </h2><br/>
     <form method="post" action="{{url('crudlineas')}}" enctype="multipart/form-data">
-
       @csrf
       <div class="row">
         <div class="form-group col-lg-12">
-          <label for="name">Lineas a integrar:</label>
+          <label for="name">Linea:</label>
           <input type="text" class="form-control" name="linea" required>
         </div>
       </div>
@@ -21,3 +19,6 @@
 
     </form>
   @endsection
+@section('breadcrumb')
+  <li class="breadcrumb-item active" aria-current="page">AGREGAR LINEA DE INVESTIGACION</li>
+@endsection

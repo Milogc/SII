@@ -35,3 +35,6 @@
 
   </div>
 @endsection
+@section('breadcrumb')
+  <li class="breadcrumb-item active" aria-current="page">LINEAS DE INVESTIGACION REGISTRADAS</li>
+@endsection

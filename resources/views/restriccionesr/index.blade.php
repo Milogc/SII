@@ -28,3 +28,6 @@
 
   </div>
 @endsection
+@section('breadcrumb')
+  <li class="breadcrumb-item active" aria-current="page">RESTRICCIONES PARA REGISTRAR</li>
+@endsection

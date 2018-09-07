@@ -34,7 +34,8 @@
   </table>
 
   </section>
-
   </div>
-
+@endsection
+@section('breadcrumb')
+  <li class="breadcrumb-item active" aria-current="page">LISTADO DE PROGRAMAS EDUCATIVOS A LOS QUE PUEDE PERTENER UN PROYECTO</li>
 @endsection

@@ -12,7 +12,12 @@
         <label for="name">Actualizar Programa Educativo:</label>
             <input type="text" class="form-control" name="programa" value="{{$programaeducativo->programa}}">
           <br>
-            <input type="text" class="form-control" name="nivel" value="{{$programaeducativo->nivel}}">
+            <select class="form-control" name="nivel" value="{{$programaeducativo->nivel}}">
+              <option value="Licenciatura" selected="selected">Licenciatura</option>
+              <option value="Maestria">Maestria</option>
+              <option value="Doctorado">Doctorado</option>
+            </select>
+
           </div>
         </div>
 
@@ -24,3 +29,6 @@
     </form>
     </div>
   @endsection
+ @section('breadcrumb')
+  <li class="breadcrumb-item active" aria-current="page">EDITANDO LOS DATOS DE PROGRAMA '{{$programaeducativo->programa}}'</li>
+@endsection

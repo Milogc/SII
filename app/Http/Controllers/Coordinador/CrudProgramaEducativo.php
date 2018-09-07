@@ -31,7 +31,7 @@ class CrudProgramaEducativo extends Controller
      */
     public function create()
     {
-        //
+      return view('crudpe/create');
     }
 
     /**
@@ -42,8 +42,9 @@ class CrudProgramaEducativo extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $tipo = Compras::create($request->all());        
+        $tipo->save();
+        return redirect('crudpe');    }
 
     /**
      * Display the specified resource.

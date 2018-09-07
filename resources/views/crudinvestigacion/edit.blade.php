@@ -2,7 +2,6 @@
 @section('content')
 
   <div class="container">
-    <h2>Editar Tipo de investigacion</h2><br  />
       <form method="post" action="{{action('Coordinador\CrudInvestigacionsController@update', $id)}}">
       @csrf
       <input name="_method" type="hidden" value="PATCH">
@@ -22,3 +21,6 @@
   </div>
 
   @endsection
+ @section('breadcrumb')
+  <li class="breadcrumb-item active" aria-current="page">EDITANDO LOS DATOS DEL TIPO '{{$tipo->tipo}}'</li>
+@endsection

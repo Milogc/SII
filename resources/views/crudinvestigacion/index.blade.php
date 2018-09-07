@@ -35,3 +35,6 @@
 
   </div>
 @endsection
+@section('breadcrumb')
+  <li class="breadcrumb-item active" aria-current="page">TIPOS DE INVESTIGACION REGISTRADOS EN EL SISTEMA</li>
+@endsection

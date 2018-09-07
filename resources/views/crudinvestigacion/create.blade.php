@@ -2,13 +2,12 @@
 @section('content')
 
   <div class="container">
-    <h2>Tipos de investigacion </h2><br/>
     <form method="post" action="{{url('crudinvestigacion')}}" enctype="multipart/form-data">
 
       @csrf
       <div class="row">
         <div class="form-group col-lg-10">
-          <label for="name">Investigacion:</label>
+          <label for="name">Tipo:</label>
           <input type="text" class="form-control" name="tipo" required>
         </div>
       </div>
@@ -21,3 +20,6 @@
 
     </form>
   @endsection
+@section('breadcrumb')
+  <li class="breadcrumb-item active" aria-current="page">AGREGAR UN TIPO DE INVESTIGACION</li>
+@endsection

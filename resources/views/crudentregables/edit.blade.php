@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
   <div class="container">
-    <h2>Editar entregables</h2><br  />
       <form method="post" action="{{action('Coordinador\CrudEntregablesController@update', $id)}}">
       @csrf
       <input name="_method" type="hidden" value="PATCH">
@@ -14,7 +13,10 @@
       <div class="row">
         <div class="form-group col-lg-12">
           <label for="name">Tipo:</label>
-          <input type="text" class="form-control" name="tipo" value="{{$entregable->tipo}}">
+          <select class="form-control" name="tipo" value="{{$entregable->tipo}}">
+            <option value="ACADEMICO">ACADEMICO</option>
+            <option value="HUMANO" selected="selected">HUMANO</option>
+          </select>
         </div>
 
       </div>
@@ -25,7 +27,7 @@
       </div>
   </form>
   </div>
-
-
-
+@endsection
+ @section('breadcrumb')
+  <li class="breadcrumb-item active" aria-current="page">EDITANDO LOS DATOS DEL ENTREGABLE '{{$entregable->descripcion}}'</li>
 @endsection

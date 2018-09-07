@@ -36,3 +36,6 @@
 
 </div>
 @endsection
+@section('breadcrumb')
+  <li class="breadcrumb-item active" aria-current="page">LISTADO DE PRODUCTOS QUE PUEDEN ENTREGAR LOS INVESTIGADORES</li>
+@endsection

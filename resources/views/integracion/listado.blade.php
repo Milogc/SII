@@ -98,4 +98,9 @@
   </table>
   </div>
 @endsection
+@section('breadcrumb')
+  <li class="breadcrumb-item active" aria-current="page">LISTADO DE PROYECTOS REGISTRADOS</li>
+@endsection
+
+
  

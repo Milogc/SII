@@ -1,17 +1,8 @@
 @extends('layouts.app')
 @section('content')
-
   <div class="register-box">
-
-
       <div class="register-box-body">
-
           <form action="{{url('crudusers')}}" method="post" enctype="multipart/form-data">
-              <h3>
-                <center>
-                  Agregar un nuevo investigador
-                </center>
-              </h3>
               {!! csrf_field() !!}
 
               <div class="form-group row">
@@ -112,6 +103,7 @@
       </div>
       <!-- /.form-box -->
   </div>
-
-
+@endsection
+@section('breadcrumb')
+  <li class="breadcrumb-item active" aria-current="page">AGREGAR UN USUARIO AL SISTEMA</li>
 @endsection

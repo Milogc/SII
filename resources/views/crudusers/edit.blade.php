@@ -44,3 +44,6 @@
 
   </div>
   @endsection
+ @section('breadcrumb')
+  <li class="breadcrumb-item active" aria-current="page">EDITANDO LOS DATOS DEL USUARIO '{{$user->name}}'</li>
+@endsection

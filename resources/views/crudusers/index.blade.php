@@ -47,3 +47,7 @@
 </table>
 </div>
 @endsection
+@section('breadcrumb')
+  <li class="breadcrumb-item active" aria-current="page">LISTADO DE USUARIOS REGISTRADOS EN EL SISTEMA</li>
+@endsection
+

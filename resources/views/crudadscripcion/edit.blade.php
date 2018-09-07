@@ -2,13 +2,12 @@
 @section('content')
 
   <div class="container">
-    <h2>Editar Adscripción</h2><br  />
       <form method="post" action="{{action('Coordinador\CrudAdscripcionController@update', $id)}}">
       @csrf
       <input name="_method" type="hidden" value="PATCH">
       <div class="row">
         <div class="form-group col-lg-12">
-          <label for="name">Tipo:</label>
+          <label for="name">Lugar:</label>
           <input type="text" class="form-control" name="ies" value="{{$ies->ies}}">
         </div>
       </div>
@@ -20,5 +19,7 @@
       </div>
   </form>
   </div>
-
   @endsection
+ @section('breadcrumb')
+  <li class="breadcrumb-item active" aria-current="page">CAMBIANDO LA ADSCRIPCION '{{$ies->ies}}'</li>
+@endsection

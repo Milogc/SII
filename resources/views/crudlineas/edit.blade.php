@@ -3,7 +3,6 @@
 
 
     <div class="container">
-      <h2>Editar Lineas</h2><br  />
         <form method="post" action="{{action('Coordinador\CrudLineasController@update', $id)}}">
         @csrf
         <input name="_method" type="hidden" value="PATCH">
@@ -22,3 +21,7 @@
     </form>
     </div>
   @endsection
+@section('breadcrumb')
+  <li class="breadcrumb-item active" aria-current="page">EDITANDO LINEA DE INVESTIGACION '{{$linea->linea}}'</li>
+@endsection
+

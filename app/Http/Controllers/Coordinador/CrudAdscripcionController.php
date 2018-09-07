@@ -32,7 +32,7 @@ class CrudAdscripcionController extends Controller
      */
     public function create()
     {
-          return view('crudadscripcion/create');
+      return view('crudadscripcion/create');
     }
 
     /**

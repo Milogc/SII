@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
   <div class="container">
-    <h2>Editar una area</h2><br  />
       <form method="post" action="{{action('Coordinador\CrudAreasController@update', $id)}}">
         @csrf
         <input name="_method" type="hidden" value="PATCH">
@@ -18,4 +17,7 @@
       </div>
 </form>
 </div>
+@endsection
+@section('breadcrumb')
+  <li class="breadcrumb-item active" aria-current="page">EDITANDO EL AREA DE INVESTIGACION '{{$catalagos->area}}'</li>
 @endsection

@@ -2,12 +2,11 @@
 @section('content')
 
   <div class="container">
-    <h2>{{$restriccion->descripcion}} </h2><br/>
     <form method="post" action="{{action('Coordinador\RestriccionesRegistroController@update', $id)}}" >
       @csrf
       <input name="_method" type="hidden" value="PATCH">
       <div class="row">
-        <div class="form-group col-lg-8">
+        <div class="form-group col-lg-1">
         <input type="text" class="form-control" name="valor" value="{{$restriccion->valor}}">
         </div>
       </div>
@@ -21,3 +20,6 @@
 
     </form>
   @endsection
+ @section('breadcrumb')
+  <li class="breadcrumb-item active" aria-current="page">CANTIDAD DE '{{$restriccion->descripcion}}'</li>
+@endsection

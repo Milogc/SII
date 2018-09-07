@@ -6,8 +6,8 @@
     <table class="table table-striped">
     <thead>
       <tr>
-        <th>Gastos</th>
-        <th>Tipo</th>
+        <th>Concepto</th>
+        <th>Partida</th>
 
         <th colspan="2"><center>Acciones</center></th>
       </tr>
@@ -33,8 +33,9 @@
     @endforeach
   </tbody>
   </table>
-
   </section>
-
   </div>
+@endsection
+@section('breadcrumb')
+  <li class="breadcrumb-item active" aria-current="page">LISTADO DE CONCEPTO DE GASTOS PERMITIDOS</li>
 @endsection

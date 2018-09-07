@@ -132,10 +132,21 @@
       </div>
       <div class="col-3 bg-primary text-white">
         <div class="row">
-          <a href="crudpe">
-            <img src="logos/item.png" alt="">
-          </a>
+
+          <div class="col-6" style="border: 0px;">
+            <a href="crudpe" style="displa:inline">
+              <img src="logos/item.png" alt="">
+            </a>
+          </div>
+          <div class="col-3" style="border: 0px;">
+            <a href="/crudpe/create">
+              <img src="logos/mas.png" alt="" style="width:70px;">
+            </a>
+          </div>
+
+
         </div>
+
         <div class="row">
         Programa Educativo
         </div>

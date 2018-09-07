@@ -2,7 +2,6 @@
 @extends('layouts.app')
 @section("content")
     <div class="container">
-      <h2>Convocatoria</h2><br/>
       <form method="post" action="{{url('convocatoria')}}" enctype="multipart/form-data">
         @csrf
         <div class="row">
@@ -29,3 +28,7 @@
       </form>
     </div>
 @endsection
+@section('breadcrumb')
+  <li class="breadcrumb-item active" aria-current="page">AGREGAR UNA CONVOCATORIA</li>
+@endsection
+

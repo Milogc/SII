@@ -2,7 +2,6 @@
 @extends('layouts.app')
 @section("content")
     <div class="container">
-      <h2>Editar una convocatoria</h2><br  />
         <form method="post" action="{{action('Coordinador\ConvocatoriaController@update', $id)}}">
         @csrf
         <input name="_method" type="hidden" value="PATCH">
@@ -30,3 +29,6 @@
       </form>
     </div>
  @endsection
+ @section('breadcrumb')
+  <li class="breadcrumb-item active" aria-current="page">EDITAR LA CONVOCATORIA '{{$convocatoria->Nombre}}'</li>
+@endsection
