@@ -6,7 +6,7 @@
     <table class="table table-striped">
     <thead>
       <tr>
-        <th>Programa</th>
+        <th>Programa.</th>
         <th>Nivel</th>
         <th colspan="2"><center>Acciones</center></th>
       </tr>
