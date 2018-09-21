@@ -6,18 +6,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Programa_educativo;
 
-
 class CrudProgramaEducativo extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-     public function __construct()
-     {
-         $this->middleware('role:Coordinador');
-     }
+    public function __construct()
+    {
+        $this->middleware('role:Coordinador');
+    }
+
     public function index()
     {
           $programaeducativo=DB::table('catalogo_pe')->get();
@@ -42,9 +37,10 @@ class CrudProgramaEducativo extends Controller
      */
     public function store(Request $request)
     {
-        $tipo = Compras::create($request->all());        
+        $tipo = Programa_educativo::create($request->all());        
         $tipo->save();
-        return redirect('crudpe');    }
+        return redirect('crudpe');    
+    }
 
     /**
      * Display the specified resource.
@@ -92,6 +88,9 @@ class CrudProgramaEducativo extends Controller
      */
     public function destroy($id)
     {
+      $lineas= Programa_educativo::find($id);
+      $lineas->delete();
+      return redirect('crudpe');
         //
     }
 }

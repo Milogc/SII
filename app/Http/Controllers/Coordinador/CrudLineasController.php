@@ -8,11 +8,10 @@ use App\Models\CrudLineas;
 
 class CrudLineasController extends Controller
 {
-
-      public function __construct()
-      {
-          $this->middleware('role:Coordinador');
-      }
+    public function __construct()
+    {
+        $this->middleware('role:Coordinador');
+    }
 
     /**
      * Display a listing of the resource.

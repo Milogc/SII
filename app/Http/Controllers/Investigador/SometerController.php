@@ -46,7 +46,14 @@ class SometerController extends Controller
             'rubro' => array('rubro' => "rubro" ,'resultado' => "resultado", 'mensaje' => "mensaje", ) ,
 
             );
+
+
+La restriccion:
+5.- Máximo de colaboradores en un proyecto 
+es igual a 
+7.- Máximo de colaboradores por proyecto               
 */
+
         $puede = true;
 
         $proyecto= Proyecto::find($idproy);

@@ -18,14 +18,14 @@
           <td>  {{$programa->nivel}}</td>
       <td>
     {{--  --}}
-        <a   href="{{action('Coordinador\CrudProgramaEducativo@edit', $programa->id)}}"class="btn btn-warning">Edit</a>
+        <a href="{{action('Coordinador\CrudProgramaEducativo@edit', $programa->id)}}"class="btn btn-warning">Editar</a>
       </td>
       <td>
-        {{-- action="{{action('CrudEntregablesController@destroy', $entregable->id)}}"  --}}
-        <form  method="post">
+        {{--   --}}
+        <form action="{{action('Coordinador\CrudProgramaEducativo@destroy', $programa->id)}}" method="post">
           @csrf
           <input name="_method" type="hidden" value="DELETE">
-          <button class="btn btn-danger" type="submit">Delete</button>
+          <button class="btn btn-danger" type="submit">BORRAR</button>
         </form>
       </td>
       </tr>

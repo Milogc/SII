@@ -78,7 +78,7 @@ Route::resource('convocatoria','Coordinador\ConvocatoriaController');
 
 Route::get('registrados', 'Coordinador\IntegracionController@registrados');
 
-
+Route::resource('crudpe','Coordinador\CrudProgramaEducativo');
 Route::resource('crudareas','Coordinador\CrudAreasController');
 Route::resource('crudusers','Coordinador\CrudUsersController');
 Route::resource('crudentregables','Coordinador\CrudEntregablesController');
@@ -86,7 +86,7 @@ Route::resource('crudgastos','Coordinador\CrudGastosController');
 Route::resource('crudlineas','Coordinador\CrudLineasController');
 Route::resource('crudinvestigacion','Coordinador\CrudInvestigacionsController');
 Route::resource('crudadscripcion','Coordinador\CrudAdscripcionController');
-Route::resource('crudpe','Coordinador\CrudProgramaEducativo');
+
 
 Route::resource('crudlongitudecaracteres','Coordinador\CrudDeLongitudecaracteres')
 	->only(['index','edit','update']);
