@@ -33,12 +33,12 @@
     <td>{{$user->email}}</td>
     <td>{{$user->rol}}</td>
     <td>
-      <a  href="{{action('Coordinador\CrudUsersController@edit', $user->id)}}" class="btn btn-warning">Edit</a>
+      <a  href="{{action('Coordinador\CrudUsersController@edit', $user->id)}}" class="btn btn-warning">Editar</a>
     <td>
       <form action="{{action('Coordinador\CrudUsersController@destroy', $user->id)}}" method="post">
         @csrf
         <input name="_method" type="hidden" value="DELETE">
-        <button class="btn btn-danger" type="submit">Delete</button>
+        <button class="btn btn-danger" type="submit">Borrar</button>
       </form>
     </td>
   </tr>

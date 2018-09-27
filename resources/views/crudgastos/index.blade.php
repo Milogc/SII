@@ -19,14 +19,14 @@
       <td>{{$gasto->partida}}</td>
       <td>
         {{-- href="{{action('CrudGastosController@edit', $gastos->id)}}"  --}}
-        <a href="{{action('Coordinador\CrudGastosController@edit', $gasto->id)}}"   class="btn btn-warning">Edit</a>
+        <a href="{{action('Coordinador\CrudGastosController@edit', $gasto->id)}}"   class="btn btn-warning">Editar</a>
       </td>
       <td>
         {{-- action="{{action('CrudEntregablesController@destroy', $entregable->id)}}"  --}}
         <form action="{{action('Coordinador\CrudGastosController@destroy', $gasto->id)}}" method="post">
           @csrf
           <input name="_method" type="hidden" value="DELETE">
-          <button class="btn btn-danger" type="submit">Delete</button>
+          <button class="btn btn-danger" type="submit">Borrar</button>
         </form>
       </td>
       </tr>

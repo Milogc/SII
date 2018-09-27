@@ -17,7 +17,7 @@
       <td>  {{$restriccion->descripcion}}</td>
       <td>  {{$restriccion->valor}}</td>
       <td>
-        <a href="{{action('Coordinador\RestriccionesRegistroController@edit', $restriccion->id)}}" class="btn btn-warning">Edit</a>
+        <a href="{{action('Coordinador\RestriccionesRegistroController@edit', $restriccion->id)}}" class="btn btn-warning">Editar</a>
       </td>
       </tr>
     @endforeach

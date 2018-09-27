@@ -24,13 +24,13 @@
         <td>{{$proyecto['titulo']}}</td>        
         <td>{{$proyecto['fecha_elaboracion']}}</td>        
         <td>
-          <a href="{{action('Investigador\ProyectoController@edit', $proyecto['id'])}}" class="btn btn-primary">Edit</a>
+          <a href="{{action('Investigador\ProyectoController@edit', $proyecto['id'])}}" class="btn btn-primary">Editar</a>
           <a href="{{action('Investigador\DatosController@edit', $proyecto['id'])}}" class="btn btn-warning">Nombres</a>
         <td>
           <form action="{{action('Investigador\ProyectoController@destroy', $proyecto['id'])}}" method="post">
             @csrf
             <input name="_method" type="hidden" value="DELETE">
-            <button class="btn btn-danger" type="submit">Delete</button>
+            <button class="btn btn-danger" type="submit">Borrar</button>
           </form>
         </td>
       </tr>

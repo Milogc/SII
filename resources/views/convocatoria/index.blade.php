@@ -29,12 +29,12 @@
         <td>{{$convocatoria['Fecha_inicio']}}</td>
         <td>{{$convocatoria['Fecha_fin']}}</td>
         <td>
-          <a href="{{action('Coordinador\ConvocatoriaController@edit', $convocatoria['id'])}}" class="btn btn-warning">Edit</a>
+          <a href="{{action('Coordinador\ConvocatoriaController@edit', $convocatoria['id'])}}" class="btn btn-warning">Editar</a>
         <td>
           <form action="{{action('Coordinador\ConvocatoriaController@destroy', $convocatoria['id'])}}" method="post">
             @csrf
             <input name="_method" type="hidden" value="DELETE">
-            <button class="btn btn-danger" type="submit">Delete</button>
+            <button class="btn btn-danger" type="submit">Borrar</button>
           </form>
         </td>
       </tr>

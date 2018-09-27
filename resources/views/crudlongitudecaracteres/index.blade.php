@@ -18,7 +18,7 @@
       <td>  {{$longitu->valor}}</td>
       <td>
         {{-- href="{{action('CrudGastosController@edit', $gastos->id)}}"  --}}
-        <a href="{{action('Coordinador\CrudDeLongitudecaracteres@edit', $longitu->id)}}" class="btn btn-warning">Edit</a>
+        <a href="{{action('Coordinador\CrudDeLongitudecaracteres@edit', $longitu->id)}}" class="btn btn-warning">Editar</a>
       </td>
       </tr>
     @endforeach

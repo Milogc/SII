@@ -18,13 +18,13 @@
     <td>  {{$entregable->descripcion}}</td>
     <td>{{$entregable->tipo}}</td>
     <td>
-      <a href="{{action('Coordinador\CrudEntregablesController@edit', $entregable->id)}}"  class="btn btn-warning">Edit</a>
+      <a href="{{action('Coordinador\CrudEntregablesController@edit', $entregable->id)}}"  class="btn btn-warning">Editar</a>
     </td>
     <td>
       <form action="{{action('Coordinador\CrudEntregablesController@destroy', $entregable->id)}}" method="post">
         @csrf
         <input name="_method" type="hidden" value="DELETE">
-        <button class="btn btn-danger" type="submit">Delete</button>
+        <button class="btn btn-danger" type="submit">Borrar</button>
       </form>
     </td>
     </tr>
