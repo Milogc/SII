@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 // Rutas para el 'Investigador'
 Route::pattern('idpro', '[0-9]+');
 Route::get('proyecto', 'Investigador\ProyectoController@index')->name('lstproyectos');
