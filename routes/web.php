@@ -55,7 +55,7 @@ Route::fallback(function () {
     return view('sistema.NotFound');
 });
 
-Route::pattern('token', '[0-9]+');
+//Route::pattern('token', '[0-9]+');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
