@@ -5,6 +5,9 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Passwords;
+
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 
 
@@ -94,6 +97,26 @@ class CrudUsersController extends Controller
         $users->fill($request->all());
         $users->save();
         return redirect('crudusers');
+    }
+
+
+
+    /**
+     * Muestra por ajax los datos del usuario al que se cambiao el password.
+     *
+     * @param request
+     * @return json con los datos del usuario modificado
+     */
+    public function cambiar(Request $request, $id)
+    {
+
+        $Usuarios = Passwords::find($id);
+        if(is_null($Usuarios)){
+            return redirect('crudusers')->with('error', 'No se econtraron los datos del usuario.');
+        }
+        $Usuarios->password = Hash::make($Usuarios->email ); 
+        $Usuarios->save();
+        return redirect('crudusers')->with('success','Password actualizado a "' . $Usuarios->email .'"');
     }
 
     /**

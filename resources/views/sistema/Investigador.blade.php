@@ -49,8 +49,7 @@ id, actividad, fecha_inicio, fecha_fin, monto, proyecto_id, entregables_id
 @extends('layouts.app')
 @section('content')
 <div class="container">
-      <a href="/proyecto/create" class="btn btn-primary">Agregar Proyecto</a>
-    <br />
+
     @if (\Session::has('success'))
       <div class="alert alert-success" >
           <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
@@ -58,10 +57,13 @@ id, actividad, fecha_inicio, fecha_fin, monto, proyecto_id, entregables_id
       </div><br />
      @endif
     @if (\Session::has('error'))
-    <div class="alert alert-danger fade in alert-dismissible">
+    <div class="alert alert-danger ">
       <p>{{ \Session::get('error') }}</p>
     </div><br/>
     @endif
+
+      <a href="/proyecto/create" class="btn btn-primary">Agregar Proyecto</a>
+    <br />
 
     <table class="table" border="1">
     <thead>

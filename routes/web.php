@@ -82,6 +82,13 @@ Route::get('registrados', 'Coordinador\IntegracionController@registrados');
 Route::resource('crudpe','Coordinador\CrudProgramaEducativo');
 Route::resource('crudareas','Coordinador\CrudAreasController');
 Route::resource('crudusers','Coordinador\CrudUsersController');
+
+Route::get('crudusers/cambiar/{id}','Coordinador\CrudUsersController@cambiar');
+
+Route::get('perfil/cambiar/{id}','Investigador\PerfilController@cambiar');
+Route::post('perfil/actualizar/{id}','Investigador\PerfilController@actualizar');
+
+
 Route::resource('crudentregables','Coordinador\CrudEntregablesController');
 Route::resource('crudgastos','Coordinador\CrudGastosController');
 Route::resource('crudlineas','Coordinador\CrudLineasController');

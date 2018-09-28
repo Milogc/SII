@@ -34,6 +34,8 @@
     <td>{{$user->rol}}</td>
     <td>
       <a  href="{{action('Coordinador\CrudUsersController@edit', $user->id)}}" class="btn btn-warning">Editar</a>
+      <a  href="{{action('Coordinador\CrudUsersController@cambiar', $user->id)}}" class="btn btn-warning">Cambiar Password</a>
+
     <td>
       <form action="{{action('Coordinador\CrudUsersController@destroy', $user->id)}}" method="post">
         @csrf
