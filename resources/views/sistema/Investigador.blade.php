@@ -84,7 +84,7 @@ id, actividad, fecha_inicio, fecha_fin, monto, proyecto_id, entregables_id
               @if($proyecto->sometido == "")
               <tr>
                 <td></td>
-                <td>{{$proyecto['titulo']}} <br> Director: {{$proyecto->director->name}}</td>
+                <td>Titulo: {{$proyecto['titulo']}} <br> Director: {{$proyecto->director->name}}</td>
                 <td colspan="1">
                   <div class="dropdown">
                     <button type="button" class="btn btn-default dropdown-toggle" id="dropdownMenuButton_miosin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -92,6 +92,7 @@ id, actividad, fecha_inicio, fecha_fin, monto, proyecto_id, entregables_id
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton_miosin">
                       <ol>
+                        <li><a class="dropdown-item" href="{{action('Investigador\ProyectoController@show', $proyecto['id'])}}">Información básica</a></li>
                         <li><a class="dropdown-item" href="{{action('Investigador\ProtocoloController@mostar', $proyecto['id'])}}">Protocolo</a></li>
                         <li><a class="dropdown-item" href="{{action('Investigador\ColaboradoresController@index', $proyecto['id'])}}">Colaboradores</a></li>
                         <li><a class="dropdown-item" href="{{action('Investigador\EntregablesController@index', $proyecto['id'])}}">Entregables</a></li>

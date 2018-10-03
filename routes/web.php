@@ -18,6 +18,12 @@ Route::post('proyecto', 'Investigador\ProyectoController@store')->name('addproye
 Route::get('proyecto/create', 'Investigador\ProyectoController@create')->name('crtproyecto');
 Route::delete('proyecto/{idpro}', 'Investigador\ProyectoController@destroy')->name('delproyecto');
 
+
+Route::get('proyecto/{idpro}','Investigador\ProyectoController@show');
+Route::post('proyecto/{idpro}','Investigador\ProyectoController@update');
+
+
+
 Route::get('colaboradores/{idpro}','Investigador\ColaboradoresController@index');
 Route::post('colaboradores','Investigador\ColaboradoresController@invitar');
 Route::post('colaboradores/desinvitar','Investigador\ColaboradoresController@desinvitar');
