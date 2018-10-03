@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
-
+use App\Models\Basica;
 use App\Models\Proyecto;
 use App\Models\Colaboradores;
 use App\Models\Convocatoria;
@@ -169,16 +169,6 @@ class ProyectoController extends Controller
     }
 
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     public function especial()
     {
@@ -219,4 +209,26 @@ class ProyectoController extends Controller
             if($e->getCode()==23000) return redirect('home')->with('error', 'El proyecto tiene al menos un colaborador');;
         }
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $proyecto = Basica::find($id);
+        $lineas = DB::table('catalogo_lineas')->get();
+        $tipos = DB::table('catalogo_tipo_investigacion')->get();
+        return view('proyecto/show',  compact('proyecto','lineas','tipos'));
+    }
+
+    public function update(Request $request, $idproy)
+    {
+        $proyecto= Basica::find($idproy);
+        $proyecto->fill($request->all());
+        $proyecto->save();
+        return redirect('home')->with('success', 'Informacion básica actualizada.');
+    }    
 }
