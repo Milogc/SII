@@ -18,7 +18,7 @@
         <div class="row">
           <div class="form-group col-md-12">
             <label for="titulo">Titulo:</label>
-            <input type="text" class="form-control" name="titulo">
+            <input type="text" class="form-control" name="titulo"  maxlength="190" required>
           </div>
         </div>
         <div class="row">
@@ -72,7 +72,7 @@
         <div class="row">
           <div class="form-group col-md-6">
             <label for="fecha_inicio">Fecha de inicio:</label>
-            <input type="month" class="form-control" name="fecha_inicio">
+            <input type="month" class="form-control" name="fecha_inicio" required>
           </div>
           <div class="form-group col-md-6" id="fecha_fin">
             <label for="fecha_fin">Fecha de fin:</label>

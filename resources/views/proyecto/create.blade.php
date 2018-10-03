@@ -18,7 +18,7 @@
         <div class="row">
           <div class="form-group col-md-12">
             <label for="titulo">Titulo:</label>
-            <input type="text" class="form-control" name="titulo" required>
+            <input type="text" class="form-control" name="titulo" maxlength="190" required>
           </div>
         </div>
         <div class="row">
