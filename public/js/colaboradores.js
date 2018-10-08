@@ -1,5 +1,4 @@
 
-//var url = "http://energia.ittg.mx/colaboradores/";
 var url = "/colaboradores";
 
 function agregar(){
@@ -18,24 +17,24 @@ function agregar(){
         dataType: 'json',
         headers: { 'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')  },
         success: function (data) {
-                        console.log("regreso en agregar:");
-            console.log(data);
-            if (data[0].participacion == null ) 
-                data[0].participacion = "Aún no acepta";
-            else 
-                data[0].participacion = "Acepto";
-
-            if (data[0].cvutecnm == null) data[0].cvutecnm="";
-
-
-            var colaborador = '<tr id="cobaborador_' + data[0].id + '"><td>' + data[0].cvutecnm + '</td><td>' + data[0].name + '</td><td>' + data[0].participacion + '</td>';
-            colaborador += '<td><button class="btn btn-danger btndel" value="' + data[0].id + '">Eliminar</button></td></tr>';
-            $('#colaboradores-list > tbody').append(colaborador);
-             
-            $('#investigador option[value=\"' + data[0].id  +  '\"]' ).remove();
-
-        //    $('#frmcolaboradores').trigger("reset");
-        //    $('#colaboradoresModal').modal('hide');
+            if(data.error)
+                alert(data.mensaje);
+            else{
+                console.log("regreso en agregar:");     
+                console.log(data);
+                if (data.Colaborador.participacion == null ) 
+                    data.Colaborador.participacion = "Aún no acepta";
+                else 
+                    data.Colaborador.participacion = "Acepto";
+                if (data.Colaborador.cvutecnm == null) data.Colaborador.cvutecnm="";
+                var row = '<tr id="colaborador_' + data.Colaborador.users_id + '">';
+                row += '<td>' + data.Colaborador.cvutecnm + '</td><td>';
+                row +=  data.Colaborador.name + '</td><td>';
+                row +=  data.Colaborador.participacion + '</td>';
+                row += '<td><button class="btn btn-danger btndel" value="' + data.Colaborador.users_id + '">Eliminar</button></td></tr>';
+                $('#colaboradores-list > tbody').append(row);
+                $('#investigador option[value=\"' + data.Colaborador.users_id  +  '\"]' ).remove();
+            }
         },
         error: function (data) {
             console.log('Error:', data);
@@ -44,17 +43,11 @@ function agregar(){
     });
 }
 
-function poner(){
-
-}
-
-
 function desinvitar(){
     var formData = {
         users_id: this.value,
         proyecto_id: $('#noproyecto').val(),
     }
-
     console.log(formData);
     console.log(url);
     $.ajax({
@@ -66,7 +59,11 @@ function desinvitar(){
         success: function (data) {
             console.log("regreso en eliminar:");
             console.log(data);
-            $("#cobaborador_" + data.id).remove();
+            if(data.error)
+                alert(data.mensaje);
+            else{
+                $("#colaborador_" + data.Colaborador).remove();
+            }
         },
         error: function (data) {
             console.log('Error:', data);

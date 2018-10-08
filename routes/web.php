@@ -29,6 +29,7 @@ Route::post('colaboradores','Investigador\ColaboradoresController@invitar');
 Route::post('colaboradores/desinvitar','Investigador\ColaboradoresController@desinvitar');
 Route::post('colaboradores/aceptar' ,'Investigador\ColaboradoresController@aceptar' );
 Route::post('colaboradores/rechazar','Investigador\ColaboradoresController@rechazar');
+
 Route::get('entregables/{idpro}','Investigador\EntregablesController@index');
 Route::post('entregables','Investigador\EntregablesController@agregar');
 Route::post('entregables/eliminar','Investigador\EntregablesController@eliminar');

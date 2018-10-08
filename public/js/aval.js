@@ -10,7 +10,6 @@ function agregar(){
     formData.append('proyecto_id', noproy);
     console.log('formData:', formData);
     $.ajax({
-
         type: 'POST',
         url: url,
         data: formData,
@@ -20,12 +19,15 @@ function agregar(){
         processData: false,        
         headers: { 'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')  },
         success: function (data) {
-            alert("Carta de aval subida correctamente");
-            console.log("regreso en agregar:",data);
-            epdf = $('#pdf');
-            $('#pdf').attr('src', data.fileName);
-            javascript:location.reload();
-
+            if(data.error)
+                alert(data.mensaje);
+            else{        
+                alert("Carta de aval subida correctamente");
+                console.log("regreso en agregar:",data);
+                epdf = $('#pdf');
+                $('#pdf').attr('src', data.fileName);
+                javascript:location.reload();
+            }
         },
         error: function (data) {
             console.log('Error:', data);

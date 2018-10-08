@@ -19,7 +19,7 @@
     </thead>
     <tbody>      
       @foreach($colaboradores as $colaborador)
-      <tr id="cobaborador_{{$colaborador->id}}" >
+      <tr id="colaborador_{{$colaborador->id}}">
         <td>{{$colaborador->cvutecnm}}</td>
         <td>{{$colaborador->name}}</td>        
         <td>

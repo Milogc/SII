@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 use App\Models\Proyecto;
 use App\Models\Vinculacion;
 
@@ -33,18 +34,29 @@ class VinculacionController extends Controller
         $path = Storage::putFileAs(
             '', $request->file('evidencia'), $fileName
         );
-        $Vinculacion= Vinculacion::find($idproy);
-        $Vinculacion->vinculacion = $path;
-        $Vinculacion->save();
-        $path = public_path() . '/evidencias' . $path;
-        $Retornar = array(
-            'fileName' => $fileName,
-            'proyecto_id' => $idproy,
 
-        );
-        return response()->json($Retornar);
+        try {
+            DB::beginTransaction();
+            $Vinculacion= Vinculacion::find($idproy);
+            $Vinculacion->vinculacion = $path;
+            $Vinculacion->save();
+            $path = public_path() . '/evidencias' . $path;
+            $Retornar = array(
+                'fileName' => $fileName,
+                'proyecto_id' => $idproy,
+            );
+            DB::commit();
+            return json_encode(array(
+                     'error' => false, 
+                     'mensaje' => $Retornar ));
+        } catch (\Exception $e) {
+            $error = $e->getMessage();
+            DB::rollback();
+            return response()->json( array(
+                     'error' => true, 
+                     'mensaje' => 'DB::. ' . $error));
+        }
     }
-
 
     public function eliminar(Request $request)
     {
@@ -66,13 +78,5 @@ class VinculacionController extends Controller
         return response()->json( $arrayName );
     }
 
-
-
-
-    public function update(Request $request, $idproy)
-    {
-//        return redirect('home')->with('success', 'Information del protocolo ha sido actualizada');
-        //return redirect()->back()->with('success', 'Information del protocolo ha sido actualizada');
-    }
 
 }

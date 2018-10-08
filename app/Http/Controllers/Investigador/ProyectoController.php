@@ -66,6 +66,7 @@ class ProyectoController extends Controller
 
         $errores="";
         $logeado = Auth::user();
+
 /*
         $proyecto= new Proyecto();
         $proyecto->titulo_proyecto=$request->get('titulo');
@@ -80,10 +81,13 @@ class ProyectoController extends Controller
         $parametros['responsable']=$logeado->id;
         $fechaHoy = new \DateTime(); // Today
         $hoy = $fechaHoy->format('d/m/Y h:s'); // echos today!
+
+/*
         ob_start();
         print_r($request->all());
         $result = ob_get_clean();
 //        $errores .=  $result;
+*/
 
         //////RESTRICCIONES
 // 1 Proyectos financiados por línea de investigación
@@ -204,9 +208,9 @@ class ProyectoController extends Controller
             }else{
                 return redirect('home')->with('error','Proyecto no encontrado');
             }
-
         }catch (\Illuminate\Database\QueryException $e){
-            if($e->getCode()==23000) return redirect('home')->with('error', 'El proyecto tiene al menos un colaborador');;
+            if($e->getCode()==23000) 
+                return redirect('home')->with('error', $e->getMessage());;
         }
     }
 
