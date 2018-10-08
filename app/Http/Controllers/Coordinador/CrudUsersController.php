@@ -127,8 +127,19 @@ class CrudUsersController extends Controller
      */
     public function destroy($id)
     {
-      $users= User::find($id);
-      $users->delete();
-      return redirect('crudusers');
+
+        try {
+          $users= User::find($id);
+          $users->delete();
+          return redirect('crudusers')->with('success','Usuario eliminado correctamente.');
+        }catch (\Illuminate\Database\QueryException $e){
+            if($e->getCode()==23000)  
+                return redirect('crudusers')->with('error','No es posible eliminar a este usuario, verifique que no sea director o colaborador de un proyecto ya registrado.');
+        }
+
+
+
+
+
     }
 }
