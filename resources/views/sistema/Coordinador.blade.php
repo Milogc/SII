@@ -22,10 +22,15 @@
 
 <div class="tab-content" id="v-pills-tabContent">
   <div class="tab-pane fade show active" id="v-pills-regi" role="tabpanel" aria-labelledby="v-pills-regi-tab">
+    @include('sistema.registro')
+  </div>
+    
+  <div class="tab-pane fade" id="v-pills-eval" role="tabpanel" aria-labelledby="v-pills-eval-tab">
+    @include('sistema.evaluacion')
+  </div>
+  <div class="tab-pane fade" id="v-pills-segu" role="tabpanel" aria-labelledby="v-pills-segu-tab">
     @include('sistema.seguimiento')
   </div>
-  <div class="tab-pane fade" id="v-pills-eval" role="tabpanel" aria-labelledby="v-pills-eval-tab">...</div>
-  <div class="tab-pane fade" id="v-pills-segu" role="tabpanel" aria-labelledby="v-pills-segu-tab">...</div>
 </div>
 
 </div>
