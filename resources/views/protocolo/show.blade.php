@@ -2,7 +2,7 @@
 @extends('layouts.app')
 @section("content")
 <div class="container">
-@if ( ! empty($msg)) 
+@if ( ! empty($msg))
     <div class="alert alert-success" >
       <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
     <p>{{$msg}}</p>

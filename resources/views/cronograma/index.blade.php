@@ -127,7 +127,7 @@
             }
 
             var porcentaje = currentCharacters * 100 / maxlength;
-            espan.html(currentCharacters + "/" + maxlength + " letras." );
+            espan.html(currentCharacters + "/" + maxlength + " letras.");
             if (!!maxlength) {
                 espan.removeClass();
                 if ( porcentaje > 80 && porcentaje <= 90){
