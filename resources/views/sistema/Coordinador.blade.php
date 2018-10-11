@@ -11,7 +11,6 @@
     <p>{{ \Session::get('error') }}</p>
     </div><br/>
     @endif
-    @include('sistema.registro')
 
 <nav>
   <div class="nav nav-tabs" id="nav-tab" role="tablist">
