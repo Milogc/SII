@@ -2,9 +2,10 @@
 @extends('layouts.app')
 @section("content")
 <div class="container">
-@if (\Session::has('success'))
-  <div class="alert alert-success">
-    <p>{{ \Session::get('success') }}</p>
+@if ( ! empty($msg)) 
+    <div class="alert alert-success" >
+      <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+    <p>{{$msg}}</p>
   </div>
 @endif
 @if (\Session::has('error'))
@@ -25,7 +26,6 @@
       <div class="col-md-10">
         <div class="tab-content" id="v-pills-tabContent">
           @foreach($partes as $parte)
-
             <div class="tab-pane fade @if($loop->first) active show @endif" id="t{{$parte->campo}}" role="tabpanel" aria-labelledby="v-pills-home-tab">
               <textarea class="form-control" name="{{$parte->campo}}" id="{{$parte->campo}}" rows="20" cols="30" maxlength="{{$parte->valor}}">{{ $protocolo["$parte->campo"] }}</textarea>
               <div class="alert alert-info col-4" id="l{{$parte->campo}}" role="alert"></div>

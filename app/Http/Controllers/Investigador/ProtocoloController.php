@@ -41,7 +41,8 @@ class ProtocoloController extends Controller
         $protocolo->fill($request->all());
         $protocolo->save();
         $proyecto= Proyecto::find($idproy);
-        return view('protocolo/show',compact('proyecto','protocolo','partes'));
+        $msg = 'La information del protocolo ha sido actualizada';
+        return view('protocolo/show',compact('proyecto','protocolo','partes','msg'));
 //        return redirect('home')->with('success', 'Information del protocolo ha sido actualizada');
         //return redirect()->back()->with('success', 'Information del protocolo ha sido actualizada');
     }

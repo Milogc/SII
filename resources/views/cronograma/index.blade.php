@@ -59,7 +59,10 @@
           <div class="row">
             <div class="form-group col-3">
                 <label for="descripcion">Actividad:</label>
-                <textarea class="form-control" id="actividad" rows="6" cols="30"></textarea>
+                <textarea class="form-control" id="actividad" rows="7" cols="32" maxlength="100"></textarea>
+                <br>
+                <div class="alert alert-info" id="ltitulo" role="alert"></div>
+
             </div>
             <div class="form-group col-9">
             <div class="row">   
@@ -109,6 +112,41 @@
         "searching": false,       
       }
     );
+
+
+    $('textarea').keyup(function (e) {
+        var maxlength = $("#actividad").prop("maxlength") ;
+        var texto = $("#actividad").val();
+        var espan = $("#ltitulo");
+        var currentCharacters = texto.length;
+            // Detectamos si es IE9 y si hemos llegado al final, convertir el -1 en 0 - bug ie9 porq. no coge directamente el atributo 'maxlength' de HTML5
+            if (document.addEventListener && !window.requestAnimationFrame) {
+                if (remainingCharacters <= -1) {
+                    remainingCharacters = 0;            
+                }
+            }
+
+            var porcentaje = currentCharacters * 100 / maxlength;
+            espan.html(currentCharacters + "/" + maxlength + " letras." );
+            if (!!maxlength) {
+                espan.removeClass();
+                if ( porcentaje > 80 && porcentaje <= 90){
+                  //amarillo
+                  espan.addClass("alert alert-warning col-12");
+                }else if ( porcentaje > 90){
+                  //rojo
+                  espan.addClass("alert alert-danger col-12");
+                }else{
+                  //verde
+                  espan.addClass("alert alert-success col-12");
+                }
+            }   
+        });
+      $("textarea").keyup();
+
+
+
+
   });       
 </script>
 

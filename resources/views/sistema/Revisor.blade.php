@@ -1,59 +1,11 @@
-<!-- 
-
-    Información básica del proyecto
-
-Convocatoria:   Convocatoria 2018: Apoyo a la Investigación Científica y Tecnológica en los Programas Educativos de los Institutos Tecnológicos Federales y Centros
-Responsable:    GUZMAN-SANCHEZ, JORGE OCTAVIO
-Modalidad:  Por licenciatura
-Sometido:   2018-01-24 12:03:31
-Dictamen:   Aprobado con financiamiento el 2018-03-12 10:39:18  [Ver detalle]
-
-////Información básica del proyecto
-id, titulo, nombre_ies, nombre_pe, area, nivel_academico, 
-actreditado_habilitado, pnpc, linea, fecha_elaboracion, 
-fecha_inicio, fecha_fin, duracion, convocatoria_id, responsable, 
-tipo_investigacion, sometido, dictamen, 
-
-////protocolo
-resumen, introduccion, antecedentes, hipotesis, marco_teorico, 
-metas, objetivo_general, objetivos_especificos, impacto_beneficio, 
-metodologia, vinculacion, referencias, lugar, infraestrucutura
-
-//// integrantes [colaboradores]
-id, users_id, proyecto_id, participacion
-
-////entregables
-id, tipo, cuantos, descripcion, proyecto_id
-
-////cronograma  (Programa de actividades)
-id, actividad, fecha_inicio, fecha_fin, monto, proyecto_id, entregables_id
-
-////insumos-materiales y servicios
-
-////concentrado del presupuesto solicitado
-
-////periodos para para ejercer el recurso
-
-//mostrar = 0,1,2 = no,ver,todo
-
-/*
-  if($proyecto->responsable==Auth::user()->id){
-    if(sometido) solo ver
-    else todo
-  if($colaborador->users_id==Auth::user()->id) 
-    solo ver
-  
-*/
-
- -->
 @extends('layouts.app')
 @section('content')
 <div class="container">
 
-    @if (\Session::has('success'))
-      <div class="alert alert-success" >
+    @if (\Session::has('danger'))
+      <div class="alert alert-danger" >
           <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
-        <p>{{ \Session::get('success') }}</p>
+        <p>{{ \Session::get('danger') }}</p>
       </div><br />
      @endif
     @if (\Session::has('error'))
@@ -62,6 +14,112 @@ id, actividad, fecha_inicio, fecha_fin, monto, proyecto_id, entregables_id
     </div><br/>
     @endif
     MOSTRARLE SOLO LOS PROYECTOS QUE TIENE QUE REVISAR
+      <div class="row">
+        <div class="col-md-6">
+          <ul class="pagination" role="navigation">
+            <li class="page-item"><a class="page-link" href="#" rel="prev" aria-label="« Anterior">‹</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item active" aria-current="page"><span class="page-link">2</span></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">4</a></li>
+            <li class="page-item"><a class="page-link" href="#">5</a></li>
+            <li class="page-item"><a class="page-link" href="#">6</a></li>
+            <li class="page-item"><a class="page-link" href="#">7</a></li>
+            <li class="page-item"><a class="page-link" href="#">8</a></li>
+            <li class="page-item"><a class="page-link" href="#" rel="next" aria-label="Siguiente »">›</a></li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+            <div class="text-center">Nomenclatura</div>
+            <div class="alert-danger border border-dark">Proyecto QUE DEBE ALGUN REPORTE</div>
+            <div class="alert-success border border-dark">Proyecto QUE HA PRESENTADO SUS REPORTES</div>
+         </div>
+      </div>
+    
+    <br>
+    Proyectos Registrados Por Convocatoria
+    <table class="table">
+    <thead>
+      <tr>
+        <th>Convocatoria</th>
+        <th colspan="2">Proyecto(s)</th>
+      </tr>
+    </thead>
+    <tbody>
+              <tr class="info">
+          <td>
+            CONVOCATORIA PARA ARAÑAS<br>
+            (2018-09-01 a 2018-11-01)
+          </td>        
+        </tr>
+                          <tr>
+                <td>
+                  
+                </td>
+                <td class="alert-danger">
+                  Titulo: DISEÑO Y CONSTRUCCIÓN DE UN CUADRICÓPTERO DE VIGILANCIA”. (2da. ETAPA: CONSTRUCCIÓN) <br>
+                  Linea: ROBÓTICA <br>
+                  Perido: ( 2018-01 de  ) <br>
+                  Director: M.C. RAÚL MORENO RINCÓN<br>
+                  Financiado:  NO  <br>
+                  Colaboradores:<ul>
+                                          <li>Jorge Octavio Guzmán
+                         
+                          - ya acepto  
+                         </li>
+                                          <li>Héctor Guerra Crespo
+                         
+                          - ya acepto  
+                         </li>
+                      
+                  </ul>
+                </td>
+                <td class="alert-danger">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Documentos<span class="caret"></span>
+                    </button>
+                    <div class="dropdown-menu">
+                      <ol>
+                                                <li><a class="drowpdown-item" href="http://sii.ittg.mx/pdfdci01/2">REPORTE PARCIAL 01</a></li>                        
+                                                <li><a class="drowpdown-item" href="http://sii.ittg.mx/pdfdci02/2">REPORTE PARCIAL 02</a></li>
+                                                <li><a class="drowpdown-item" href="http://sii.ittg.mx/pdfdci02/2">REPORTE FINAL</a></li>
+                      </ol>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  
+                </td>
+                <td class="alert-success">
+                  Titulo: Diseño y construcción de un robot en forma de Araña hexápoda para pruebas de tecnicas de inteligencia artificial <br>
+                  Linea: ROBÓTICA <br>
+                  Perido: ( 2018-01 de  ) <br>
+                  Director: Raul Moreno Rincon<br>
+                  Financiado:  SI  <br>
+                  Colaboradores:<ul>
+                      
+                  </ul>
+                </td>
+                <td class="alert-success">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Documentos<span class="caret"></span>
+                    </button>
+                    <div class="dropdown-menu">
+                      <ol>
+                                                <li><a class="drowpdown-item bg-danger text-white" href="http://sii.ittg.mx/pdfci01/3">REPORTE PARCIAL 01</a></li>
+                                                <li><a class="drowpdown-item bg-danger text-white" href="http://sii.ittg.mx/pdfci02/3">REPORTE PARCIAL 02</a></li>
+                                                <li><a class="drowpdown-item" href="http://sii.ittg.mx/pdfdci02/2">REPORTE FINAL</a></li>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+                     </tbody>
+  </table>
+
 
 
   </div>
