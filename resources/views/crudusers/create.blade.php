@@ -66,6 +66,7 @@
                    <select  class="form-control" name="rol">
                       <option>Coordinador</option>
                       <option>Investigador</option>
+                      <option>Evaluador</option>
                    </select>
                </div>
              </div>
